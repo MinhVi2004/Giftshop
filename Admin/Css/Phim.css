@@ -1,0 +1,318 @@
+
+.phim-tenphim {
+      width: 250px;
+}
+.phim-anhphimnho {
+      width: 60px;
+}
+.phim-anhphimnho img {
+      width: 90px;
+}
+.phim-thaotac button {
+      border: none;
+      border-radius: 4px;
+      background-color: #f58020;
+      padding:10px;
+      cursor: pointer;
+}
+.phim-thaotac button:hover {
+      background-color: #f6a563;
+}
+/* ```````````````````````````````````````````````````````````````` */
+/*! Loại Phim */
+.typePhim-maloaiphim {
+      width: 60px;
+}
+.typePhim-tenloaiphim {
+      width: 120px;
+}
+.typePhim-mota {
+      width: 450px;
+}
+.typePhim-thaotac button {
+      border: none;
+      border-radius: 4px;
+      background-color: #f58020;
+      padding:10px;
+      cursor: pointer;
+      transition: 0.3s;
+}
+.typePhim-thaotac button:hover {
+      background-color: #f4a666;
+}
+/* ```````````````````````````````````````````````````````````````` */
+#typePhimUpdate-wrapper label {
+      display: inline-block;
+      vertical-align: top;
+      width: 130px;
+      margin-top: 20px;
+}
+#typePhimUpdate-wrapper input{
+      width: 250px;
+      height: auto;
+      border-radius: 4px;
+      border: 1px solid #000;
+      box-sizing: border-box;
+      padding: 4px;
+      font-size: 16px;
+}
+#typePhimUpdate-wrapper textarea{
+      resize: none;
+      margin-top: 10px;
+      position: absolute;
+      width: 400px;
+      height: auto;
+      border-radius: 4px;
+      border: 1px solid #000;
+      padding: 4px;
+      font-size: 16px;
+}
+#update-typePhimUpdate, #close-typePhimUpdate {
+      margin-top: 100px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      width: 100px;
+      height: 35px;
+      border-radius: 4px;
+      transition: 0.3s;
+      border: 1px solid #000;
+}
+#update-typePhimUpdate:hover {
+      border: none;
+      background-color: #00ff1a;
+      color: white;
+}
+#close-typePhimUpdate:hover {
+      border: none;
+      background-color: #ff0000;
+      color: white;
+}
+/* ```````````````````````````````````````````````````````````````` */
+#movePhimAddView,#moveTypePhimView,#moveTypePhimAddView, #movePhimView {
+      margin-bottom: 20px;
+      cursor: pointer;
+      width: 200px;
+      height: 35px;
+      border-radius: 4px;
+      transition: 0.3s;
+      border: 1px solid #000;
+}
+#movePhimAddView:hover {
+      border: none;
+      background-color: #00ff1a;
+      color: white;
+}
+#moveTypePhimAddView:hover {
+      border: none;
+      background-color: #00ff1a;
+      color: white;
+}
+#movePhimView:hover {
+      border: none;
+      background-color: #00ff1a;
+      color: white;
+}
+#moveTypePhimView:hover {
+      border: none;
+      background-color: #00ff1a;
+      color: white;
+}
+
+/* ```````````````````````````````````````````````````````````````` */
+#phimDetail-wrapper .phimDetail-label {
+      display: inline-block;
+      vertical-align: top;
+      width: 130px;
+}
+#phimDetail-wrapper .phimDetail-input{
+      width: 250px;
+      height: 30px;
+      border-radius: 4px;
+      border: 1px solid #000;
+      box-sizing: border-box;
+      padding: 4px;
+      margin-bottom: 10px;
+}
+#phimDetail-wrapper .phimDetail-button{
+      width: 70px;
+      height: 30px;
+      border-radius: 4px;
+      border: 1px solid #000;
+      box-sizing: border-box;
+      padding: 4px;
+      margin-bottom: 10px;
+      margin-right: 5px;
+      color: rgb(74, 74, 74);
+}
+#phimDetail-wrapper .phimDetail-select{
+      width: 250px;
+      height: 30px;
+      border-radius: 4px;
+      border: 1px solid #000;
+      box-sizing: border-box;
+      padding: 4px;
+      margin-bottom: 10px;
+      margin-left: 0;
+}
+#update-phimDetail, #close-phimDetail {
+      margin-bottom: 20px;
+      cursor: pointer;
+      width: 130px;
+      height: 35px;
+      border-radius: 4px;
+      transition: 0.3s;
+      border: 1px solid #000;
+}
+#update-phimDetail:hover {
+      border: none;
+      background-color: #00ff1a;
+      color: white;
+}
+#close-phimDetail:hover {
+      border: none;
+      background-color: #ff0000;
+      color: white;
+}
+/* ```````````````````````````````````````````````````````````````` */
+#phimUpdate-wrapper .phimUpdate-label {
+      display: inline-block;
+      vertical-align: top;
+      width: 130px;
+}
+#phimUpdate-wrapper .phimUpdate-input{
+      width: 250px;
+      height: 30px;
+      border-radius: 4px;
+      border: 1px solid #000;
+      box-sizing: border-box;
+      padding: 4px;
+      margin-bottom: 10px;
+}
+#phimUpdate-wrapper .phimUpdate-select{
+      width: 250px;
+      height: 30px;
+      border-radius: 4px;
+      border: 1px solid #000;
+      box-sizing: border-box;
+      padding: 4px;
+      margin-bottom: 10px;
+}
+#update-phimUpdate, #close-phimUpdate {
+      margin-bottom: 20px;
+      cursor: pointer;
+      width: 100px;
+      height: 35px;
+      border-radius: 4px;
+      transition: 0.3s;
+      border: 1px solid #000;
+}
+#update-phimUpdate:hover {
+      border: none;
+      background-color: #00ff1a;
+      color: white;
+}
+#close-phimUpdate:hover {
+      border: none;
+      background-color: #ff0000;
+      color: white;
+}
+/* ```````````````````````````````````````````````````````````````` */
+#phimAdd-wrapper .phimAdd-label {
+      display: inline-block;
+      vertical-align: top;
+      width: 130px;
+}
+#phimAdd-wrapper .phimAdd-input{
+      width: 250px;
+      height: 30px;
+      border-radius: 4px;
+      border: 1px solid #000;
+      box-sizing: border-box;
+      padding: 4px;
+      margin-bottom: 10px;
+}
+#phimAdd-wrapper .phimAdd-select{
+      width: 250px;
+      height: 30px;
+      border-radius: 4px;
+      border: 1px solid #000;
+      box-sizing: border-box;
+      padding: 4px;
+      margin-bottom: 10px;
+}
+#phimAdd-wrapper #phimAdd-theloai {
+      width: 250px;
+      height: auto;
+      border-radius: 4px;
+      border: 1px solid #000;
+      box-sizing: border-box;
+      padding: 4px;
+      margin-bottom: 10px;
+      font-size: 16px;
+}
+#add-phimAdd, #close-phimAdd {
+      margin-bottom: 20px;
+      cursor: pointer;
+      width: 100px;
+      height: 35px;
+      border-radius: 4px;
+      transition: 0.3s;
+      border: 1px solid #000;
+}
+#add-phimAdd:hover {
+      border: none;
+      background-color: #00ff1a;
+      color: white;
+}
+#close-phimAdd:hover {
+      border: none;
+      background-color: #ff0000;
+      color: white;
+}
+/* ```````````````````````````````````````````````````````````````` */
+#typePhimAdd-wrapper label {
+      display: inline-block;
+      vertical-align: top;
+      width: 130px;
+      margin-top: 20px;
+}
+#typePhimAdd-wrapper input{
+      width: 250px;
+      height: auto;
+      border-radius: 4px;
+      border: 1px solid #000;
+      box-sizing: border-box;
+      padding: 4px;
+      font-size: 16px;
+}
+#typePhimAdd-wrapper textarea{
+      resize: none;
+      margin-top: 10px;
+      position: absolute;
+      width: 400px;
+      height: auto;
+      border-radius: 4px;
+      border: 1px solid #000;
+      padding: 4px;
+      font-size: 16px;
+}
+#add-typePhimAdd, #close-typePhimAdd {
+      margin-top: 100px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      width: 100px;
+      height: 35px;
+      border-radius: 4px;
+      transition: 0.3s;
+      border: 1px solid #000;
+}
+#add-typePhimAdd:hover {
+      border: none;
+      background-color: #00ff1a;
+      color: white;
+}
+#close-typePhimAdd:hover {
+      border: none;
+      background-color: #ff0000;
+      color: white;
+}

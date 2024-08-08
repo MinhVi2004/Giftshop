@@ -1,0 +1,72 @@
+
+#homePage-wrapper {
+      margin: 50px 0 50px 0;
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+}
+#homePage-wrapper .card {
+      cursor: pointer;
+      max-width: 295px;
+      transition: 0.3s;
+}
+#homePage-wrapper .card-img {
+      width: 295px;
+      position: relative;
+}
+#homePage-wrapper .card-img img{
+      width: 100%;
+      height: 100%;
+      border-radius:10px;
+}
+#homePage-wrapper .card-img:hover .card-float{
+      display : flex;
+      border-radius:10px;
+      width: 100%;
+      height: 98.3%;
+      flex-direction: column;
+      transition: 0.3s;
+      background-color: rgb(0,0,0,0.4);
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top:50%;
+      left: 50%;
+      transform: translate(-50%, -51%);
+      animation: appear 0.5s;
+}
+#homePage-wrapper .card-float {
+      display: none;
+      animation: appear 0.3s;
+}
+#homePage-wrapper .card-float button {
+      cursor: pointer;
+      color: white;
+      width: 120px;
+      height: 40px;
+      margin: 10px;
+      border-radius: 4px;
+      font-size: 15px;
+}
+#homePage-wrapper .card-float button:hover {
+      background-color: #f09c57;
+      border: none;
+}
+#homePage-wrapper .card-float .card-buy {
+      background-color: #f58020;
+      border:1px solid #f58020;
+}
+#homePage-wrapper .card-float .card-trailer {
+      background-color:rgb(0,0,0,0);
+      border:1px solid #ffffff;
+}
+@keyframes appear{
+	0% {
+            opacity: 0;
+            transform-origin: 50% 50%;
+      }
+      100% {
+            opacity: 1;
+            transform-origin: 50% 50%;
+      }
+}

@@ -1,0 +1,179 @@
+*{
+      margin: 0;
+      padding: 0;
+}
+a {
+      text-decoration: none;
+      color: #333;
+}
+ul {
+      list-style-type: none;
+}
+body {
+      width: 100%;
+      color: #333;
+      font-family: Helvetica,'Courier New', Courier, monospace;
+      font-size: 15px;
+      line-height: 1.6;
+}
+/*? class */
+.img-logo {
+      width: 120px;
+}
+/* ? */
+main {
+      min-height: 50vh;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+}
+/*? -------------------------------------------------------------------------------------------------------------- */
+header {
+      width: 100%;
+      padding: 20px 0 20px 0;
+      display: flex;
+      justify-content: center;
+}
+#header-left {
+      width: 35%;
+      display: flex;
+      justify-content: center;
+}
+#header-middle {
+      width: 30%;
+}
+#header-middle ul {
+      cursor: pointer;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+}
+#header-middle ul li {
+      font-size: 19px;
+}
+#header-middle ul li:hover{
+      color: #858585;
+}
+#header-right {
+      width: 35%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+#header-right h4 {
+      cursor: pointer;
+      height: 100%;
+      line-height: 60px;
+      font-size: 19px;
+}
+#header-right h4:hover {
+      color: #858585;
+}
+#header-right #admin-btn {
+      cursor: pointer;
+      font-size: 30px;
+      transition: 0.2s;
+      margin-left: 20px;
+}
+#header-right #admin-btn:hover {
+      color: #f58020;
+}
+#header-right #profile-options {
+      border-radius: 4px;
+      border: 1px solid #d5d5d5;
+      cursor: pointer;
+      position: relative;
+      width: 220px;
+      height: 40px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+}
+#header-right #profile-options img {
+      width: 35px;
+}
+#header-right #profile-options #float-options {
+      display: none;
+      position: absolute;
+      z-index: 10;
+      top: 100%;
+}
+#header-right #float-options button {
+      cursor: pointer;
+      border-radius: 4px;
+      border: 1px solid white;
+      width: 100%;
+      height: 30px;
+      margin-top: 5px;
+}
+#header-right #float-options #profile-detail {
+      color: white;
+      background-color: #f58020;
+}
+#header-right #float-options #profile-detail:hover {
+      background-color: rgb(21, 255, 21);
+}
+#header-right #float-options #logout-submit {
+      color: white;
+      background-color: #f58020;
+}
+#header-right #float-options #logout-submit:hover {
+      background-color: rgb(255, 32, 32);
+}
+#header-right #profile-options:hover #float-options {
+      display: block;
+}
+/* ?  */
+footer {
+      padding: 20px 0 20px 0;
+      width: 100%;
+      color: white;
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+}
+#footer-info {
+      display: flex;
+      justify-content: center;
+      width: 350px;
+      margin-right: 30px;
+      align-items: center;
+}
+#footer-info ul li {
+      color: white;
+      margin-top: 15px;
+      font-size: 13px;
+}
+#footer-link {
+      width: 270px;
+}
+#footer-link ul li {
+      color: white;
+      margin-top: 14px;
+      font-size: 13px;
+}
+#footer-service {
+      width: 270px;
+}
+#footer-service ul li {
+      color: white;
+      margin-top: 14px;
+      font-size: 13px;
+}
+#footer-question {
+      width: 280px;
+}
+#footer-question ul li {
+      color: white;
+      margin-top: 14px;
+      font-size: 13px;
+}
+#footer-about {
+      width: 280px;
+}
+#footer-about ul li {
+      color: white;
+      margin-top: 14px;
+      font-size: 14px;
+}

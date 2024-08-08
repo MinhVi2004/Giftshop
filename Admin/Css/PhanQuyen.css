@@ -1,0 +1,48 @@
+
+.PhanQuyen-thaotac {
+      cursor: pointer;
+      transition: 0.3s;
+}
+.PhanQuyen-thaotac-suavaitro:hover {
+      background-color: #00ff1a;
+      color: white;
+}
+.PhanQuyen-thaotac-suaphanquyen:hover {
+      background-color: #00ff1a;
+      color: white;
+}
+#update-ChiTietPhanQuyen, #close-ChiTietPhanQuyen {
+      margin-bottom: 20px;
+      cursor: pointer;
+      width: 120px;
+      height: 35px;
+      border-radius: 4px;
+      transition: 0.3s;
+      border: 1px solid #000;
+}
+#update-ChiTietPhanQuyen:hover {
+      border: none;
+      background-color: #00ff1a;
+      color: white;
+}
+#close-ChiTietPhanQuyen:hover {
+      border: none;
+      background-color: #ff0000;
+      color: white;
+}
+
+#capNhatPhanQuyen-btn {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 150px;
+      height: 35px;
+      transition: 0.3s;
+      border: 1px solid #000;
+}
+#capNhatPhanQuyen-btn:hover {
+      border: none;
+      background-color: #00ff1a;
+      color: white;
+}
