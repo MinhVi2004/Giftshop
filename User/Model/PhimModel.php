@@ -13,7 +13,8 @@ class PhimModel {
             }
             return null;
       }
-      public function getAllByMaVe($MaVe) {//? Chỉ sử dụng cho khách hàng, bởi vì nhân viên không cần nhận Email thông báo
+      public function getAllByMaVe($MaVe) {
+            //? Chỉ sử dụng cho khách hàng, bởi vì nhân viên không cần nhận Email thông báo
             $this->db->commit();
             $getAllByMaVeQuery = "SELECT * FROM `ve`,`lichchieu`, `taikhoan`,`phim`,`xuatchieu`,`loaive`,`phongchieu` where `ve`.`MaLichChieu` = `lichchieu`.`MaLichChieu` and `lichchieu`.`MaPhim` = `phim`.`MaPhim` and `ve`.`MaKhachHang` = `taikhoan`.`MaTaiKhoan` and `lichchieu`.`MaXuatChieu` = `xuatchieu`.`MaXuatChieu` and `ve`.`MaLoaiVe` = `loaive`.`MaLoaiVe` and `lichchieu`.`MaPhongChieu` = `phongchieu`.`MaPhongChieu` and `ve`.`MaVe` = $MaVe;";
             $result = $this->db->select($getAllByMaVeQuery);

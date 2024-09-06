@@ -224,6 +224,46 @@ class AccountController {
                   echo 'lỗi';
             }
       }
+      public function uploadAvatar() {
+            session_start();
+            if (isset($_FILES['inputUploadAvatar'])) {
+                  $errors = array();
+                  $file_name = $_FILES['inputUploadAvatar']['name'];
+                  $file_size = $_FILES['inputUploadAvatar']['size'];
+                  $file_tmp = $_FILES['inputUploadAvatar']['tmp_name'];
+                  $file_type = $_FILES['inputUploadAvatar']['type'];
+                  $file_parts = explode('.', $_FILES['inputUploadAvatar']['name']);
+                  $file_ext = strtolower(end($file_parts));
+                  $expensions = array("jpeg", "jpg", "png");
+              
+                  if (in_array($file_ext, $expensions) === false) {
+                      $errors[] = "Chỉ hỗ trợ upload file JPEG hoặc PNG.";
+                  }
+                  
+                  if ($file_size > 2097152) {
+                      $errors[] = 'Kích thước file không được lớn hơn 2MB';
+                  }
+              
+                  if (empty($errors)) {
+                        $image = $_FILES['inputUploadAvatar']['name'];
+                        $target = __DIR__ . "/../../IMG/Avatar/" . basename($image);
+                        $result = $this->AccountModel->insertAvatar($image, $_SESSION["UserLogin"]["MaTaiKhoan"]);
+                        if($result && $result != 0) {
+                              if (move_uploaded_file($file_tmp, $target)) {
+                                    echo "success";
+                              } else {
+                                    echo "error_upload";
+                              }
+                        } else {
+                              echo "error_SQL";
+                        }
+                  } else {
+                        foreach ($errors as $error) {
+                              echo $error . "<br>";
+                        }
+                  }
+              }
+      }
 }
 $accountController = new AccountController();
 
@@ -252,6 +292,9 @@ if(isset($_POST['action'])) {
                   break;
             case "changePassword":
                   $accountController->changePassword();
+                  break;
+            case "uploadAvatar":
+                  $accountController->uploadAvatar();
                   break;
       }
       unset($_POST['action']);

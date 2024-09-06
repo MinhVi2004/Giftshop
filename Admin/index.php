@@ -15,7 +15,7 @@
 <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="icon" href="../IMG/galaxy-logo.png">
+      <link rel="icon" href="../IMG/Avatar/galaxy-logo.png">
       <link rel="stylesheet" href="Css/style.css">
       <link rel="stylesheet" href="Css/Phim.css">
       <link rel="stylesheet" href="Css/NguoiDung.css">
@@ -44,7 +44,7 @@
 <body>
       <header>
             <div id="header-left">
-                  <a href="../User/index.php"><img src="../IMG/galaxy-logo.png" alt="logo" class="img-logo"></a>
+                  <a href="../User/index.php"><img src="../IMG/Avatar/galaxy-logo.png" alt="logo" class="img-logo"></a>
             </div>
             <div id="header-middle">
                   <?php
@@ -59,7 +59,7 @@
                               echo "<a href='../Account/index.php?ctrl=loginView'><h4>Đăng nhập</h4></a>";
                         } else {
                               echo "<div id='profile-options'>
-                                          <img src='../IMG/user-default.png'>
+                                          <img src='../IMG/Avatar/user-default.png'>
                                           <h3>".$_SESSION['UserLogin']['HoTen']."</h3>
                                           <div id='float-options'>
                                                 <button id='profile-detail' onclick='window.location.href=\"../Account/index.php?ctrl=profileView\"'>Thông tin tài khoản</button>
@@ -78,7 +78,7 @@
       </main>
       <footer>
                       <div id="footer-info">
-                              <img src="../IMG/galaxy-logo-white.png" alt="logo" class="img-logo">
+                              <img src="../IMG/Avatar/galaxy-logo-white.png" alt="logo" class="img-logo">
                       </div>
                       <div id="footer-link">
                             <h3>LIÊN KẾT TRANG WEB</h3>
@@ -109,7 +109,7 @@
                             </ul>
                       </div>
                       <div id="footer-about">
-                              <img src="../IMG/galaxy-logo-white.png" alt="logo" class="img-logo">
+                              <img src="../IMG/Avatar/galaxy-logo-white.png" alt="logo" class="img-logo">
                               <h3>Galaxycine.vn</h3>
                               <ul>
                                     <li>Văn Phòng Hành Chính</li>

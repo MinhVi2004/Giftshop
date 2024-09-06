@@ -471,3 +471,30 @@ function changePassword() {
             }
       });
 }
+function uploadAvatar() {
+      let formData = new FormData(document.getElementById("uploadForm"));
+      formData.append('action', 'uploadAvatar'); // Thêm action vào formData
+            $.ajax({
+                  url: "Controller/AccountController.php",
+                  method: "POST",
+                  data: formData,
+                  contentType: false,  // Ngăn jQuery tự động thêm Content-Type header
+                  processData: false,  // Ngăn jQuery xử lý data (vì data đang là FormData
+                  success : function(response){
+                        console.log(response);
+                        if(response == "success") {
+                              alert("Bạn đã thay đổi hình đại diện thành công !");
+                        } else if(response.match('error')){
+                              console.log(response);
+                              alert("Lỗi ");
+                        } else {
+                              console.log(response);
+                              alert("Lỗi khác")
+                        }
+                  },
+                  error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        alert("Lỗi trong quá trình xử lý Ajax.");
+                  }
+            });
+}

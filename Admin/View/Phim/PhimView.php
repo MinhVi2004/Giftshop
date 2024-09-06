@@ -19,7 +19,7 @@
                   <?php
                         foreach($listPhim as $phim) {
                               echo "<tr>";
-                              echo "<td class='phim-anhphimnho'><img src='../IMG/$phim[AnhPhimNho]'></td>";
+                              echo "<td class='phim-anhphimnho'><img src='../IMG/Web/$phim[AnhPhimNho]'></td>";
                               echo "<td class='phim-tenphim'>$phim[TenPhim]</td>";
                               echo "<td class='phim-ngaykhoichieu'>$phim[NgayKhoiChieu]</td>";
                               echo "<td class='phim-trangthai'>$phim[TrangThai]</td>";

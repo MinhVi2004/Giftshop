@@ -1,5 +1,6 @@
 <?php
 require (__DIR__ . "/../Model/PhimModel.php");
+require (__DIR__ . "/../Model/BinhLuanModel.php");
 require (__DIR__ . "/../Model/ThanhToanMomoModel.php");
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -13,9 +14,11 @@ require "C:\\xampp\\htdocs\\Galaxy\\Lib\\phpqrcode-2010100721_1.1.4\\phpqrcode\\
 //? Mã QR
 class UserController {
       private $phimModel;
+      private $binhLuanModel;
       private $thanhToanMomoModel;
       public function __construct() {
             $this->phimModel = new PhimModel();
+            $this->binhLuanModel = new BinhLuanModel();
             $this->thanhToanMomoModel = new ThanhToanMomoModel();
       }
       public function showHomePage() {
@@ -29,6 +32,7 @@ class UserController {
             }
             $lichChieu = $this->phimModel->getLichChieuByPhim($_GET['id']);
             $phim = $this->phimModel->getPhimById($_GET['id']);
+            $binhLuan = $this->binhLuanModel->getAllByIdPhim($_GET['id']);
             require(__DIR__ . "/../View/movieView.php");
       }
       public function showBooking() {

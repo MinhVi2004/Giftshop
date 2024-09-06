@@ -1,8 +1,18 @@
 
 <div id="modal-profile">
-      <div id="profile-container">    
-                  <img src="../IMG/logo_account.png" alt="">
+      <div id="profile-container">
                   <h3>Thông tin tài khoản</h3>
+                  <?php 
+                        if($_SESSION['UserLogin']['AnhDaiDien']) {
+                              echo "<img src='../IMG/Avatar/".$_SESSION["UserLogin"]["AnhDaiDien"]."'>";
+                        } else {
+                              echo "<form id='uploadForm' enctype='multipart/form-data'>
+                                    <img src='../IMG/Avatar/user-default.png'>
+                                    <input type='file' name='inputUploadAvatar' id='inputUploadAvatar' accept='image/*'>
+                                    <button type='button' onclick='uploadAvatar()'>Xác nhận</button>
+                                    </form>";
+                        }
+                  ?>
                   <button onclick="window.location.href='../User/index.php'" id="closeProfile-btn">x</button>
                   <form>
                         <div>

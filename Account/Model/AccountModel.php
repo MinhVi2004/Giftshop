@@ -112,4 +112,8 @@ class AccountModel {
             }
             return null;
       }
+      public function insertAvatar($AnhDaiDien, $MaTaiKhoan) {
+            $insertAvatarQuery = "UPDATE `taikhoan` SET `taikhoan`.AnhDaiDien = '$AnhDaiDien' WHERE `taikhoan`.`MaTaiKhoan` = " . $MaTaiKhoan;
+            return $this->db->execute($insertAvatarQuery);
+      }
 }

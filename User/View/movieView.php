@@ -30,10 +30,10 @@
       </div>
       <div id="movie-xuatchieu-container">
             <div id="movie-xuatchieu">
-                  <h2>Lịch Chiếu</h2>
                   <?php
                         // Nhóm các phần tử theo NgayChieu
                         if ($lichChieu) {
+                              echo "<h2>Lịch Chiếu</h2>";
                               $groupedLichChieu = [];
                               foreach ($lichChieu as $lich) {
                                     $groupedLichChieu[$lich['NgayChieu']][] = $lich;
@@ -50,6 +50,35 @@
                                     }
                                     echo "</div>";
                                     echo"</div>";
+                              }
+                        }
+                  ?>
+            </div>
+      </div>
+      <div id="movie-binhluan-container">
+            <div id="movie-binhluan">
+                  <h2>Bình Luận</h2>
+                  <?php
+                        // Nhóm các phần tử theo BinhLuan
+                        if ($binhLuan) {
+                              foreach($binhLuan as $bl) {
+                                    if($bl['TrangThaiBinhLuan'] !== "Đã Xóa") {
+                                          //? Định dạng thời gian - ngày tháng năm
+                                          $dateObject = new DateTime($bl['NgayBinhLuan']);
+                                          $formatted_date = $dateObject->format('H:i:s - d/m/Y');
+                                          if($bl['TrangThaiBinhLuan'] == "Bình Thường") { //? Bình thường
+                                                echo "<div class='binhluan-card'>
+                                                            <img>
+                                                            <div class='binhluan-card-infomation'>
+                                                                  <p>$formatted_date</p>
+                                                                  <h4>$bl[HoTen]</h4>
+                                                                  <p>$bl[NoiDung]</p>
+                                                            </div>
+                                                      </div>";
+                                          } else { //? Ẩn danh
+
+                                          }
+                                    }
                               }
                         }
                   ?>
