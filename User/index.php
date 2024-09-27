@@ -46,6 +46,44 @@
                         if(isset($_SESSION['Permission']) && count($_SESSION['Permission']) > 0) {
                               echo '<i class="fa-solid fa-gear" id="admin-btn" onclick="window.location.href=\'../Admin/index.php?ctrl='.$_SESSION['Permission'][0].'\'"></i>';
                         }
+
+                        //? api Key WeatherAPI
+                        $apiKey = "feb1567d8fee4d89baa83443241609";
+                        //? Lấy địa chỉ IP của người dùng
+                        $ip = file_get_contents('https://api.ipify.org');
+
+                        //? Lấy thông tin vị trí từ IP
+                        $geoData = file_get_contents("http://ip-api.com/json/$ip");
+                        $geoData = json_decode($geoData, true);
+
+                        //? Lấy tên thành phố
+                        $city = substr($geoData['city'], 0, -5);
+                        $city = urlencode($city);
+                        if ($city) {
+                              // Gọi WeatherAPI để lấy thông tin thời tiết
+                              $apiUrl = "http://api.weatherapi.com/v1/current.json?key=$apiKey&q=$city&days=1";
+                              $response = file_get_contents($apiUrl);
+                              $weatherData = json_decode($response, true);
+                              $weatherUrl = "http://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=$city&days=1";
+                              $responseRain = file_get_contents($weatherUrl);
+                              $weatherDataRain = json_decode($responseRain, true);
+                          
+                              // Hiển thị thông tin thời tiết
+                              if ($weatherData) {
+                                    echo "<div id='weather-detail'>";
+                                    echo "<p>Thời tiết tại:" . $weatherData['location']['name'] . "</p>";
+                                    echo "<p>Nhiệt độ: " . $weatherData['current']['temp_c'] . "°C</p>";
+                                    $rainChance = $weatherDataRain['forecast']['forecastday'][0]['day']['daily_chance_of_rain'];
+                                    if($rainChance > 0) {
+                                          echo "<p>Mưa: $rainChance%</p>";
+                                    }
+                                    echo "</div>";
+                              } else {
+                                    echo "Không thể lấy dữ liệu thời tiết!";
+                              }
+                        } else {
+                              echo "Không thể lấy vị trí từ IP!";
+                        }
                   ?>
             </div>
       </header>

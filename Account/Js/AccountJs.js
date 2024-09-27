@@ -484,6 +484,7 @@ function uploadAvatar() {
                         console.log(response);
                         if(response == "success") {
                               alert("Bạn đã thay đổi hình đại diện thành công !");
+                              window.location.reload();
                         } else if(response.match('error')){
                               console.log(response);
                               alert("Lỗi ");
@@ -497,4 +498,14 @@ function uploadAvatar() {
                         alert("Lỗi trong quá trình xử lý Ajax.");
                   }
             });
+}
+function changeAvatar() {
+      let form = document.getElementById("profileView-changeAvatar");
+      if(form.getAttribute("value") == 0) {
+            form.innerHTML = "<button type='button' onclick='changeAvatar()' class='changeAvatar'>Hủy đổi ảnh đại diện</button><input type='file' name='inputUploadAvatar' id='inputUploadAvatar' accept='image/*'><button type='button' onclick='uploadAvatar()' id='btnUploadAvatar'>Xác nhận</button>";
+            form.setAttribute("value" , 1)
+      } else {
+            form.innerHTML = "<button type='button' onclick='changeAvatar()' class='changeAvatar'>Đổi ảnh đại diện</button>";
+            form.setAttribute("value" , 0)
+      }
 }

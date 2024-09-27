@@ -61,4 +61,22 @@ class VeModel {
             }
             return false;
       }
+      public function checkTrangThaiVe($OrderId) {
+            //? "Đã Thanh Toán", "Đã Hủy", "Đã Sử Dụng", "Đã Hết Hạn"
+            $checkTrangThaiVeQuery = "SELECT * FROM `ve` where `ve`.orderId = $OrderId";
+            $result = $this->db->select($checkTrangThaiVeQuery);
+            if($result[0]['TrangThai'] == "Đã Thanh Toán"){
+                  return true;
+            }
+            return false;
+      }
+      public function getTrangThaiVe($OrderId) {
+            //? "Đã Thanh Toán", "Đã Hủy", "Đã Sử Dụng", "Đã Hết Hạn"
+            $getTrangThaiVeQuery = "SELECT * FROM `ve` where `ve`.orderId = $OrderId";
+            $result = $this->db->select($getTrangThaiVeQuery);
+            if(count($result) > 0){
+                  return $result[0]['TrangThai'];
+            }
+            return false;
+      }
 }

@@ -1,6 +1,6 @@
 <div id="modal-signin">
       <div id="signin-container">    
-            <img src="../IMG/logo_account.png" alt="">
+            <img src="../IMG/Avatar/logo_account.png" alt="">
             <h3>Đăng Ký</h3>
             <button onclick="window.location.href='../User/index.php'" id="closeSignin-btn">x</button>
             <form>

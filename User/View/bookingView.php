@@ -3,7 +3,7 @@
       </div>
       <div id="booking-movie-trailer">
             <div id="booking-movie-trailer-container">
-                  <img src="../IMG/<?php echo $phongChieu['AnhPhimLon'];?>">
+                  <img src="../IMG/Web/<?php echo $phongChieu['AnhPhimLon'];?>">
             </div>
             <div id="booking-movie-trailer-modal">
                   <i class="fa-solid fa-circle-play" id="booking-movie-trailer-start" onclick="playTrailer('<?php echo $phongChieu['Trailer']?>')"></i>
@@ -12,7 +12,7 @@
       <div id="booking-movie-detail-container">
             <div id="booking-movie-detail">
                   <div id="booking-movie-detail-left">
-                        <img src="../IMG/<?php echo $phongChieu['AnhPhimNho']?>" id="booking-movie-detail-anhphimnho">
+                        <img src="../IMG/Web/<?php echo $phongChieu['AnhPhimNho']?>" id="booking-movie-detail-anhphimnho">
                   </div>
                   <div id="booking-movie-detail-right">
                         <p id="booking-movie-detail-ngaykhoichieu">Ngày Khởi Chiếu : <?php echo $phongChieu['NgayKhoiChieu']?></p>

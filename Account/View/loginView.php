@@ -1,6 +1,6 @@
 <div id="modal-login">
       <div id="login-container">
-            <img src="../IMG/logo_account.png" alt="">
+            <img src="../IMG/Avatar/logo_account.png" alt="">
             <h3>Đăng Nhập</h3>
             <button onclick="window.location.href='../User/index.php'" id="closeLogin-btn">x</button>
             <form>

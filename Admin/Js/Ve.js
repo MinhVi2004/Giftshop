@@ -59,6 +59,7 @@ function detailOrder(listTicket) {
             orderOption.innerHTML = "";
             return;
       }
+      let trangThaiVe = "";
       listTicket.forEach(ticket => {
             stringOrderDetail += "<div class='ticket' id='ticket_"+ticket['MaVe']+"'>"+
                 "<center><h1>Vé Xem Phim</h1></center>"+
@@ -76,9 +77,13 @@ function detailOrder(listTicket) {
             stringOrderDetail +="</div>";
             console.log(ticket['orderId']);
             orderId = ticket['orderId'];
+            trangThaiVe = ticket['TrangThai'];
       });
       orderDetail.innerHTML = stringOrderDetail;
-      orderOption.innerHTML = "<button onclick='printTickets("+orderId+")' id='ve-print-btn'>In vé</button>";
+    if(trangThaiVe != "Đã Thanh Toán")
+        orderOption.innerHTML = "<button onclick='printTickets("+orderId+")' id='ve-print-btn' disable>In vé</button>";
+    else 
+        orderOption.innerHTML = "<button onclick='printTickets("+orderId+")' id='ve-print-btn'>In vé</button>";
 }
 function printTickets(orderId) {
       // Cập nhật trạng thái vé
@@ -92,38 +97,37 @@ function printTickets(orderId) {
           },
           success: function(response) {
               if (response === 'success') {
+                console.log("Đổi trạng thái vé thành công !");
                   // Sau khi cập nhật trạng thái vé thành công, thực hiện chụp ảnh
-                  html2canvas(document.getElementById('order-detail'), {
-                      onrendered: function(canvas) {
-                          // Chuyển đổi canvas thành dữ liệu URL
-                          let dataURL = canvas.toDataURL('image/png');
-                          
-                          // Gửi dữ liệu hình ảnh đến máy chủ
-                          $.ajax({
-                              url: "Controller/VeController.php",
-                              method: "POST",
-                              data: { 
-                                  action: "SaveTicket",
-                                  Image: dataURL
-                              },
-                              success: function(response) {
-                                  if (response === 'success') {
-                                      alert("Lưu Vé thành công");
-                                  } else if (response === 'error') {
-                                      alert("Lưu Vé thất bại");
-                                  } else {
-                                      console.log(response);
-                                  }
-                              },
-                              error: function(xhr, status, error) {
-                                  console.error(xhr.responseText);
-                                  alert("Lỗi trong quá trình xử lý Ajax khi lưu hình ảnh.");
-                              }
-                          });
-                      }
-                  });
+                  html2canvas(document.getElementById('order-detail')).then(function(canvas) {
+                    // Chuyển đổi canvas thành dữ liệu URL
+                    let dataURL = canvas.toDataURL('image/png');
+                    
+                    // Gửi dữ liệu hình ảnh đến máy chủ
+                    $.ajax({
+                        url: "Controller/VeController.php",
+                        type: "POST", // thay vì "method"
+                        data: { 
+                            action: "SaveTicket",
+                            Image: dataURL
+                        },
+                        success: function(response) {
+                            if (response === 'success') {
+                                alert("Lưu Vé thành công");
+                            } else if (response === 'error') {
+                                alert("Lưu Vé thất bại");
+                            } else {
+                                console.log(response);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                            alert("Lỗi trong quá trình xử lý Ajax khi lưu hình ảnh.");
+                        }
+                    });
+                });
               } else if (response === 'error') {
-                  console.log("Không tìm thấy vé nào");
+                console.log("Đổi trạng thái thất bại !");
               } else {
                   console.log(response);
                   alert("Lỗi khác trong quá trình cập nhật trạng thái vé.");

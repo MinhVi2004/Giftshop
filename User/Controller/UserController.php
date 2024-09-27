@@ -280,12 +280,40 @@ class UserController {
             //     header('Location: ' . $jsonResult['payUrl']);
             echo "success".$jsonResult['payUrl'];
       }
+      public function binhLuan() {
+            $MaPhim = $_POST['MaPhim'];
+            $MaTaiKhoan = $_POST['MaTaiKhoan'];
+            $NoiDung = $_POST['NoiDung'];
+             
+            $result = $this->binhLuanModel->insertBinhLuan($MaPhim, $MaTaiKhoan, $NoiDung,"Bình Thường");
+            if($result)
+                  echo "success";
+            else 
+                  echo "error";
+      }
+      public function binhLuanAnDanh() {
+            $MaPhim = $_POST['MaPhim'];
+            $MaTaiKhoan = $_POST['MaTaiKhoan'];
+            $NoiDung = $_POST['NoiDung'];
+             
+            $result = $this->binhLuanModel->insertBinhLuan($MaPhim, $MaTaiKhoan, $NoiDung,"Ẩn Danh");
+            if($result)
+                  echo "success";
+            else 
+                  echo "error";
+      }
 }
 $UserController = new UserController();
 if(isset($_POST['action'])) {
       switch($_POST['action']) {
             case "thanhToan":
                   $UserController->thanhToan();
+                  break;
+            case "binhLuan":
+                  $UserController->binhLuan();
+                  break;
+            case "binhLuanAnDanh":
+                  $UserController->binhLuanAnDanh();
                   break;
       }
       unset($_POST['action']);

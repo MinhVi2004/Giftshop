@@ -7,6 +7,12 @@
       padding: 4px;
       margin-bottom: 10px;
 }
+#order-detail {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 325px;
+}
 .ticket {
       width: 300px;
       margin: 15px;
@@ -16,6 +22,7 @@
       flex-direction: column;
       justify-content: left;
 }
+  
 #ve-print-btn {
       margin-bottom: 20px;
       cursor: pointer;
@@ -24,6 +31,15 @@
       border-radius: 4px;
       transition: 0.3s;
       border: 1px solid #000;
+}
+#ve-print-btn:disabled {
+      background-color: #f0f0f0;
+      color: #b0b0b0;
+      border: 2px solid #d0d0d0;
+      cursor: not-allowed;
+      opacity: 0.5;
+      box-shadow: none; /* Xóa hiệu ứng đổ bóng nếu có */
+      pointer-events: none; /* Ngăn chặn mọi sự tương tác với nút */
 }
 #ve-print-btn:hover {
       border: none;

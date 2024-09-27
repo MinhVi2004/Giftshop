@@ -202,3 +202,39 @@ function thanhToan(MaLichChieu) {
       });
       console.log("Click thanh toán 3");
 }
+function binhLuan(MaPhim, MaTaiKhoan) {
+      let cmt = document.getElementById("movie-binhluan-box").value;
+      let anDanh = document.getElementById("movie-binhluan-andanh")
+      if(cmt == "") {
+            return;
+      }
+      cmt = trim(cmt);
+      let action = (anDanh.checked)?"binhLuan":"binhLuanAnDanh";
+      $.ajax({
+            url: "Controller/UserController.php",
+            method: "POST",
+            data: { 
+                  action : action,
+                  NoiDung : cmt,
+                  MaPhim : MaPhim,
+                  MaTaiKhoan : MaTaiKhoan
+            },
+            success : function(response){
+                  console.log("Gửi bình luận");
+                  if(response.match('success')) {
+                        alert("Bạn bình luận thành công !");
+                        window.location.reload();
+                  } else if(response.match('error')){
+                        alert("Bạn bình luận thất bại !");
+                        console.log(response);
+                  } else {
+                        console.log(response);
+                        alert("Lỗi khác")
+                  }
+            },
+            error: function(xhr, status, error) {
+                  console.error(xhr.responseText);
+                  alert("Lỗi trong quá trình xử lý Ajax.");
+            }
+      });
+}

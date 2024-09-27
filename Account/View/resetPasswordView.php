@@ -1,6 +1,6 @@
 <div id="modal-resetPassword">
       <div id="resetPassword-container">
-                  <img src="../IMG/logo_account.png" alt="">
+                  <img src="../IMG/Avatar/logo_account.png" alt="">
                   <h3>Tạo mật khẩu mới</h3>
                   <button onclick="window.location.href='index.php?ctrl=loginView'" id="closeResetPassword-btn">x</button>
                   <form>

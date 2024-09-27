@@ -14,7 +14,7 @@ class binhLuanModel {
             return null;
       }
       public function getAllByIdPhim($MaPhim) {
-            $getPhimByIdQuery = "SELECT * from `binhluan`, `phim`, `taikhoan` WHERE `binhluan`.MaPhim = `phim`.MaPhim and `binhluan`.MaTaiKhoan = `taikhoan`.MaTaiKhoan and `binhluan`.MaPhim  = " . $MaPhim;
+            $getPhimByIdQuery = "SELECT * from `binhluan`, `phim`, `taikhoan` WHERE `binhluan`.MaPhim = `phim`.MaPhim and `binhluan`.MaTaiKhoan = `taikhoan`.MaTaiKhoan and `binhluan`.MaPhim  = '$MaPhim' ";
             $result = $this->db->select($getPhimByIdQuery);
             if(count($result) > 0){
                   return $result;
@@ -31,5 +31,13 @@ class binhLuanModel {
       }
       public function getLastId() {
             return $this->db->getLastInsertId();
+      }
+      public function insertBinhLuan($MaPhim, $MaTaiKhoan, $NoiDung, $TrangThai) {
+            $insertBinhLuanQuery = "INSERT INTO `binhluan` (`MaBinhLuan`, `MaPhim`, `MaTaiKhoan`, `NoiDung`, `NgayBinhLuan`, `TrangThaiBinhLuan`) VALUES (NULL, '$MaPhim', ' $MaTaiKhoan', '$NoiDung', current_timestamp(), '$TrangThai')";
+            $result = $this->db->execute($insertBinhLuanQuery);
+            if($result){
+                  return true;    
+            }
+            return false;
       }
 }

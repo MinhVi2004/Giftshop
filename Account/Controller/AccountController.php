@@ -227,43 +227,92 @@ class AccountController {
       public function uploadAvatar() {
             session_start();
             if (isset($_FILES['inputUploadAvatar'])) {
-                  $errors = array();
-                  $file_name = $_FILES['inputUploadAvatar']['name'];
-                  $file_size = $_FILES['inputUploadAvatar']['size'];
-                  $file_tmp = $_FILES['inputUploadAvatar']['tmp_name'];
-                  $file_type = $_FILES['inputUploadAvatar']['type'];
-                  $file_parts = explode('.', $_FILES['inputUploadAvatar']['name']);
-                  $file_ext = strtolower(end($file_parts));
-                  $expensions = array("jpeg", "jpg", "png");
-              
-                  if (in_array($file_ext, $expensions) === false) {
-                      $errors[] = "Chỉ hỗ trợ upload file JPEG hoặc PNG.";
-                  }
-                  
-                  if ($file_size > 2097152) {
-                      $errors[] = 'Kích thước file không được lớn hơn 2MB';
-                  }
-              
-                  if (empty($errors)) {
-                        $image = $_FILES['inputUploadAvatar']['name'];
-                        $target = __DIR__ . "/../../IMG/Avatar/" . basename($image);
-                        $result = $this->AccountModel->insertAvatar($image, $_SESSION["UserLogin"]["MaTaiKhoan"]);
-                        if($result && $result != 0) {
-                              if (move_uploaded_file($file_tmp, $target)) {
-                                    echo "success";
-                              } else {
-                                    echo "error_upload";
-                              }
+                $errors = array();
+                $file_name = $_FILES['inputUploadAvatar']['name'];
+                $file_size = $_FILES['inputUploadAvatar']['size'];
+                $file_tmp = $_FILES['inputUploadAvatar']['tmp_name'];
+                $file_type = $_FILES['inputUploadAvatar']['type'];
+                $file_parts = explode('.', $_FILES['inputUploadAvatar']['name']);
+                $file_ext = strtolower(end($file_parts));
+                $expensions = array("jpeg", "jpg", "png");
+        
+                if (in_array($file_ext, $expensions) === false) {
+                    $errors[] = "Chỉ hỗ trợ upload file JPEG hoặc PNG.";
+                }
+        
+            //     if ($file_size > 2097152) {
+            //         $errors[] = 'Kích thước file không được lớn hơn 2MB';
+            //     }
+        
+                if (empty($errors)) {
+                    $image = $_FILES['inputUploadAvatar']['name'];
+                    $target = __DIR__ . "/../../IMG/Avatar/" . "temp_" . $image;
+        
+                    if (move_uploaded_file($file_tmp, $target)) {
+                        // Cắt hình ảnh thành hình tròn
+                        $this->cropToCircle($target, __DIR__ . "/../../IMG/Avatar/" . "AVT" . $_SESSION["UserLogin"]["MaTaiKhoan"] . basename($image));
+        
+                        // Xóa file tạm
+                        unlink($target);
+        
+                        // Cập nhật cơ sở dữ liệu
+                        $result = $this->AccountModel->insertAvatar("AVT" . $_SESSION["UserLogin"]["MaTaiKhoan"] . basename($image), $_SESSION["UserLogin"]["MaTaiKhoan"]);
+                        if ($result && $result != 0) {
+                            $_SESSION['UserLogin']['AnhDaiDien'] = "AVT" . $_SESSION["UserLogin"]["MaTaiKhoan"] . basename($image);
+                            echo "success";
                         } else {
-                              echo "error_SQL";
+                            echo "error_SQL";
                         }
-                  } else {
-                        foreach ($errors as $error) {
-                              echo $error . "<br>";
-                        }
-                  }
-              }
-      }
+                    } else {
+                        echo "error_upload";
+                    }
+                } else {
+                    foreach ($errors as $error) {
+                        echo $error . "<br>";
+                    }
+                }
+            }
+        }
+        
+        private function cropToCircle($sourceFile, $destinationFile) {
+            // Tạo đối tượng hình ảnh từ file nguồn
+            $srcImage = imagecreatefromjpeg($sourceFile);
+            if (!$srcImage) $srcImage = imagecreatefrompng($sourceFile);
+        
+            // Lấy kích thước của hình ảnh
+            $width = imagesx($srcImage);
+            $height = imagesy($srcImage);
+        
+            // Tạo hình ảnh mới với kích thước bằng hình vuông
+            $size = min($width, $height);
+            $circleImage = imagecreatetruecolor($size, $size);
+        
+            // Tạo nền trong suốt cho hình ảnh mới
+            $transparent = imagecolorallocatealpha($circleImage, 0, 0, 0, 127);
+            imagefill($circleImage, 0, 0, $transparent);
+            imagecolortransparent($circleImage, $transparent);
+        
+            // Tạo mặt nạ hình tròn
+            $mask = imagecreatetruecolor($size, $size);
+            imagefill($mask, 0, 0, $transparent);
+            $white = imagecolorallocate($mask, 255, 255, 255);
+            imagefilledrectangle($mask, 0, 0, $size, $size, $white);
+            imagefilledellipse($mask, $size / 2, $size / 2, $size, $size, $transparent);
+            imagecolortransparent($mask, $transparent);
+            imagecopymerge($circleImage, $mask, 0, 0, 0, 0, $size, $size, 100);
+        
+            // Cắt hình ảnh thành hình tròn
+            imagecopyresampled($circleImage, $srcImage, 0, 0, ($width - $size) / 2, ($height - $size) / 2, $size, $size, $size, $size);
+        
+            // Lưu hình ảnh mới
+            imagepng($circleImage, $destinationFile);
+        
+            // Giải phóng bộ nhớ
+            imagedestroy($srcImage);
+            imagedestroy($circleImage);
+            imagedestroy($mask);
+        }
+        
 }
 $accountController = new AccountController();
 

@@ -26,6 +26,12 @@ class VeController {
             }
             echo "error";
       }
+      public function checkTrangThaiVe($orderId) {
+            return $result = $this->VeModel->checkTrangThaiVe($orderId);
+      }
+      public function getTrangThaiVe($orderId) {
+            return $result = $this->VeModel->getTrangThaiVe($orderId);
+      }
       public function updateTrangThaiVe($orderId, $TrangThai) {
             $result = $this->VeModel->setTrangThaiVeByOrderId($orderId, $TrangThai);
             if($result) 

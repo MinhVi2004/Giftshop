@@ -3,15 +3,16 @@
       <div id="profile-container">
                   <h3>Thông tin tài khoản</h3>
                   <?php 
+                        echo "<form id='uploadForm' enctype='multipart/form-data'>";
                         if($_SESSION['UserLogin']['AnhDaiDien']) {
-                              echo "<img src='../IMG/Avatar/".$_SESSION["UserLogin"]["AnhDaiDien"]."'>";
+                              echo "<img src='../IMG/Avatar/".$_SESSION["UserLogin"]["AnhDaiDien"]."' class='avtUser'>";
                         } else {
-                              echo "<form id='uploadForm' enctype='multipart/form-data'>
-                                    <img src='../IMG/Avatar/user-default.png'>
-                                    <input type='file' name='inputUploadAvatar' id='inputUploadAvatar' accept='image/*'>
-                                    <button type='button' onclick='uploadAvatar()'>Xác nhận</button>
-                                    </form>";
+                              echo"<img src='../IMG/Avatar/user-default.png' class='avtUserDefault'>";
                         }
+                        echo"<div class='displayFlexVertical' id='profileView-changeAvatar' value='0'>
+                                    <button type='button' onclick='changeAvatar()' class='changeAvatar'>Đổi ảnh đại diện</button>
+                              </div>";
+                        echo "</form>";
                   ?>
                   <button onclick="window.location.href='../User/index.php'" id="closeProfile-btn">x</button>
                   <form>
