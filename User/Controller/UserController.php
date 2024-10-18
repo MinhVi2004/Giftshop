@@ -1,4 +1,5 @@
 <?php
+// ? Đã khai báo trong index.php
 require (__DIR__ . "/../Model/PhimModel.php");
 require (__DIR__ . "/../Model/BinhLuanModel.php");
 require (__DIR__ . "/../Model/ThanhToanMomoModel.php");
@@ -17,9 +18,13 @@ class UserController {
       private $binhLuanModel;
       private $thanhToanMomoModel;
       public function __construct() {
+            //? Đã khởi tạo trong index.php
             $this->phimModel = new PhimModel();
             $this->binhLuanModel = new BinhLuanModel();
             $this->thanhToanMomoModel = new ThanhToanMomoModel();
+      }
+      public function getAllLoaiPhim() {
+            return $this->phimModel->getAllLoaiPhim();
       }
       public function showHomePage() {
             $phimList = $this->phimModel->getAll();
@@ -74,8 +79,6 @@ class UserController {
             }
             require(__DIR__ . "/../View/bookedTicketView.php");
       }
-
-
       public function muaVe($LoaiVe, $DSGhe, $MaLichChieu, $orderId) {
             // $LoaiVe = $_POST['LoaiVe'];
             // $DSGhe = $_POST['Ghe'];
@@ -327,9 +330,6 @@ if(isset($_POST['action'])) {
                   break;
             case "bookedTicket":
                   $UserController->showBookedTicket();
-                  break;
-            case "":
-                  $UserController->showHomePage();
                   break;
       }
 } else {

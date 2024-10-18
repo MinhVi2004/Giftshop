@@ -208,8 +208,9 @@ function binhLuan(MaPhim, MaTaiKhoan) {
       if(cmt == "") {
             return;
       }
-      cmt = trim(cmt);
-      let action = (anDanh.checked)?"binhLuan":"binhLuanAnDanh";
+      console.log(cmt);
+      cmt = cmt.trim();
+      let action = (anDanh.checked)?"binhLuanAnDanh":"binhLuan";
       $.ajax({
             url: "Controller/UserController.php",
             method: "POST",
@@ -237,4 +238,8 @@ function binhLuan(MaPhim, MaTaiKhoan) {
                   alert("Lỗi trong quá trình xử lý Ajax.");
             }
       });
+}
+function loginBeforeComment() {
+      if(confirm("Vui lòng đăng nhập để bình luận !")) 
+            window.location.href="../Account/index.php?ctrl=loginView";
 }

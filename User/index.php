@@ -1,4 +1,5 @@
 <?php
+      require (__DIR__ . "/Model/HeaderModel.php");
       session_start();
 ?>
 <!DOCTYPE html>
@@ -23,9 +24,25 @@
                   <a href="index.php"><img src="../IMG/Avatar/galaxy-logo.png" alt="logo" class="img-logo"></a>
             </div>
             <div id="header-middle">
-                  <ul>
+                  <ul id="header-middle-container">
                         <li>Phim</li>
-                        <li>Thể loại</li>
+                        <li>
+                              <?php
+                                    $headerModel = new HeaderModel();
+                                    $listTypePhim = $headerModel->getAllLoaiPhim();
+                              ?>
+                              <div class="hover-area">
+                                    Thể loại
+                                    <ul class="dropdown">
+                                          <?php
+                                                foreach($listTypePhim as $typePhim) {
+                                                      echo "<li>$typePhim[TenLoaiPhim]</li>";
+                                                }
+                                          ?>
+                                    </ul>
+                              </div>
+                        </li>
+                        
                         <li>Rạp phim</li>
                   </ul>
             </div>
@@ -48,7 +65,7 @@
                         }
 
                         //? api Key WeatherAPI
-                        $apiKey = "feb1567d8fee4d89baa83443241609";
+                        $apiKey = "f644244f64734bf4a3470104241810";
                         //? Lấy địa chỉ IP của người dùng
                         $ip = file_get_contents('https://api.ipify.org');
 

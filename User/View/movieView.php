@@ -59,7 +59,7 @@
             <div id="movie-binhluan">
                   <h2>Bình Luận</h2>
                   <?php
-                        if(isset($_SESSION['UserLogin']))
+                        // if(isset($_SESSION['UserLogin']))
                         // Nhóm các phần tử theo BinhLuan
                         if ($binhLuan) {
                               foreach($binhLuan as $bl) {
@@ -74,10 +74,13 @@
                                                             else 
                                                             echo "<img src='../IMG/Avatar/user-default.png' class='binhluan-avatar'>";
                                                             echo "<div class='binhluan-card-infomation'>";
-                                                                  if($bl['MaTaiKhoan'] !== $_SESSION['UserLogin']['MaTaiKhoan'])
-                                                                  echo "<h4>$bl[HoTen]</h4>";
-                                                                  else 
-                                                                  echo "<h4>Bạn</h4>";
+                                                                  if(isset($_SESSION['UserLogin'])) //? Nếu đã đăng nhập, mà là bản thân bình luận thì hiện "Bạn"
+                                                                        if($bl['MaTaiKhoan'] !== $_SESSION['UserLogin']['MaTaiKhoan'])
+                                                                              echo "<h4>$bl[HoTen]</h4>";
+                                                                        else 
+                                                                              echo "<h4>Bạn</h4>";
+                                                                  else //?Nếu chưa đăng nhập, Chỉ hiện tên người bình luận
+                                                                              echo "<h4>$bl[HoTen]</h4>";
                                                                   echo "
                                                                   <p class='binhluan-card-infomation-date'>$formatted_date</p>
                                                                   <p>$bl[NoiDung]</p>
@@ -103,11 +106,21 @@
             </div>
             <div id="movie-binhluan-add">
                   <?php
-                        echo "<div id='movie-binhluan-add-info'><img src='../IMG/Avatar/".$_SESSION['UserLogin']['AnhDaiDien']."' class='binhluan-avatar'><span>Bạn</span></div>";
+                        if(isset($_SESSION['UserLogin']))
+                              echo "<div id='movie-binhluan-add-info'><img src='../IMG/Avatar/".$_SESSION['UserLogin']['AnhDaiDien']."' class='binhluan-avatar'><span>Bạn</span></div>";
+                        else 
+                              echo "<div id='movie-binhluan-add-info'><img src='../IMG/Avatar/user-default.png' class='binhluan-avatar'><span>Bạn</span></div>";
                   ?>
                   <textarea id="movie-binhluan-box" rows="4" cols="70" placeholder="Nhập bình luận của bạn..."></textarea>
                   <center>Bình luận ẩn danh <input type='checkbox' id="movie-binhluan-andanh" ></center>
-                  <center><button id="movie-binhluan-submit" onclick="binhLuan(<?php echo $_GET['id'] . ',' . $_SESSION['UserLogin']['MaTaiKhoan'] ?>)">Gửi bình luận</button></center>
+                  <?php
+                        if(isset($_SESSION['UserLogin'])) {
+                              echo "<center><button id='movie-binhluan-submit' onclick='binhLuan(".$_GET['id'].",  ".$_SESSION['UserLogin']['MaTaiKhoan'].")'>Gửi bình luận</button></center>";
+                        } else {
+                              echo "<center><button id='movie-binhluan-submit' onclick='loginBeforeComment()'>Gửi bình luận</button></center>";
+                        }
+                  ?>
+                  
             </div>
       </div>
 </div>

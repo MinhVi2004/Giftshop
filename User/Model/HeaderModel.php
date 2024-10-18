@@ -1,6 +1,6 @@
 <?php
 require_once (__DIR__ . "/../../Lib/Database.php");
-class PhimModel {
+class HeaderModel {
       private $db;
       public function __construct() {
             $this->db = new Database();
