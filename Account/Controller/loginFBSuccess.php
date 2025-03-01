@@ -4,8 +4,8 @@ require(__DIR__ . "/../Model/AccountModel.php");
 require_once( '../../vendor/autoload.php');
 
 $fb = new Facebook\Facebook([
-      'app_id' => '1119024856177338',
-      'app_secret' => '154734aff5ae5414fe348204250d05b6',
+      'app_id' => '',
+      'app_secret' => '',
       'default_graph_version' => 'v2.9',
   ]);
 $helper = $fb->getRedirectLoginHelper();
