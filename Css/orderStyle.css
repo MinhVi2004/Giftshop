@@ -1,0 +1,395 @@
+#order-container {
+      width: 75%;
+}
+.order-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 15px;
+    border-bottom: 1px solid #5b5b5b;
+    background: #fff;
+      
+}
+.order-item-sanpham {
+      width: 100%;
+      margin: 20px;
+      display: flex;
+      justify-content: left;
+}
+/*?  */
+.order-header-item {
+      display: flex;
+      justify-content: space-around;
+      padding: 15px;
+      background: #fff;
+}
+.order-header-item-img {
+      text-align: center;
+      padding-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      width: 10%;
+}
+
+.order-header-item-name {
+    padding-top: 10px;
+    width: 30%;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.order-header-item-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;   
+    font-size: 17px;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.order-header-item-quantity-change {
+      text-align: center;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-right: 15px;
+}
+.order-header-item-total-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;   
+    font-size: 17px;
+    color: #e74c3c;
+    font-weight: bold;
+}
+/*?  */
+.order-item-img {
+      text-align: center;
+      padding-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      width: 10%;
+}
+.order-item img {
+    width: 10%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+
+.order-item-name {
+    padding-top: 10px;
+    width: 30%;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.order-item-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;   
+    font-size: 17px;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.order-item-quantity-change {
+      text-align: center;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-right: 15px;
+}
+
+.order-item-quantity-change input {
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.order-item-total-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;   
+    font-size: 17px;
+    color: #e74c3c;
+    font-weight: bold;
+}
+.order-item-remove {
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+}
+.order-item-remove button{
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100px;
+    height: 35px;
+}
+
+.order-item-remove button:hover {
+    background: #c0392b;
+}
+.order-item-quantity-change {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.order-item-quantity-change button {
+    width: 30px;
+    height: 30px;
+    background: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.order-item-quantity-change button:hover {
+    background: #ddd;
+}
+#order-thaotac {
+    width: 100%;
+    padding: 20px 0px 20px 20px;
+    display: flex;
+    align-items:end;
+    justify-content: right;
+}
+#order-thaotac span{
+    width: 100%;
+    font-size: 19px;
+    color: #e74c3c;
+    font-weight: bold;
+}
+#order-thaotac .money-amount{
+      margin-left: 15px;
+      white-space: nowrap;
+        text-align: right;
+}
+
+#order-thaotac #order-orderDetail {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      width: 120px;
+      height: 40px;
+      transition: 0.3s;
+      border-radius: 4px;
+      margin-left: 20px;
+}
+#order-thaotac #order-orderDetail:hover {
+      transform: scale(1.1);
+    background: #e77265;
+}
+#order-diachi {
+      padding: 15px;
+}
+#order-diachi-title {
+      padding-top: 10px;
+      width: 25%;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 5px;
+}
+.order-diachi-item {
+      width: 100%;
+      display: flex;
+      justify-content: left;
+      margin-bottom: 10px;
+}
+.order-diachi-item-info {
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      padding: 0px 20px 0px 40px;
+      border-right: 1px solid #c1c1c1;
+}
+.order-diachi-item-name {
+      font-size: 22px;
+      font-weight: bold;
+}
+.order-diachi-item-sodienthoai {
+      font-size: 22px;
+      font-weight: bold;
+}
+.order-diachi-item-chitietdiachi {
+      padding: 10px;
+      width: 65%;
+      font-size: 19px;
+}
+.order-diachi-item-thaydoi {
+      margin-top: 15px;
+      width: 10%;
+      background: #0055ff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 100px;
+      height: 35px;
+      transition: 0.3s;
+}
+.order-diachi-item-thaydoi:hover {
+      transform: scale(1.1);
+      background: #427df3;
+}
+
+#order-khuyenmai {
+      padding: 15px;
+}
+#order-khuyenmai-title {
+      padding-top: 10px;
+      width: 25%;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 5px;
+}
+.order-trangthai {
+    min-width: 180px;
+    text-align: right;
+}
+@media screen and (max-width: 768px) {
+    #order-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .order-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .order-item-sanpham {
+        flex-direction: row;
+        align-items: center;
+        text-align: center;
+        margin: 10px;
+    }
+
+    .order-item img {
+        width: 50px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .order-item-name {
+        width: 100%;
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+
+    .order-item-price,
+    .order-item-total-price {
+        width: 100%;
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .order-item-quantity-change {
+        width: 100%;
+        justify-content: center;
+        margin-top: 8px;
+    }
+
+    .order-item-remove {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .order-item-remove button {
+        width: 80%;
+    }
+
+    #order-thaotac {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #order-thaotac span,
+    #order-thaotac .money-amount {
+        font-size: 15px;
+        text-align: center;
+    }
+
+    #order-thaotac #order-orderDetail {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    #order-diachi {
+        padding: 10px;
+    }
+
+    .order-diachi-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .order-diachi-item-info {
+        width: 100%;
+        border-right: none;
+        padding: 10px;
+    }
+
+    .order-diachi-item-name,
+    .order-diachi-item-sodienthoai {
+        font-size: 18px;
+    }
+
+    .order-diachi-item-chitietdiachi {
+        width: 100%;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .order-diachi-item-thaydoi {
+        width: 80%;
+    }
+
+    #order-khuyenmai {
+        padding: 10px;
+    }
+
+    #order-khuyenmai-title {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .order-trangthai {
+        text-align: center;
+        min-width: auto;
+        font-size: 16px;
+    }
+}
+

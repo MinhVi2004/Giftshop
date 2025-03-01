@@ -1,0 +1,204 @@
+#ThongBao-wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+}
+#danhSachThongBao-container {
+      width: 70%;
+}
+#thongTinThongBao-container {
+      margin-top: 30px;
+      width: 22%;
+      padding: 20px;
+      border: 1px solid #000;
+      border-radius: 5px;
+      height: 320px;
+}
+#ThongBao-table {
+      width: 100%;
+}
+
+#ThongBao-table thead tr{
+      background-color: #183f5c;
+      color: rgb(255, 255, 255);
+}
+#ThongBao-table thead th {
+      outline: 1px solid #183f5c ;
+      margin: 0;
+      justify-content: center;
+      padding: 10px 5px 10px 5px;
+}
+#ThongBao-table tbody td{
+      padding: 10px 5px 10px 5px;
+}
+#ThongBao-table .ThongBao-ten{
+      text-align: left;
+}
+#ThongBao-table .ThongBao-mota{
+      max-width: 300px;
+      text-align: left;
+}
+#ThongBao-table .ThongBao-thaotac{
+      display: flex;
+      justify-content: space-evenly;
+}
+#ThongBao-table .ThongBao-thaotac button{
+      cursor: pointer;
+      border-radius: 2px;
+      padding: 5px;
+      border: 1px solid #000;
+      animation: 0.3s;
+}
+#ThongBao-table .ThongBao-chitiet {
+      background-color: aquamarine;
+      color: #000;
+}
+#ThongBao-table .ThongBao-chitiet:hover {
+      background-color: rgb(181, 241, 221);
+      color: #000;
+}
+#ThongBao-table .ThongBao-sua {
+      background-color: rgb(0, 255, 89);
+      color: #000;
+}
+#ThongBao-table .ThongBao-sua:hover {
+      background-color: rgb(128, 243, 168);
+      color: #000;
+}
+#ThongBao-table .ThongBao-xoa {
+      background-color: rgb(255, 72, 72);
+      color: #000;
+}
+#ThongBao-table .ThongBao-xoa:hover {
+      background-color: rgb(240, 135, 135);
+      color: #000;
+}
+
+  #ThongBao-table tr:nth-child(even) td {
+      outline: 1px solid #F8F8F8;
+      background: #F8F8F8;
+  }
+  
+  /* Responsive */
+  
+  @media (max-width: 767px) {
+      #ThongBao-table {
+          display: block;
+          width: 100%;
+      }
+      .table-wrapper:before{
+          content: "Scroll horizontally >";
+          display: block;
+          text-align: right;
+          font-size: 11px;
+          color: white;
+          padding: 0 0 10px;
+      }
+      #ThongBao-table thead, #ThongBao-table tbody, #ThongBao-table thead th {
+          display: block;
+      }
+      #ThongBao-table thead th:last-child{
+          border-bottom: none;
+      }
+      #ThongBao-table thead {
+          float: left;
+      }
+      #ThongBao-table tbody {
+          width: auto;
+          position: relative;
+          overflow-x: auto;
+      }
+      #ThongBao-table td, #ThongBao-table th {
+          padding: 20px .625em .625em .625em;
+          height: 60px;
+          vertical-align: middle;
+          box-sizing: border-box;
+          overflow-x: hidden;
+          overflow-y: auto;
+          width: 120px;
+          font-size: 13px;
+          text-overflow: ellipsis;
+      }
+      #ThongBao-table thead th {
+          text-align: left;
+          border-bottom: 1px solid #f7f7f9;
+      }
+      #ThongBao-table tbody tr {
+          display: table-cell;
+      }
+      #ThongBao-table tbody tr:nth-child(odd) {
+          background: none;
+      }
+      #ThongBao-table tr:nth-child(even) {
+          background: transparent;
+      }
+      #ThongBao-table tr td:nth-child(odd) {
+          background: #F8F8F8;
+          border-right: 1px solid #E6E4E4;
+      }
+      #ThongBao-table tr td:nth-child(even) {
+          border-right: 1px solid #E6E4E4;
+      }
+      #ThongBao-table tbody td {
+          display: block;
+          text-align: center;
+      }
+  }
+
+#thongTinThongBao-container .addTB-input {
+      padding: 5px;
+      width: 98%;
+      border: none;
+      border-bottom: 1px solid #000;
+}
+#addTB-mota {
+      height: 50px;
+}
+#addTB-thaotac {
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-around;
+}
+#addTB-thaotac button {
+      cursor: pointer;
+      border-radius: 2px;
+      padding: 5px;
+      border: 1px solid #000;
+      animation: 0.3s;
+      width: 70px;
+      height: 33px;
+}
+.addTB-them {
+      background-color: rgb(0, 255, 38);
+      color: black;
+}
+.addTB-them:hover {
+      background-color: rgb(143, 255, 160);
+      color: black;
+}
+.addTB-sua {
+      background-color: rgb(254, 136, 0);
+      color: black;
+}
+.addTB-sua:hover {
+      background-color: rgb(250, 196, 135);
+      color: black;
+}
+.addTB-xoa {
+      background-color: rgb(255, 0, 0);
+      color: black;
+}
+.addTB-xoa:hover {
+      background-color: rgb(252, 129, 129);
+      color: black;
+}
+.addTB-refesh {
+      background-color: rgb(94, 124, 255);
+      color: black;
+}
+.addTB-refesh:hover {
+      background-color: rgb(165, 180, 248);
+      color: black;
+}

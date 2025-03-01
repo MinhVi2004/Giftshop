@@ -3,7 +3,7 @@ class Database {
       private $localhost = "localhost";
       private $username = "root";
       private $password = "";
-      private $database = "web_galaxycinema";
+      private $database = "giftshop";
       private $conn;
       // Hàm khởi tạo, tự động kết nối cơ sở dữ liệu khi tạo đối tượng Database
       public function __construct()

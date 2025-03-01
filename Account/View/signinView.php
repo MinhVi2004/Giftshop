@@ -1,8 +1,8 @@
 <div id="modal-signin">
       <div id="signin-container">    
-            <img src="../IMG/Avatar/logo_account.png" alt="">
+            <!-- <img src="../IMG/Avatar/logo_account.png" alt=""> -->
             <h3>Đăng Ký</h3>
-            <button onclick="window.location.href='../User/index.php'" id="closeSignin-btn">x</button>
+            <button onclick="window.location.href='../index.php'" id="closeSignin-btn">x</button>
             <form>
             <div>
             <label for="signin-username">Tên Đăng Nhập</label><br>
@@ -23,11 +23,6 @@
                   <label for="signin-fullname">Họ và tên</label><br>
                   <input type="text" name="signin-fullname" id="signin-fullname">
                   <p class="error" id="signin-fullname-error">Họ và tên không hợp lệ</p>
-            </div>
-            <div>
-                  <label for="signin-birthday">Ngày Sinh</label><br>
-                  <input type="date" name="signin-birthday" id="signin-birthday">
-                  <p class="error" id="signin-birthday-error">Ngày sinh không hợp lệ</p>
             </div>
             <div>
                   <label for="signin-phone">Số Điện Thoại</label><br>

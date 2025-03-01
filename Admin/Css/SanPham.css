@@ -1,0 +1,151 @@
+#SanPham-wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+}
+#danhSachSanPham-container {
+      width: 70%;
+}
+#thongTinSanPham-container {
+      margin-top: 30px;
+      width: 22%;
+      padding: 20px;
+      border: 1px solid #000;
+      border-radius: 5px;
+}
+#SanPham-table {
+      width: 100%;
+}
+#SanPham-table thead tr{
+      background-color: #183f5c;
+      color: rgb(255, 255, 255);
+}
+#SanPham-table thead th {
+      outline: 1px solid #183f5c ;
+      margin: 0;
+      justify-content: center;
+      padding: 10px 5px 10px 5px;
+}
+#SanPham-table tbody td{
+      padding: 10px 5px 10px 5px;
+
+}
+
+#SanPham-table tr:nth-child(even) td{
+      outline: 1px solid #f8f8f8 ;
+      background: #f8f8f8;
+      margin: 0;
+}
+#SanPham-table .SanPham-ten {
+      width: 200px;
+}
+#SanPham-table .SanPham-anh {
+      padding: 0;
+}
+#SanPham-table .SanPham-anh img {
+      height: 80px;
+}
+#SanPham-table .SanPham-gia {
+      width: 150px;
+}
+#SanPham-table .SanPham-mota {
+      width: 250px;
+      text-align: left;
+}
+#SanPham-table .SanPham-thaotac {
+      width: 150px;
+}
+#SanPham-table .SanPham-thaotac button{
+      cursor: pointer;
+      border-radius: 2px;
+      padding: 5px;
+      border: 1px solid #000;
+      animation: 0.3s;
+      margin-top: auto;
+}
+#SanPham-table .SanPham-chitiet {
+      background-color: aquamarine;
+      color: #000;
+}
+#SanPham-table .SanPham-chitiet:hover {
+      background-color: rgb(181, 241, 221);
+      color: #000;
+}
+#SanPham-table .SanPham-sua {
+      background-color: rgb(0, 255, 89);
+      color: #000;
+}
+#SanPham-table .SanPham-sua:hover {
+      background-color: rgb(128, 243, 168);
+      color: #000;
+}
+#SanPham-table .SanPham-xoa {
+      background-color: rgb(255, 72, 72);
+      color: #000;
+}
+#SanPham-table .SanPham-xoa:hover {
+      background-color: rgb(240, 135, 135);
+      color: #000;
+}
+  
+  
+
+#thongTinSanPham-container .addSP-input {
+      padding: 5px;
+      width: 98%;
+      border: none;
+      border-bottom: 1px solid #000;
+}
+#thongTinSanPham-container #addSP-showAnh {
+      width: 60%;
+}
+#addSP-mota {
+      height: 50px;
+}
+#addSP-thaotac {
+      display: flex;
+      justify-content: space-around;
+}
+#addSP-thaotac button {
+      cursor: pointer;
+      border-radius: 2px;
+      padding: 5px;
+      border: 1px solid #000;
+      animation: 0.3s;
+      width: 70px;
+      height: 33px;
+}
+.addSP-them {
+      background-color: rgb(0, 255, 38);
+      color: black;
+}
+.addSP-them:hover {
+      background-color: rgb(143, 255, 160);
+      color: black;
+}
+.addSP-sua {
+      background-color: rgb(254, 136, 0);
+      color: black;
+}
+.addSP-sua:hover {
+      background-color: rgb(250, 196, 135);
+      color: black;
+}
+.addSP-xoa {
+      background-color: rgb(255, 0, 0);
+      color: black;
+}
+.addSP-xoa:hover {
+      background-color: rgb(252, 129, 129);
+      color: black;
+}
+.addSP-refesh {
+      background-color: rgb(94, 124, 255);
+      color: black;
+}
+.addSP-refesh:hover {
+      background-color: rgb(165, 180, 248);
+      color: black;
+}

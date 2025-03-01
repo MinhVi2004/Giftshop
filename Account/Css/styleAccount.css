@@ -1,0 +1,1651 @@
+*{
+      margin: 0;
+      padding: 0;
+}
+a {
+      text-decoration: none;
+      color: #333;
+}
+ul {
+      list-style-type: none;
+}
+body {
+      width: 100%;
+      color: #333;
+      font-family: Helvetica,'Courier New', Courier, monospace;
+      font-size: 15px;
+      line-height: 1.6;
+}
+/* Kiểu dáng hộp confirm */
+.confirm-box {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Làm mờ nền */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+  }
+  
+  .confirm-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 90%;
+  }
+  
+  .confirm-content p {
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: #333;
+  }
+  
+  .confirm-content button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  
+  #confirmYes {
+      background-color: #4CAF50;
+      color: white;
+  }
+  
+  #confirmNo {
+      background-color: #f44336;
+      color: white;
+  }
+#closeLogin-btn,#closeSignin-btn,#closeFillSoDienThoai-btn,#closeFillEmail-btn, #closeResetPassword-btn, #closeProfile-btn,#closeupdateProfile-btn, #closeupdateAddress-btn,#closeaddressDetail-btn, #closeChangePassword-btn, #closeVerifyEmail-btn {
+      position:absolute;
+      left:410px;
+      top: 10px;
+      border: none;
+      background-color: white;
+      font-size: 33px;
+      cursor: pointer;
+      transition: 0.2s;
+}
+#closeLogin-btn:hover,#closeSignin-btn:hover,#closeFillSoDienThoai-btn:hover,#closeFillEmail-btn:hover, #closeResetPassword-btn:hover, #closeupdateAddress-btn:hover, #closeupdateProfile-btn:hover,#closeProfile-btn:hover, #closeChangePassword-btn:hover, #closeVerifyEmail-btn:hover,#closeaddressDetail-btn:hover  {
+      color: #f03434;
+}
+/*! Sign in -------------------------------------------------------------------------------------------------*/
+#modal-signin {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top:0;
+      left: 0;
+      z-index: 5;
+      animation: rightoutLogin 0.4s;
+}
+#signin-container {
+      position: relative;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      width: 400px;
+}
+#signin-container {
+      background-color: #fff;
+      padding: 16px 24px;
+      border-radius: 10px;
+      box-shadow:0px 0px 2px 2px #e6e6e6;
+}
+#signin-container img {
+      width: 130px;
+}
+#signin-container h3 {
+      text-align: center;
+      color: #565555;
+}
+#signin-container {
+      position: relative;
+}
+#signin-container label {
+      font-size: 13px;
+}
+#signin-container input{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#signin-container select{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 70px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#signin-container select:focus{
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#signin-container input:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#signin-container .error {
+      font-size: 13px;
+      color: #ef4444;
+      display: none;
+}
+#signin-container #signin-options {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 80px;
+}
+#signin-container a{
+      cursor: pointer;
+      color: #6f6f6f;
+      text-decoration: underline;
+      transition: 0.3s;
+}
+#signin-container a:hover {
+      text-decoration: none;
+}
+#signin-container #signin-submit {    
+      width: 250px;
+      height: 50px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #002eac;
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+}
+#signin-container #signin-submit:hover {
+      background-color:#003ce0;
+      cursor: pointer;
+}
+#signin-container #login-btn {
+      width: 260px;
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+      color: rgb(41, 41, 41);
+      cursor: pointer;
+      margin-top: 10px;
+      transition: 0.3s;
+      font-size: 15px;
+      padding: 5px;
+}
+#signin-container #login-btn:hover {
+      background-color: #00bfff;
+      color: white
+}
+
+/*! Login --------------------------------------------------------------------------------------------*/
+#modal-login {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top:0;
+      left: 0;
+      z-index: 5;
+      animation: rightoutLogin 0.4s;
+}
+#login-container {
+      position: relative;
+      position: fixed;
+      left: 50%;
+      top: 40%;
+      transform: translate(-50%, -50%);
+      margin-top: 30px;
+      display: flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      width: 400px;
+}
+#login-container {
+      background-color: #fff;
+      padding: 16px 24px;
+      border-radius: 10px;
+      box-shadow:0px 0px 2px 2px #e6e6e6;
+}
+#login-container img {
+      width: 150px;
+}
+#login-container h3 {
+      text-align: center;
+      color: #565555;
+}
+#login-container {
+      position: relative;
+}
+#login-container label {
+      font-size: 15px;
+}
+#login-container input{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      height: 30px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#login-container input:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#login-container .error {
+      color: #ef4444;
+      display: none;
+}
+#login-container [type="checkbox"] {
+      margin-right: 5px;
+      color: #838282;
+}
+#login-container #login-options {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+}
+#login-container a{
+      cursor: pointer;
+      color: #6f6f6f;
+      text-decoration: underline;
+      transition: 0.3s;
+}
+#login-container a:hover {
+      text-decoration: none;
+}
+#login-container #login-submit {    
+      width: 260px;
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #002eac;
+      color: white;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s;
+      font-size: 15px;
+      padding: 5px;
+}
+#login-container #login-submit:hover {
+      background-color:#003ce0;
+      cursor: pointer;
+}
+#login-container #login-gmail {    
+      width: 260px;
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #e32222;
+      color: white;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s;
+      font-size: 15px;
+      padding: 5px;
+}
+#login-container #login-gmail:hover {
+      background-color:rgb(221, 64, 64);
+      cursor: pointer;
+}
+#login-container #login-fb {    
+      width: 260px;
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #0b00d3;
+      color: white;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s;
+      font-size: 15px;
+      padding: 5px;
+}
+#login-container #login-fb:hover {
+      background-color:#4038d5;
+      cursor: pointer;
+}
+#login-container #signin-btn {
+      width: 260px;
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+      color: rgb(41, 41, 41);
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s;
+      font-size: 15px;
+      padding: 5px;
+}
+#login-container #signin-btn:hover {
+      background-color: #00bfff;
+      color: white;
+}
+/*! fillEmail --------------------------------------------------------------------------------------------*/
+#modal-fillEmail {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top:0;
+      left: 0;
+      z-index: 5;
+      animation: rightoutfillEmail 0.4s;
+}
+#fillEmail-container {
+      position: relative;
+      position: fixed;
+      left: 50%;
+      top: 40%;
+      transform: translate(-50%, -50%);
+      margin-top: 30px;
+      display: flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      width: 400px;
+}
+#fillEmail-container {
+      background-color: #fff;
+      padding: 16px 24px;
+      border-radius: 10px;
+      box-shadow:0px 0px 2px 2px #e6e6e6;
+}
+#fillEmail-container img {
+      width: 150px;
+}
+#fillEmail-container h3 {
+      text-align: center;
+      color: #565555;
+}
+#fillEmail-container {
+      position: relative;
+}
+#fillEmail-container label {
+      font-size: 15px;
+}
+#fillEmail-container input{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      height: 30px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#fillEmail-container input:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#fillEmail-container .error {
+      color: #ef4444;
+      display: none;
+}
+#fillEmail-container [type="checkbox"] {
+      margin-right: 5px;
+      color: #838282;
+}
+#fillEmail-container #fillEmail-options {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 100px;
+}
+#fillEmail-container a{
+      cursor: pointer;
+      color: #6f6f6f;
+      text-decoration: underline;
+      transition: 0.3s;
+}
+#fillEmail-container a:hover {
+      text-decoration: none;
+}
+#fillEmail-container #fillEmail-submit {    
+      width: 400px;
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #002eac;
+      color: white;
+      cursor: pointer;
+}
+#fillEmail-container #fillEmail-submit:hover {
+      background-color:#003ce0;
+      cursor: pointer;
+}
+#fillEmail-container #fillEmail-login-btn {
+      border: none;
+      width: 400px;
+      height: 35px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+}
+#fillEmail-container #fillEmail-login-btn:hover {
+      background-color: #ff5050;
+      color: white;
+}
+/*! fillSoDienThoai --------------------------------------------------------------------------------------------*/
+#modal-fillSoDienThoai {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top:0;
+      left: 0;
+      z-index: 5;
+      animation: rightoutfillSoDienThoai 0.4s;
+}
+#fillSoDienThoai-container {
+      position: relative;
+      position: fixed;
+      left: 50%;
+      top: 40%;
+      transform: translate(-50%, -50%);
+      margin-top: 30px;
+      display: flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      width: 400px;
+}
+#fillSoDienThoai-container {
+      background-color: #fff;
+      padding: 16px 24px;
+      border-radius: 10px;
+      box-shadow:0px 0px 2px 2px #e6e6e6;
+}
+#fillSoDienThoai-container img {
+      width: 150px;
+}
+#fillSoDienThoai-container h3 {
+      text-align: center;
+      color: #565555;
+}
+#fillSoDienThoai-container {
+      position: relative;
+}
+#fillSoDienThoai-container label {
+      font-size: 15px;
+}
+#fillSoDienThoai-container input{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      height: 30px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#fillSoDienThoai-container input:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#fillSoDienThoai-container .error {
+      color: #ef4444;
+      display: none;
+}
+#fillSoDienThoai-container [type="checkbox"] {
+      margin-right: 5px;
+      color: #838282;
+}
+#fillSoDienThoai-container #fillSoDienThoai-options {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 100px;
+}
+#fillSoDienThoai-container a{
+      cursor: pointer;
+      color: #6f6f6f;
+      text-decoration: underline;
+      transition: 0.3s;
+}
+#fillSoDienThoai-container a:hover {
+      text-decoration: none;
+}
+#fillSoDienThoai-container #fillSoDienThoai-submit {    
+      width: 400px;
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #002eac;
+      color: white;
+      cursor: pointer;
+}
+#fillSoDienThoai-container #fillSoDienThoai-submit:hover {
+      background-color:#003ce0;
+      cursor: pointer;
+}
+#fillSoDienThoai-container #fillSoDienThoai-login-btn {
+      border: none;
+      width: 400px;
+      height: 35px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+}
+#fillSoDienThoai-container #fillSoDienThoai-login-btn:hover {
+      background-color: #ff5050;
+      color: white;
+}
+/*! resetPassword --------------------------------------------------------------------------------------------*/
+#modal-resetPassword {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top:0;
+      left: 0;
+      z-index: 5;
+      animation: rightoutresetPassword 0.4s;
+}
+#resetPassword-container {
+      position: relative;
+      position: fixed;
+      left: 50%;
+      top: 40%;
+      transform: translate(-50%, -50%);
+      margin-top: 30px;
+      display: flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      width: 400px;
+}
+#resetPassword-container {
+      background-color: #fff;
+      padding: 16px 24px;
+      border-radius: 10px;
+      box-shadow:0px 0px 2px 2px #e6e6e6;
+}
+#resetPassword-container img {
+      width: 150px;
+}
+#resetPassword-container h3 {
+      text-align: center;
+      color: #565555;
+}
+#resetPassword-container {
+      position: relative;
+}
+#resetPassword-container label {
+      font-size: 15px;
+}
+#resetPassword-container input{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      height: 30px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#resetPassword-container input:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#resetPassword-container .error {
+      color: #ef4444;
+      display: none;
+}
+#resetPassword-container [type="checkbox"] {
+      margin-right: 5px;
+      color: #838282;
+}
+#resetPassword-container #resetPassword-options {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 40px;
+}
+#resetPassword-container a{
+      cursor: pointer;
+      color: #6f6f6f;
+      text-decoration: underline;
+      transition: 0.3s;
+}
+#resetPassword-container a:hover {
+      text-decoration: none;
+}
+#resetPassword-container #resetPassword-submit {    
+      width: 400px;
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #002eac;
+      color: white;
+      cursor: pointer;
+}
+#resetPassword-container #resetPassword-submit:hover {
+      background-color:#003ce0;
+      cursor: pointer;
+}
+#resetPassword-container #resetPassword-login-btn {
+      border: none;
+      width: 400px;
+      height: 35px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+}
+#resetPassword-container #resetPassword-login-btn:hover {
+      background-color: #ff5050;
+      color: white;
+}
+/*! verifyEmail --------------------------------------------------------------------------------------------*/
+#modal-verifyEmail {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top:0;
+      left: 0;
+      z-index: 5;
+      animation: rightoutresetPassword 0.4s;
+}
+#verifyEmail-container {
+      position: relative;
+      position: fixed;
+      left: 50%;
+      top: 40%;
+      transform: translate(-50%, -50%);
+      margin-top: 30px;
+      display: flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      width: 400px;
+}
+#verifyEmail-container {
+      background-color: #fff;
+      padding: 16px 24px;
+      border-radius: 10px;
+      box-shadow:0px 0px 2px 2px #e6e6e6;
+}
+#verifyEmail-container img {
+      width: 150px;
+}
+#verifyEmail-container h3 {
+      text-align: center;
+      color: #565555;
+}
+#verifyEmail-container {
+      position: relative;
+}
+#verifyEmail-container label {
+      font-size: 15px;
+}
+#verifyEmail-container input{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      height: 30px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#verifyEmail-container input:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#verifyEmail-container .error {
+      color: #ef4444;
+      display: none;
+}
+#verifyEmail-container [type="checkbox"] {
+      margin-right: 5px;
+      color: #838282;
+}
+#verifyEmail-container #verifyEmail-options {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 40px;
+}
+#verifyEmail-container a{
+      cursor: pointer;
+      color: #6f6f6f;
+      text-decoration: underline;
+      transition: 0.3s;
+}
+#verifyEmail-container a:hover {
+      text-decoration: none;
+}
+#verifyEmail-container #verifyEmail-submit {    
+      width: 400px;
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #002eac;
+      color: white;
+      cursor: pointer;
+}
+#verifyEmail-container #verifyEmail-submit:hover {
+      background-color:#003ce0;
+      cursor: pointer;
+}
+#verifyEmail-container #verifyEmail-login-btn {
+      border: none;
+      width: 400px;
+      height: 35px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+}
+#verifyEmail-container #verifyEmail-login-btn:hover {
+      background-color: #ff5050;
+      color: white;
+}
+/*! updateProfile -------------------------------------------------------------------------------------------------*/
+#modal-updateProfile {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top:0;
+      left: 0;
+      z-index: 5;
+      animation: rightoutLogin 0.4s;
+}
+#updateProfile-container {
+      position: relative;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      width: 400px;
+}
+#updateProfile-container {
+      background-color: #fff;
+      padding: 16px 24px;
+      border-radius: 10px;
+      box-shadow:0px 0px 2px 2px #e6e6e6;
+}
+#updateProfile-container h3 {
+      text-align: center;
+      color: #565555;
+}
+#updateProfile-container {
+      position: relative;
+}
+#updateProfile-container label {
+      font-size: 13px;
+}
+#updateProfile-container input{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#updateProfile-container input:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#updateProfile-container select{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#updateProfile-container select:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#updateProfile-container .error {
+      font-size: 13px;
+      color: #ef4444;
+      display: none;
+}
+#updateProfile-container #updateProfile-options {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 150px;
+}
+#updateProfile-container a{
+      cursor: pointer;
+      color: #6f6f6f;
+      text-decoration: underline;
+      transition: 0.3s;
+}
+#updateProfile-container a:hover {
+      text-decoration: none;
+}
+#updateProfile-container #updateProfile-submit {    
+      width: 400px;
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #002eac;
+      color: white;
+      cursor: pointer;
+}
+#updateProfile-container #updateProfile-submit:hover {
+      background-color:#003ce0;
+      cursor: pointer;
+}
+#updateProfile-container #updateProfile-changePassword {
+      border: none;
+      width: 400px;
+      height: 35px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+}
+#updateProfile-container #updateProfile-changePassword:hover {
+      background-color: #ff0000;
+      color: white;
+}
+#updateProfile-container #updateProfile-verifyEmail {
+      border: none;
+      width: 400px;
+      height: 35px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+}
+#updateProfile-container #updateProfile-verifyEmail:hover {
+      background-color: #04ff00;
+      color: white;
+}
+#uploadForm {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+}
+#updateProfile-container .avtUserDefault {
+      width: 80px;
+}
+#updateProfile-container .avtUser {
+      width: 120px;
+}
+#updateProfile-container input[type="file"]{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#updateProfile-container input[type="file"]:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#btnUploadAvatar, .changeAvatar{
+      width: 130px;
+      height: 25px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #d8d8d8;
+      color: rgb(3, 3, 3);
+      cursor: pointer;
+      margin: 10px 0 10px 0;
+}
+#btnUploadAvatar:hover {
+      background-color:#04ff00;
+      cursor: pointer;
+}
+.changeAvatar:hover {
+      background-color:#04ff00;
+      cursor: pointer;
+}
+#updateProfile-container .displayFlexVertical {
+      display: flex;
+      width: 400px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+}
+/*! addressDetail -------------------------------------------------------------------------------------------------*/
+#modal-addressDetail {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top:0;
+      left: 0;
+      z-index: 5;
+      animation: rightoutLogin 0.4s;
+}
+#addressDetail-container {
+      position: relative;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      width: 400px;
+}
+#addressDetail-container {
+      background-color: #fff;
+      padding: 16px 24px;
+      border-radius: 10px;
+      box-shadow:0px 0px 2px 2px #e6e6e6;
+}
+#addressDetail-container h3 {
+      text-align: center;
+      color: #565555;
+}
+#addressDetail-container {
+      position: relative;
+}
+#addressDetail-container label {
+      font-size: 13px;
+}
+#addressDetail-container input{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#addressDetail-container input:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#addressDetail-container select{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#addressDetail-container select:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#addressDetail-container .error {
+      font-size: 13px;
+      color: #ef4444;
+      display: none;
+}
+#addressDetail-container #addressDetail-options {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 150px;
+}
+#addressDetail-container a{
+      cursor: pointer;
+      color: #6f6f6f;
+      text-decoration: underline;
+      transition: 0.3s;
+}
+#addressDetail-container a:hover {
+      text-decoration: none;
+}
+#addressDetail-container #addressDetail-submit {    
+      width: 400px;
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #002eac;
+      color: white;
+      cursor: pointer;
+}
+#addressDetail-container #addressDetail-submit:hover {
+      background-color:#003ce0;
+      cursor: pointer;
+}
+#addressDetail-container #addressDetail-changePassword {
+      border: none;
+      width: 400px;
+      height: 35px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+}
+#addressDetail-container #addressDetail-changePassword:hover {
+      background-color: #ff0000;
+      color: white;
+}
+#addressDetail-container #addressDetail-verifyEmail {
+      border: none;
+      width: 400px;
+      height: 35px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+}
+#addressDetail-container #addressDetail-verifyEmail:hover {
+      background-color: #04ff00;
+      color: white;
+}
+#uploadForm {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+}
+#addressDetail-container .avtUserDefault {
+      width: 80px;
+}
+#addressDetail-container .avtUser {
+      width: 120px;
+}
+#addressDetail-container input[type="file"]{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#addressDetail-container input[type="file"]:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#btnUploadAvatar, .changeAvatar{
+      width: 130px;
+      height: 25px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #d8d8d8;
+      color: rgb(3, 3, 3);
+      cursor: pointer;
+      margin: 10px 0 10px 0;
+}
+#btnUploadAvatar:hover {
+      background-color:#04ff00;
+      cursor: pointer;
+}
+.changeAvatar:hover {
+      background-color:#04ff00;
+      cursor: pointer;
+}
+#addressDetail-container .displayFlexVertical {
+      display: flex;
+      width: 400px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+}
+/*! updateAddress -------------------------------------------------------------------------------------------------*/
+#modal-updateAddress {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top:0;
+      left: 0;
+      z-index: 5;
+      animation: rightoutLogin 0.4s;
+}
+#updateAddress-container {
+      position: relative;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      width: 400px;
+}
+#updateAddress-container {
+      background-color: #fff;
+      padding: 16px 24px;
+      border-radius: 10px;
+      box-shadow:0px 0px 2px 2px #e6e6e6;
+}
+#updateAddress-container h3 {
+      text-align: center;
+      color: #565555;
+}
+#updateAddress-container {
+      position: relative;
+}
+#updateAddress-container label {
+      font-size: 13px;
+}
+#updateAddress-container input{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#updateAddress-container input:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#updateAddress-container select{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#updateAddress-container select:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#updateAddress-container .error {
+      font-size: 13px;
+      color: #ef4444;
+      display: none;
+}
+#updateAddress-container #updateAddress-options {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 150px;
+}
+#updateAddress-container a{
+      cursor: pointer;
+      color: #6f6f6f;
+      text-decoration: underline;
+      transition: 0.3s;
+}
+#updateAddress-container a:hover {
+      text-decoration: none;
+}
+#updateAddress-container #updateAddress-submit {    
+      width: 400px;
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #002eac;
+      color: white;
+      cursor: pointer;
+}
+#updateAddress-container #updateAddress-submit:hover {
+      background-color:#003ce0;
+      cursor: pointer;
+}
+#updateAddress-container #updateAddress-changePassword {
+      border: none;
+      width: 400px;
+      height: 35px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+}
+#updateAddress-container #updateAddress-changePassword:hover {
+      background-color: #ff0000;
+      color: white;
+}
+#updateAddress-container #updateAddress-verifyEmail {
+      border: none;
+      width: 400px;
+      height: 35px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+}
+#updateAddress-container #updateAddress-verifyEmail:hover {
+      background-color: #04ff00;
+      color: white;
+}
+#uploadForm {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+}
+#updateAddress-container .avtUserDefault {
+      width: 80px;
+}
+#updateAddress-container .avtUser {
+      width: 120px;
+}
+#updateAddress-container input[type="file"]{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#updateAddress-container input[type="file"]:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#btnUploadAvatar, .changeAvatar{
+      width: 130px;
+      height: 25px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #d8d8d8;
+      color: rgb(3, 3, 3);
+      cursor: pointer;
+      margin: 10px 0 10px 0;
+}
+#btnUploadAvatar:hover {
+      background-color:#04ff00;
+      cursor: pointer;
+}
+.changeAvatar:hover {
+      background-color:#04ff00;
+      cursor: pointer;
+}
+#updateAddress-container .displayFlexVertical {
+      display: flex;
+      width: 400px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+}
+/*! changePassword --------------------------------------------------------------------------------------------*/
+#modal-changePassword {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top:0;
+      left: 0;
+      z-index: 5;
+      animation: rightoutresetPassword 0.4s;
+}
+#changePassword-container {
+      position: relative;
+      position: fixed;
+      left: 50%;
+      top: 40%;
+      transform: translate(-50%, -50%);
+      margin-top: 30px;
+      display: flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      width: 400px;
+}
+#changePassword-container {
+      background-color: #fff;
+      padding: 16px 24px;
+      border-radius: 10px;
+      box-shadow:0px 0px 2px 2px #e6e6e6;
+}
+#changePassword-container img {
+      width: 150px;
+}
+#changePassword-container h3 {
+      text-align: center;
+      color: #565555;
+}
+#changePassword-container {
+      position: relative;
+}
+#changePassword-container label {
+      font-size: 15px;
+}
+#changePassword-container input{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      height: 30px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#changePassword-container input:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#changePassword-container .error {
+      color: #ef4444;
+      display: none;
+}
+#changePassword-container [type="checkbox"] {
+      margin-right: 5px;
+      color: #838282;
+}
+#changePassword-container #changePassword-options {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 40px;
+}
+#changePassword-container a{
+      cursor: pointer;
+      color: #6f6f6f;
+      text-decoration: underline;
+      transition: 0.3s;
+}
+#changePassword-container a:hover {
+      text-decoration: none;
+}
+#changePassword-container #changePassword-submit {    
+      width: 400px;
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #002eac;
+      color: white;
+      cursor: pointer;
+}
+#changePassword-container #changePassword-submit:hover {
+      background-color:#003ce0;
+      cursor: pointer;
+}
+#customalert {
+    z-index: 100;
+    color: white;
+    visibility: hidden;
+    background-color: aqua;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    width: 400px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+}
+#customalert.show {
+    visibility: visible;
+}
+#addressDetail-table {
+      width: 100%;
+}
+
+#addressDetail-table thead tr{
+      background-color: #183f5c;
+      color: rgb(255, 255, 255);
+}
+#addressDetail-table thead th {
+      outline: 1px solid #183f5c ;
+      margin: 0;
+      justify-content: center;
+      padding: 10px 5px 10px 5px;
+}
+#addressDetail-table tbody td{
+      padding: 10px 5px 10px 5px;
+}
+#addressDetail-table .KhuyenMai-ten{
+      text-align: left;
+}
+#addressDetail-table .KhuyenMai-mota{
+      max-width: 300px;
+      text-align: left;
+}
+#addressDetail-table .KhuyenMai-thaotac{
+      display: flex;
+      justify-content: space-evenly;
+}
+#addressDetail-table .KhuyenMai-thaotac button{
+      cursor: pointer;
+      border-radius: 2px;
+      padding: 5px;
+      border: 1px solid #000;
+      animation: 0.3s;
+}
+#addressDetail-table .KhuyenMai-chitiet {
+      background-color: aquamarine;
+      color: #000;
+}
+#addressDetail-table .KhuyenMai-chitiet:hover {
+      background-color: rgb(181, 241, 221);
+      color: #000;
+}
+#addressDetail-table .KhuyenMai-sua {
+      background-color: rgb(0, 255, 89);
+      color: #000;
+}
+#addressDetail-table .KhuyenMai-sua:hover {
+      background-color: rgb(128, 243, 168);
+      color: #000;
+}
+#addressDetail-table .KhuyenMai-xoa {
+      background-color: rgb(255, 72, 72);
+      color: #000;
+}
+#addressDetail-table .KhuyenMai-xoa:hover {
+      background-color: rgb(240, 135, 135);
+      color: #000;
+}
+  
+  #addressDetail-table tr:nth-child(even) {
+      background: #F8F8F8;
+  }
+  
+  /* Responsive */
+  
+  @media (max-width: 767px) {
+      #addressDetail-table {
+          display: block;
+          width: 100%;
+      }
+      .table-wrapper:before{
+          content: "Scroll horizontally >";
+          display: block;
+          text-align: right;
+          font-size: 11px;
+          color: white;
+          padding: 0 0 10px;
+      }
+      #addressDetail-table thead, #addressDetail-table tbody, #addressDetail-table thead th {
+          display: block;
+      }
+      #addressDetail-table thead th:last-child{
+          border-bottom: none;
+      }
+      #addressDetail-table thead {
+          float: left;
+      }
+      #addressDetail-table tbody {
+          width: auto;
+          position: relative;
+          overflow-x: auto;
+      }
+      #addressDetail-table td, #addressDetail-table th {
+          padding: 20px .625em .625em .625em;
+          height: 60px;
+          vertical-align: middle;
+          box-sizing: border-box;
+          overflow-x: hidden;
+          overflow-y: auto;
+          width: 120px;
+          font-size: 13px;
+          text-overflow: ellipsis;
+      }
+      #addressDetail-table thead th {
+          text-align: left;
+          border-bottom: 1px solid #f7f7f9;
+      }
+      #addressDetail-table tbody tr {
+          display: table-cell;
+      }
+      #addressDetail-table tbody tr:nth-child(odd) {
+          background: none;
+      }
+      #addressDetail-table tr:nth-child(even) {
+          background: transparent;
+      }
+      #addressDetail-table tr td:nth-child(odd) {
+          background: #F8F8F8;
+          border-right: 1px solid #E6E4E4;
+      }
+      #addressDetail-table tr td:nth-child(even) {
+          border-right: 1px solid #E6E4E4;
+      }
+      #addressDetail-table tbody td {
+          display: block;
+          text-align: center;
+      }
+  }
+  #addressDetail-table .addressDetail-thaotac button {
+      cursor: pointer;
+      border-radius: 2px;
+      padding: 5px;
+      border: 1px solid #000;
+      animation: 0.3s;
+      width: 70px;
+      height: 33px;
+}
+.addressDetail-sua {
+      background-color: rgb(254, 136, 0);
+      color: black;
+      margin-bottom: 10px;
+}
+.addressDetail-sua:hover {
+      background-color: rgb(250, 196, 135);
+      color: black;
+}
+.addressDetail-xoa {
+      background-color: rgb(255, 0, 0);
+      color: black;
+}
+.addressDetail-xoa:hover {
+      background-color: rgb(252, 129, 129);
+      color: black;
+}
+#btnMoveAddAddress {
+      background-color: #00bfff;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+      border: none;
+      padding: 5px;
+      font-size: 17px;
+}
+#btnMoveAddAddress:hover {
+      background-color: #65d3f8;
+}

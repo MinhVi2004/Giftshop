@@ -1,0 +1,312 @@
+#orderDetail-container {
+      width: 75%;
+}
+.orderDetail-item {
+    display: flex;
+    justify-content: left;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+
+}
+.orderDetail-item-img {
+      text-align: center;
+      padding-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      width: 10%;
+}
+.orderDetail-item img {
+    width: 10%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+
+.orderDetail-item-name {
+    padding-top: 10px;
+    width: 25%;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.orderDetail-item-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;   
+    font-size: 17px;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.orderDetail-item-quantity-change {
+      text-align: center;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-right: 15px;
+}
+
+.orderDetail-item-quantity-change input {
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.orderDetail-item-total-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;   
+    font-size: 17px;
+    color: #e74c3c;
+    font-weight: bold;
+}
+.orderDetail-item-remove {
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+}
+.orderDetail-item-remove button{
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100px;
+    height: 35px;
+}
+
+.orderDetail-item-remove button:hover {
+    background: #c0392b;
+}
+.orderDetail-item-quantity-change {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.orderDetail-item-quantity-change button {
+    width: 30px;
+    height: 30px;
+    background: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.orderDetail-item-quantity-change button:hover {
+    background: #ddd;
+}
+#orderDetail-thaotac {
+    width: 100%;
+    padding: 20px 0px 20px 20px;
+    display: flex;
+    align-items: end;
+    justify-content: right;
+
+}
+#orderDetail-thaotac span{
+      width: 100%;
+      font-size: 19px;
+      color: #e74c3c;
+      font-weight: bold;
+}
+#orderDetail-thaotac .money-amount{
+      margin-left: 15px;
+      white-space: nowrap;
+        text-align: right;
+}
+#orderDetail-diachi {
+      padding: 15px;
+}
+#orderDetail-diachi-title {
+      padding-top: 10px;
+      width: 25%;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 5px;
+}
+.orderDetail-diachi-item {
+      width: 100%;
+      display: flex;
+      justify-content: left;
+      margin-bottom: 10px;
+}
+.orderDetail-diachi-item-info {
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      padding: 0px 20px 0px 40px;
+      border-right: 1px solid #c1c1c1;
+}
+.orderDetail-diachi-item-name {
+      font-size: 22px;
+      font-weight: bold;
+}
+.orderDetail-diachi-item-sodienthoai {
+      font-size: 22px;
+      font-weight: bold;
+}
+.orderDetail-diachi-item-chitietdiachi {
+      padding: 10px;
+      width: 65%;
+      font-size: 19px;
+}
+.orderDetail-diachi-item-thaydoi {
+      margin-top: 15px;
+      width: 10%;
+      background: #0055ff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 100px;
+      height: 35px;
+      transition: 0.3s;
+}
+.orderDetail-diachi-item-thaydoi:hover {
+      transform: scale(1.1);
+      background: #427df3;
+}
+
+#orderDetail-khuyenmai {
+      padding: 15px;
+}
+#orderDetail-khuyenmai-title {
+      padding-top: 10px;
+      width: 25%;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 5px;
+}
+.orderDetail-khuyenmai-item-info p {
+    font-size: 19px;
+}
+@media screen and (max-width: 768px) {
+      #orderDetail-container {
+          width: 100%;
+          padding: 10px;
+      }
+  
+      .orderDetail-item {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding: 10px;
+      }
+  
+      .orderDetail-item-img {
+          width: 100%;
+      }
+  
+      .orderDetail-item img {
+          width: 80px;
+          height: auto;
+          margin-bottom: 10px;
+      }
+  
+      .orderDetail-item-name {
+          width: 100%;
+          font-size: 18px;
+          margin-bottom: 5px;
+      }
+  
+      .orderDetail-item-price,
+      .orderDetail-item-total-price {
+          width: 100%;
+          font-size: 16px;
+          text-align: center;
+      }
+  
+      .orderDetail-item-quantity-change {
+          width: 100%;
+          justify-content: center;
+          margin-top: 10px;
+      }
+  
+      .orderDetail-item-remove {
+          width: 100%;
+          justify-content: center;
+      }
+  
+      .orderDetail-item-remove button {
+          width: 80%;
+      }
+  
+      #orderDetail-thaotac {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+      }
+  
+      #orderDetail-thaotac span {
+          font-size: 18px;
+      }
+  
+      #orderDetail-thaotac .money-amount {
+          font-size: 18px;
+          text-align: center;
+      }
+  
+      #orderDetail-diachi {
+          padding: 10px;
+      }
+  
+      .orderDetail-diachi-item {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+      }
+  
+      .orderDetail-diachi-item-info {
+          width: 100%;
+          border-right: none;
+          padding: 10px;
+      }
+  
+      .orderDetail-diachi-item-name,
+      .orderDetail-diachi-item-sodienthoai {
+          font-size: 18px;
+      }
+  
+      .orderDetail-diachi-item-chitietdiachi {
+          width: 100%;
+          font-size: 16px;
+          text-align: center;
+      }
+  
+      .orderDetail-diachi-item-thaydoi {
+          width: 80%;
+      }
+  
+      #orderDetail-khuyenmai {
+          padding: 10px;
+      }
+  
+      #orderDetail-khuyenmai-title {
+          font-size: 20px;
+          text-align: center;
+      }
+  
+      .orderDetail-khuyenmai-item-info p {
+          font-size: 16px;
+          text-align: center;
+      }
+  }
+  

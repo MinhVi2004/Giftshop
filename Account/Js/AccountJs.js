@@ -1,3 +1,4 @@
+let previousImage = "";  // Biến lưu trữ ảnh trước đó
 function setup() {
       // Helper function to safely add event listeners
       function addEventListenerSafely(elementId, event, handler) {
@@ -58,11 +59,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
 /*-----------------------------------------------------------------------------------------------------  */
 //?                                                              Validate
 var specialChars = "<>@!#$%^&*()_+[]{}?:;|'\"\\,./~`-=";
+var specialCharsForDiaChi = "<>@!#$%^&*()_+[]{}?:;|'\"\\~`-=";
 var specialCharsForEmail = "<>!#$%^&*()_+[]{}?:;|'\"\\,/~`-=";
 var specialCharsForPhoneNumber = "@.<>!#$%^&*()_+[]{}?:;|'\"\\,/~`-=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 function checkForSpecialChar(string){
       for(i = 0; i < specialChars.length;i++){
             if(string.indexOf(specialChars[i]) > -1){
+                  return true;
+            }
+      }
+      return false;
+}
+function checkForSpecialCharForDiaChi(string){
+      for(i = 0; i < specialCharsForDiaChi.length;i++){
+            if(string.indexOf(specialCharsForDiaChi[i]) > -1){
                   return true;
             }
       }
@@ -104,15 +114,12 @@ function validateSignin() {
       var repassword_error = document.getElementById('signin-repassword-error');
       var fullname = document.getElementById('signin-fullname').value;
       var fullname_error = document.getElementById('signin-fullname-error');
-      var birthday = new Date(document.getElementById('signin-birthday').value);
-      var birthday_error = document.getElementById('signin-birthday-error');
       var phone = document.getElementById('signin-phone').value;
       var phone_error = document.getElementById('signin-phone-error');
       var email = document.getElementById('signin-email').value;
       var email_error = document.getElementById('signin-email-error');
       //? Username validate
       if (username == '' || username.length < 4 || checkForSpecialChar(username) == true) {
-            console.log(username)
             username_error.style.display = 'block';   
             flag = false;
       } else {
@@ -139,13 +146,6 @@ function validateSignin() {
       } else {
             fullname_error.style.display = 'none';
       }
-      //? Birthday validate
-      if (birthday.getFullYear() > 2010 || birthday.getFullYear() < 1900 || !birthday.getDate()) {
-            birthday_error.style.display = 'block';    
-            flag = false;
-      } else {
-            birthday_error.style.display = 'none';   
-      }
       //? Phone validate
       if (phone == '' || phone.length > 12 ||phone.length < 5 || checkForSpecialCharForPhoneNumber(phone) == true) {
             phone_error.style.display = 'block';    
@@ -168,8 +168,8 @@ function signin() {
             var username_error = document.getElementById('signin-username-error');
             var password = document.getElementById('signin-password').value;
             var fullname = document.getElementById('signin-fullname').value;
-            var birthday = document.getElementById('signin-birthday').value;
             var phone = document.getElementById('signin-phone').value;
+            var phone_error = document.getElementById('signin-phone-error');
             var email = document.getElementById('signin-email').value;
             var email_error = document.getElementById('signin-email-error');
             $.ajax({
@@ -180,29 +180,39 @@ function signin() {
                         TenDangNhap : username,
                         MatKhau : password,
                         HoTen : fullname,
-                        NgaySinh : birthday,
                         SoDienThoai : phone,
                         Email : email,
                   },
                   success : function(response){
                         console.log(response);
-                        if(response.match('username_exist')) {
+                        if(response.match('The domain does not exist or cannot receive emails.')) {
+                              customAlert(response);
+                        } else if(response.match('username_exist')) {
+                              customAlert("Tên đăng nhập đã được sử dụng, vui lòng sử dụng Tên đăng nhập khác")
                               username_error.style.display = 'block';
                         } else if(response.match('email_exist')) {
+                              customAlert("Tài khoản Email đã được sử dụng, vui lòng sử dụng tài khoản Email khác")
                               email_error.style.display = 'block';
-                        } else if(response == "success") {
-                              alert("Tạo tài khoản thành công !");
-                              window.location.href='index.php?ctrl=loginView'
-                        } else if(response == "error"){
-                              alert("Tạo tài khoản thất bại !");
+                        } else if(response.match('sodienthoai_exist')) {
+                              customAlert("Số Điện Thoại đã được sử dụng, vui lòng sử dụng Số Điện Thoại khác")
+                              phone_error.style.display = 'block';
+                        } else if(response.match('success')) {
+                              console.log(response)
+                              customAlert("Tạo tài khoản thành công", "success");
+                              setTimeout(() => {
+                                    window.location.href='index.php?ctrl=loginView'
+                              }, 1000); // 1000 ms = 1 giây
+                        } else if(response.match('error')){
+                              console.log(response)
+                              customAlert("Tạo tài khoản thất bại !");
                         } else {
                               console.log(response);
-                              alert("Lỗi khác")
+                              customAlert("Lỗi khác")
                         }
                   },
                   error: function(xhr, status, error) {
                         console.error(xhr.responseText);
-                        alert("Lỗi trong quá trình xử lý Ajax.");
+                        customAlert("Lỗi trong quá trình xử lý Ajax.");
                   }
             });
       }
@@ -242,21 +252,24 @@ function login() {
                         MatKhau : password,
                   },
                   success : function(response){
+                        console.log(response);
                         if(response == "lock") {
-                              alert("Tài khoản đã bị khóa !")
+                              customAlert("Tài khoản đã bị khóa !")
                         } else if(response == "success") {
-                              alert("Đăng nhập thành công !");
-                              window.location.href='../User/index.php'
+                              customAlert("Đăng nhập thành công !", "success");
+                              setTimeout(() => {
+                                    window.location.href='../index.php'
+                              }, 1000); // 1000 ms = 1 giây
                         } else if(response == "error"){
                               error.style.display = 'block';
                         } else {
                               console.log(response);
-                              alert("Lỗi khác")
+                              customAlert("Lỗi khác")
                         }
                   },
                   error: function(xhr, status, error) {
                         console.error(xhr.responseText);
-                        alert("Lỗi trong quá trình xử lý Ajax.");
+                        customAlert("Lỗi trong quá trình xử lý Ajax.");
                   }
             });
       }
@@ -272,26 +285,30 @@ function fillEmail() {
                   Email: email,
             },
             success : function(response){
-                  if(response == "Lỗi khi tạo password_reset") {
-                        alert("Lỗi khi tạo password_reset");
-                        window.location.href='../User/index.php'
+                  if(response == "Email chưa được xác nhận nên không khôi phục được, vui lòng liên hệ tư vấn viên 0772912452(Vi).") {
+                        customAlert(response);
+                  } else if(response == "Lỗi khi tạo password_reset") {
+                        customAlert("Lỗi khi tạo password_reset");
+                        setTimeout(() => {
+                              window.location.href='../index.php'
+                        }, 1000); // 1000 ms = 1 giây
                   } else if(response == "Link đặt lại mật khẩu đã được gửi đến email của bạn.") {
-                        alert("Link đặt lại mật khẩu đã được gửi đến email của bạn.");
-                        // window.location.href='../User/index.php'
+                        customAlert("Link đặt lại mật khẩu đã được gửi đến email của bạn.", "success");
+                        // window.location.href='../index.php'
                   } else if(response == "Gửi Email thất bại"){
-                        alert("Gửi Email thất bại");
+                        customAlert("Gửi Email thất bại");
                         error.style.display = 'block';
                   } else if(response == "Email không tồn tại trong hệ thống."){
                         email_error.style.display = 'block';
-                        alert("Email không tồn tại trong hệ thống.")
+                        customAlert("Email không tồn tại trong hệ thống.")
                   } else {
                         console.log(response);
-                        alert("Lỗi khác");
+                        customAlert("Lỗi khác");
                   }
             },
             error: function(xhr, status, error) {
                   console.error(xhr.responseText);
-                  alert("Lỗi trong quá trình xử lý Ajax.");
+                  customAlert("Lỗi trong quá trình xử lý Ajax.");
             }
       });
 }
@@ -325,33 +342,34 @@ function resetPassword(){
             },
             success : function(response){
                   if(response == "success") {
-                        alert("Thay đổi mật khẩu thành công");
-                        window.location.href='../User/index.php'
+                        customAlert("Thay đổi mật khẩu thành công", "success");
+                        setTimeout(() => {
+                              window.location.href='../index.php'
+                        }, 1000); // 1000 ms = 1 giây
                   } else if(response == "error_updatePassword") {
-                        alert("Lỗi khi thay đổi mật khẩu");
+                        customAlert("Lỗi khi thay đổi mật khẩu");
                   } else if(response == "error_notFoundAccount") {
-                        alert("Lỗi không tìm thấy taikhoan bằng token");
+                        customAlert("Lỗi không tìm thấy taikhoan bằng token");
                   } else {
                         console.log(response);
-                        alert("Lỗi khác");
+                        customAlert("Lỗi khác");
                   }
             },
             error: function(xhr, status, error) {
                   console.error(xhr.responseText);
-                  alert("Lỗi trong quá trình xử lý Ajax.");
+                  customAlert("Lỗi trong quá trình xử lý Ajax.");
             }
       });
 }
 function validateUpdate() {
+
       var flag = true;
-      var fullname = document.getElementById('profile-fullname').value;
-      var fullname_error = document.getElementById('profile-fullname-error');
-      var birthday = new Date(document.getElementById('profile-birthday').value);
-      var birthday_error = document.getElementById('profile-birthday-error');
-      var phone = document.getElementById('profile-phone').value;
-      var phone_error = document.getElementById('profile-phone-error');
-      var email = document.getElementById('profile-email').value;
-      var email_error = document.getElementById('profile-email-error');
+      var fullname = document.getElementById('updateProfile-fullname').value;
+      var fullname_error = document.getElementById('updateProfile-fullname-error');
+      var phone = document.getElementById('updateProfile-phone').value;
+      var phone_error = document.getElementById('updateProfile-phone-error');
+      var email = document.getElementById('updateProfile-email').value;
+      var email_error = document.getElementById('updateProfile-email-error');
 
       
       //? Fullname validate
@@ -360,13 +378,6 @@ function validateUpdate() {
             flag = false;
       } else {
             fullname_error.style.display = 'none';
-      }
-      //? Birthday validate
-      if (birthday.getFullYear() > 2010 || birthday.getFullYear() < 1900 || !birthday.getDate()) {
-            birthday_error.style.display = 'block';    
-            flag = false;
-      } else {
-            birthday_error.style.display = 'none';   
       }
       //? Phone validate
       if (phone == '' || phone.length > 12 ||phone.length < 5 || checkForSpecialCharForPhoneNumber(phone) == true) {
@@ -384,40 +395,48 @@ function validateUpdate() {
       }
       return flag;
 }
-function updateAccount() {
+async function updateAccount() {
       if(validateUpdate()) {
-            var fullname = document.getElementById('profile-fullname').value;
-            var birthday = document.getElementById('profile-birthday').value;
-            var phone = document.getElementById('profile-phone').value;
-            var email = document.getElementById('profile-email').value;
-            var email_error = document.getElementById('profile-email-error');
+            if(! await customConfirm("Bạn có chắc muốn thay đổi thông tin ?")) {
+                  return
+            }
+            var fullname = document.getElementById('updateProfile-fullname').value;
+            var phone = document.getElementById('updateProfile-phone').value;
+            var phone_error = document.getElementById('updateProfile-phone-error');
+            var email = document.getElementById('updateProfile-email').value;
+            var email_error = document.getElementById('updateProfile-email-error');
             $.ajax({
                   url: "Controller/AccountController.php",
                   method: "POST",
                   data: { 
                         action : "updateAccount",
                         HoTen : fullname,
-                        NgaySinh : birthday,
                         SoDienThoai : phone,
                         Email : email,
                   },
                   success : function(response){
-                        console.log(response);
+                        // console.log(response);
                         if(response.match('email_exist')) {
                               email_error.style.display = 'block';
-                        } else if(response == "success") {
-                              alert("Cập nhật thông tin thành công !");
-                              window.location.href='../User/index.php'
+                              customAlert("Email đã được sử dụng !");
+                        } else if(response.match('phone_exist')) {
+                              phone_error.style.display = 'block';
+                              customAlert("Số điện thoại đã được sử dụng !");
+                        }else if(response == "success") {
+                              customAlert("Cập nhật thông tin thành công !", "success");
+                              setTimeout(() => {
+                                    window.location.href='../index.php'
+                              }, 1000); // 1000 ms = 1 giây
                         } else if(response == "error"){
-                              alert("Cập nhật thông tin thất bại !");
+                              customAlert("Cập nhật thông tin thất bại !");
                         } else {
                               console.log(response);
-                              alert("Lỗi khác")
+                              customAlert("Lỗi khác")
                         }
                   },
                   error: function(xhr, status, error) {
                         console.error(xhr.responseText);
-                        alert("Lỗi trong quá trình xử lý Ajax.");
+                        customAlert("Lỗi trong quá trình xử lý Ajax.");
                   }
             });
       }
@@ -456,18 +475,20 @@ function changePassword() {
                   if(response.match('incorrect_oldpassword')) {
                         oldpassword_error.style.display = 'block';
                   } else if(response == "success") {
-                        alert("Đổi mật khẩu thành công !");
-                        window.location.href='../User/index.php'
+                        customAlert("Đổi mật khẩu thành công !", "success");
+                        setTimeout(() => {
+                              window.location.href='../index.php'
+                        }, 1000); // 1000 ms = 1 giây
                   } else if(response == "error"){
-                        alert("Đổi mật khẩu thất bại !");
+                        customAlert("Đổi mật khẩu thất bại !");
                   } else {
                         console.log(response);
-                        alert("Lỗi khác")
+                        customAlert("Lỗi khác")
                   }
             },
             error: function(xhr, status, error) {
                   console.error(xhr.responseText);
-                  alert("Lỗi trong quá trình xử lý Ajax.");
+                  customAlert("Lỗi trong quá trình xử lý Ajax.");
             }
       });
 }
@@ -483,29 +504,157 @@ function uploadAvatar() {
                   success : function(response){
                         console.log(response);
                         if(response == "success") {
-                              alert("Bạn đã thay đổi hình đại diện thành công !");
-                              window.location.reload();
+                              customAlert("Bạn đã thay đổi hình đại diện thành công !", "success");
+                              setTimeout(() => {
+                                    window.location.reload();
+                              }, 1000); // 1000 ms = 1 giây
                         } else if(response.match('error')){
                               console.log(response);
-                              alert("Lỗi ");
+                              customAlert("Lỗi ");
                         } else {
                               console.log(response);
-                              alert("Lỗi khác")
+                              customAlert("Lỗi khác")
                         }
                   },
                   error: function(xhr, status, error) {
                         console.error(xhr.responseText);
-                        alert("Lỗi trong quá trình xử lý Ajax.");
+                        customAlert("Lỗi trong quá trình xử lý Ajax.");
                   }
             });
 }
 function changeAvatar() {
-      let form = document.getElementById("profileView-changeAvatar");
+      let form = document.getElementById("updateProfileView-changeAvatar");
       if(form.getAttribute("value") == 0) {
-            form.innerHTML = "<button type='button' onclick='changeAvatar()' class='changeAvatar'>Hủy đổi ảnh đại diện</button><input type='file' name='inputUploadAvatar' id='inputUploadAvatar' accept='image/*'><button type='button' onclick='uploadAvatar()' id='btnUploadAvatar'>Xác nhận</button>";
+            form.innerHTML = "<button type='button' onclick='changeAvatar()' class='changeAvatar'>Hủy đổi ảnh đại diện</button><input type='file' name='inputUploadAvatar' id='inputUploadAvatar' accept='image/*' onchange='handleFileSelect(event)'><button type='button' onclick='uploadAvatar()' id='btnUploadAvatar'>Xác nhận</button>";
             form.setAttribute("value" , 1)
       } else {
+            cancelImageChange();
             form.innerHTML = "<button type='button' onclick='changeAvatar()' class='changeAvatar'>Đổi ảnh đại diện</button>";
             form.setAttribute("value" , 0)
       }
 }
+// Hàm xử lý khi người dùng chọn ảnh mới
+function handleFileSelect(event) {
+      const file = event.target.files[0];
+
+      // Lưu ảnh cũ trước khi thay đổi
+      const imgElement = document.getElementById("showAVT");
+      previousImage = imgElement.src;  // Lưu đường dẫn ảnh hiện tại
+      
+      // Tạo đối tượng FileReader để đọc tệp ảnh
+      const reader = new FileReader();
+
+      // Khi tệp được đọc xong, thiết lập nguồn cho thẻ img
+      reader.onload = function(e) {
+            imgElement.src = e.target.result;  // Đặt đường dẫn ảnh mới
+            imgElement.style.display = "block";  // Hiển thị ảnh
+      };
+
+      // Đọc tệp như một URL hình ảnh
+      reader.readAsDataURL(file);
+  }
+  // Hàm xử lý khi bấm nút hủy
+  function cancelImageChange() {
+      const imgElement = document.getElementById("showAVT");
+      imgElement.src = previousImage;  // Quay lại ảnh trước đó
+  }
+function verifyEmailFunc() {
+      var verifyEmail = document.getElementById('verifyEmail').value;
+      var token = document.getElementById('token-value').value;
+      var verifyEmail_error = document.getElementById('verifyEmail-error');
+      //? Code validate
+      if (verifyEmail == '' || verifyEmail.length !== 6) {
+            verifyEmail_error.style.display = 'block';  
+            return;
+      } else {
+            verifyEmail_error.style.display = 'none';   
+      }
+      $.ajax({
+            url: "Controller/AccountController.php",
+            method: "POST",
+            data: { 
+                  action : "verifyEmail",
+                  code : verifyEmail,
+                  token : token
+            },
+            success : function(response){
+                  console.log(response);
+                  if(response == "success") {
+                        customAlert("Xác nhận Email thành công !", "success");
+                        setTimeout(() => {
+                              window.location.href='../index.php'
+                        }, 1000); // 1000 ms = 1 giây
+                  } else if(response == "error_verifyEmail"){
+                        customAlert("Xác nhận Email thất bại !");
+                  } else if(response == "error_notFoundAccount"){
+                        customAlert("Không tìm thấy tài khoản !");
+                  } else {
+                        console.log(response);
+                        customAlert("Lỗi khác")
+                  }
+            },
+            error: function(xhr, status, error) {
+                  console.error(xhr.responseText);
+                  customAlert("Lỗi trong quá trình xử lý Ajax.");
+            }
+      });
+}
+function onclickVerifyEmail(email) {
+      $.ajax({
+            url: "Controller/AccountController.php",
+            method: "POST",
+            data: { 
+                  action : "sendVerifyEmailLink",
+                  Email : email
+            },
+            success : function(response){
+                  console.log(response);
+                  if(response == "VerifyEmail_Link xác nhận Email đã được gửi đến email của bạn.") {
+                        customAlert("Email xác nhận đã được gửi đến Email của bạn. \n Vui lòng kiểm tra và xác nhận Email!", "success");
+                  } else if(response == "VerifyEmail_Gửi Email thất bại."){
+                        customAlert("VerifyEmail_Gửi Email thất bại.");
+                  } else {
+                        console.log(response);
+                        customAlert("Lỗi khác")
+                  }
+            },
+            error: function(xhr, status, error) {
+                  console.error(xhr.responseText);
+                  customAlert("Lỗi trong quá trình xử lý Ajax.");
+            }
+      });
+}
+function customAlert(message,type) {
+	if (type =='success') {
+		document.getElementById("customalert").style.backgroundColor = '#4CAF50';
+	}
+	if (type =='warning' || type == null) {
+		document.getElementById("customalert").style.backgroundColor = '#f44336';
+	}
+	document.getElementById("customalert").innerHTML = message;
+    var x = document.getElementById("customalert");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.classList.remove("show"); }, 1300);      
+}
+// Custom confirm function
+function customConfirm(message) {
+      return new Promise((resolve) => {
+          // Hiển thị hộp thoại
+          const confirmBox = document.getElementById('customConfirm');
+          const confirmMessage = document.getElementById('confirmMessage');
+          confirmMessage.textContent = message;
+          confirmBox.style.display = 'flex';
+
+          // Xử lý sự kiện cho nút "Đồng ý"
+          document.getElementById('confirmYes').onclick = function () {
+              confirmBox.style.display = 'none';
+              resolve(true); // Trả về true nếu người dùng chọn "Đồng ý"
+          };
+
+          // Xử lý sự kiện cho nút "Hủy"
+          document.getElementById('confirmNo').onclick = function () {
+              confirmBox.style.display = 'none';
+              resolve(false); // Trả về false nếu người dùng chọn "Hủy"
+          };
+      });
+  }

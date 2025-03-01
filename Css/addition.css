@@ -1,0 +1,832 @@
+*{
+      margin: 0;
+      padding: 0;
+}
+a {
+      text-decoration: none;
+      color: #333;
+}
+ul {
+      list-style-type: none;
+}
+body {
+      width: 100%;
+      color: #333;
+      font-family: Helvetica,'Courier New', Courier, monospace;
+      font-size: 15px;
+      line-height: 1.6;
+}
+/* Kiểu dáng hộp confirm */
+.confirm-box {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Làm mờ nền */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+  }
+  
+  .confirm-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      max-width: 450px;
+      width: 90%;
+  }
+  
+  .confirm-content p {
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: #333;
+  }
+  
+  .confirm-content button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  
+  #confirmYes {
+      background-color: #4CAF50;
+      color: white;
+  }
+  
+  #confirmNo {
+      background-color: #f44336;
+      color: white;
+  }
+#closeupdateProfile-btn, #closeupdateAddress-btn,#closeaddressDetail-btn, #closeChangePassword-btn {
+      position:absolute;
+      left:390px;
+      top: 10px;
+      border: none;
+      background-color: white;
+      font-size: 33px;
+      cursor: pointer;
+      transition: 0.2s;
+}
+ #closeupdateAddress-btn:hover, #closeupdateProfile-btn:hover,#closeChangePassword-btn:hover, #closeaddressDetail-btn:hover  {
+      color: #f03434;
+}
+/*! updateProfile -------------------------------------------------------------------------------------------------*/
+
+#updateProfile-container {
+      margin-top: 20px;
+      width: 400px;
+      background-color: #fff;
+      border: none;
+}
+#updateProfile-container h3 {
+      text-align: center;
+      color: #565555;
+}
+#updateProfile-container {
+      position: relative;
+}
+#updateProfile-container label {
+      font-size: 13px;
+}
+#updateProfile-container input{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#updateProfile-container input:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#updateProfile-container select{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#updateProfile-container select:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#updateProfile-container .error {
+      font-size: 13px;
+      color: #ef4444;
+      display: none;
+}
+#updateProfile-container #updateProfile-options {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 150px;
+}
+#updateProfile-container a{
+      cursor: pointer;
+      color: #6f6f6f;
+      text-decoration: underline;
+      transition: 0.3s;
+}
+#updateProfile-container a:hover {
+      text-decoration: none;
+}
+#updateProfile-container #updateProfile-submit {    
+      width: 400px;
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #3b82f6;
+      color: white;
+      cursor: pointer;
+}
+#updateProfile-container #updateProfile-submit:hover {
+      background-color:#04ff00;
+      cursor: pointer;
+}
+#updateProfile-container #updateProfile-changePassword {
+      border: none;
+      width: 400px;
+      height: 35px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+}
+#updateProfile-container #updateProfile-changePassword:hover {
+      background-color: #04ff00;
+      color: white;
+}
+#uploadForm {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+}
+#updateProfile-container .avtUserDefault {
+      width: 80px;
+}
+#updateProfile-container .avtUser {
+      width: 120px;
+}
+#updateProfile-container input[type="file"]{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#updateProfile-container input[type="file"]:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#updateProfile-container .displayFlexVertical {
+      display: flex;
+      width: 400px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+}
+/*! addAddress -------------------------------------------------------------------------------------------------*/
+#addAddress-container {
+      margin-top: 20px;
+      width: 400px;
+      background-color: #fff;
+      border:none;
+}
+#addAddress-container h3 {
+      text-align: center;
+      color: #565555;
+}
+#addAddress-container {
+      position: relative;
+}
+#addAddress-container label {
+      font-size: 13px;
+}
+#addAddress-container input{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#addAddress-container input:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#addAddress-container select{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#addAddress-container select:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#addAddress-container .error {
+      font-size: 13px;
+      color: #ef4444;
+      display: none;
+}
+#addAddress-container #addAddress-options {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 150px;
+}
+#addAddress-container a{
+      cursor: pointer;
+      color: #6f6f6f;
+      text-decoration: underline;
+      transition: 0.3s;
+}
+#addAddress-container a:hover {
+      text-decoration: none;
+}
+#addAddress-container #addAddress-submit {    
+      width: 400px;
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #3b82f6;
+      color: white;
+      cursor: pointer;
+}
+#addAddress-container #addAddress-submit:hover {
+      background-color:#04ff00;
+      cursor: pointer;
+}
+#addAddress-container #addAddress-changePassword {
+      border: none;
+      width: 400px;
+      height: 35px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+}
+#addAddress-container #addAddress-changePassword:hover {
+      background-color: #ff0000;
+      color: white;
+}
+#addAddress-container #addAddress-verifyEmail {
+      border: none;
+      width: 400px;
+      height: 35px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+}
+#addAddress-container #addAddress-verifyEmail:hover {
+      background-color: #04ff00;
+      color: white;
+}
+#uploadForm {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+}
+#addAddress-container .avtUserDefault {
+      width: 80px;
+}
+#addAddress-container .avtUser {
+      width: 120px;
+}
+#addAddress-container input[type="file"]{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#addAddress-container input[type="file"]:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#addAddress-container .displayFlexVertical {
+      display: flex;
+      width: 400px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+}
+/*! updateAddress -------------------------------------------------------------------------------------------------*/
+#updateAddress-container {
+      margin-top: 20px;
+      width: 400px;
+      background-color: #fff;
+      border:none;
+}
+#updateAddress-container h3 {
+      text-align: center;
+      color: #565555;
+}
+#updateAddress-container {
+      position: relative;
+}
+#updateAddress-container label {
+      font-size: 13px;
+}
+#updateAddress-container input{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#updateAddress-container input:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#updateAddress-container select{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#updateAddress-container select:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#updateAddress-container .error {
+      font-size: 13px;
+      color: #ef4444;
+      display: none;
+}
+#updateAddress-container #updateAddress-options {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 150px;
+}
+#updateAddress-container a{
+      cursor: pointer;
+      color: #6f6f6f;
+      text-decoration: underline;
+      transition: 0.3s;
+}
+#updateAddress-container a:hover {
+      text-decoration: none;
+}
+#updateAddress-container #updateAddress-submit {    
+      width: 400px;
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #3b82f6;
+      color: white;
+      cursor: pointer;
+}
+#updateAddress-container #updateAddress-submit:hover {
+      background-color:#04ff00;
+      cursor: pointer;
+}
+#updateAddress-container #updateAddress-changePassword {
+      border: none;
+      width: 400px;
+      height: 35px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+}
+#updateAddress-container #updateAddress-changePassword:hover {
+      background-color: #ff0000;
+      color: white;
+}
+#updateAddress-container #updateAddress-verifyEmail {
+      border: none;
+      width: 400px;
+      height: 35px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+}
+#updateAddress-container #updateAddress-verifyEmail:hover {
+      background-color: #04ff00;
+      color: white;
+}
+#uploadForm {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+}
+#updateAddress-container .avtUserDefault {
+      width: 80px;
+}
+#updateAddress-container .avtUser {
+      width: 120px;
+}
+#updateAddress-container input[type="file"]{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#updateAddress-container input[type="file"]:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#btnUploadAvatar, .changeAvatar{
+      width: 130px;
+      height: 25px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #d8d8d8;
+      color: rgb(3, 3, 3);
+      cursor: pointer;
+      margin: 10px 0 10px 0;
+}
+#btnUploadAvatar:hover {
+      background-color:#04ff00;
+      cursor: pointer;
+}
+.changeAvatar:hover {
+      background-color:#04ff00;
+      cursor: pointer;
+}
+#updateAddress-container .displayFlexVertical {
+      display: flex;
+      width: 400px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+}
+/*! changePassword --------------------------------------------------------------------------------------------*/
+
+#changePassword-container {
+      width: 450px;
+      background-color: #fff;
+      padding: 16px 24px;
+}
+#changePassword-container img {
+      width: 150px;
+}
+#changePassword-container h3 {
+      text-align: center;
+      color: #565555;
+}
+#changePassword-container {
+      position: relative;
+}
+#changePassword-container label {
+      font-size: 15px;
+}
+#changePassword-container input{
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      height: 30px;
+      padding: 5px;
+      width: 400px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 5px;
+}
+#changePassword-container input:focus {
+      border: none;
+      outline:2px solid #a0bdfa;
+      background-color: #e8f0fe;
+      & + label {
+            color: #3b82f6;
+      }
+}
+#changePassword-container .error {
+      color: #ef4444;
+      display: none;
+}
+#changePassword-container [type="checkbox"] {
+      margin-right: 5px;
+      color: #838282;
+}
+#changePassword-container #changePassword-options {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+}
+#changePassword-container #changePassword-submit {    
+      width: 400px;
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #3b82f6;
+      color: white;
+      cursor: pointer;
+      margin-bottom: 10px;
+}
+#changePassword-container #changePassword-submit:hover {
+      background-color:#04ff00;
+      cursor: pointer;
+}
+#customalert {
+    z-index: 100;
+    color: white;
+    visibility: hidden;
+    background-color: aqua;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    width: 400px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+}
+#customalert.show {
+    visibility: visible;
+}
+
+
+
+/*! addressDetail -------------------------------------------------------------------------------------------------*/
+
+#addressDetail-container {
+      width: 700px;
+      background-color: #fff;
+      padding: 16px 24px;
+      border: none;
+}
+#addressDetail-container h3 {
+      text-align: center;
+      color: #565555;
+}
+#addressDetail-table {
+      width: 100%;
+      margin-bottom: 20px;
+}
+
+#addressDetail-table thead tr{
+      background-color: #183f5c;
+      color: rgb(255, 255, 255);
+}
+#addressDetail-table thead th {
+      outline: 1px solid #183f5c ;
+      margin: 0;
+      justify-content: center;
+      padding: 10px 5px 10px 5px;
+}
+#addressDetail-table tbody tr {
+      border-bottom: 1px solid #183f5c;
+}
+#addressDetail-table tbody td{
+      padding: 10px 5px 10px 5px;
+}
+  /* Responsive */
+  
+  @media (max-width: 767px) {
+      #addressDetail-table {
+          display: block;
+          width: 100%;
+      }
+      .table-wrapper:before{
+          content: "Scroll horizontally >";
+          display: block;
+          text-align: right;
+          font-size: 11px;
+          color: white;
+          padding: 0 0 10px;
+      }
+      #addressDetail-table thead, #addressDetail-table tbody, #addressDetail-table thead th {
+          display: block;
+      }
+      #addressDetail-table thead th:last-child{
+          border-bottom: none;
+      }
+      #addressDetail-table thead {
+          float: left;
+      }
+      #addressDetail-table tbody {
+          width: auto;
+          position: relative;
+          overflow-x: auto;
+      }
+      #addressDetail-table td, #addressDetail-table th {
+          padding: 20px .625em .625em .625em;
+          height: 60px;
+          vertical-align: middle;
+          box-sizing: border-box;
+          overflow-x: hidden;
+          overflow-y: auto;
+          width: 120px;
+          font-size: 13px;
+          text-overflow: ellipsis;
+      }
+      #addressDetail-table thead th {
+          text-align: left;
+          border-bottom: 1px solid #f7f7f9;
+      }
+      #addressDetail-table tbody tr {
+          display: table-cell;
+      }
+      #addressDetail-table tbody tr:nth-child(odd) {
+          background: none;
+      }
+      #addressDetail-table tr:nth-child(even) {
+          background: transparent;
+      }
+      #addressDetail-table tr td:nth-child(odd) {
+          background: #F8F8F8;
+          border-right: 1px solid #E6E4E4;
+      }
+      #addressDetail-table tr td:nth-child(even) {
+          border-right: 1px solid #E6E4E4;
+      }
+      #addressDetail-table tbody td {
+          display: block;
+          text-align: center;
+      }
+  }
+  #addressDetail-table .addressDetail-thaotac button {
+      cursor: pointer;
+      border-radius: 2px;
+      padding: 5px;
+      border: 1px solid #000;
+      animation: 0.3s;
+      width: 70px;
+      height: 33px;
+}
+.addressDetail-sua {
+      background-color: rgb(7, 255, 7);
+      color: black;
+      margin-bottom: 10px;
+}
+.addressDetail-sua:hover {
+      background-color: rgb(118, 253, 118);
+      color: black;
+}
+.addressDetail-xoa {
+      background-color: rgb(255, 255, 255);
+      color: black;
+}
+.addressDetail-xoa:hover {
+      background-color: rgb(186, 186, 186);
+      color: black;
+}
+#btnMoveAddAddress {
+      border-radius: 4px;
+      background-color: #0a52ef;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+      border: none;
+      padding: 5px;
+      font-size: 17px;
+      height: 35px;
+}
+#btnMoveAddAddress:hover {
+      transform: scale(1.1);
+      background-color: #4377e7;
+}
+.back {    
+      width: 400px;
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #f0f0f0;
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+}
+.back:hover {
+      background-color:#04ff00;
+      cursor: pointer;
+}
+/* CSS cho điện thoại */
+@media screen and (max-width: 768px) {
+      body {
+            font-size: 14px;
+      }
+
+      .confirm-box {
+            align-items: flex-start;
+            padding-top: 20%;
+      }
+
+      .confirm-content {
+            width: 90%;
+            padding: 15px;
+      }
+
+      #updateProfile-container,
+      #addAddress-container,
+      #updateAddress-container,
+      #changePassword-container,
+      #addressDetail-container {
+            width: 90%;
+            margin: auto;
+      }
+
+      #updateProfile-container input,
+      #updateProfile-container select,
+      #addAddress-container input,
+      #addAddress-container select,
+      #updateAddress-container input,
+      #updateAddress-container select,
+      #changePassword-container input {
+            width: 100%;
+      }
+
+      #updateProfile-container #updateProfile-submit,
+      #addAddress-container #addAddress-submit,
+      #updateAddress-container #updateAddress-submit,
+      #changePassword-container #changePassword-submit {
+            width: 100%;
+      }
+
+      #addressDetail-container {
+            width: 100%;
+            overflow-x: auto;
+      }
+
+      #addressDetail-table {
+            width: 100%;
+            display: block;
+            overflow-x: auto;
+      }
+
+      #customalert {
+            width: 80%;
+            height: 60px;
+      }
+
+      #closeupdateProfile-btn, 
+      #closeupdateAddress-btn,
+      #closeaddressDetail-btn, 
+      #closeChangePassword-btn {
+            left: auto;
+            right: 10px;
+            font-size: 25px;
+      }
+}

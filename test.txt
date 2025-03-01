@@ -1,0 +1,700 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th10 13, 2024 lúc 10:51 AM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.2.12
+USE Web_GalaxyCinema
+GO
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Cơ sở dữ liệu: 'web_galaxycinema'
+--
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng 'binhluan'
+--
+
+CREATE TABLE 'binhluan' (
+  'MaBinhLuan' int(11) NOT NULL,
+  'MaPhim' int(11) NOT NULL,
+  'MaTaiKhoan' int(11) UNSIGNED NOT NULL,
+  'NoiDung' varchar(255) NOT NULL,
+  'NgayBinhLuan' datetime NOT NULL DEFAULT current_timestamp(),
+  'TrangThaiBinhLuan' enum('Bình Thường','Đã Xóa','Ẩn Danh') NOT NULL DEFAULT 'Bình Thường'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng 'binhluan'
+--
+
+INSERT INTO 'binhluan' ('MaBinhLuan', 'MaPhim', 'MaTaiKhoan', 'NoiDung', 'NgayBinhLuan', 'TrangThaiBinhLuan') VALUES
+(4, 1, 20, 'Phim hay !!', '2024-09-09 11:21:04', 'Bình Thường'),
+(5, 1, 23, 'Quá hay', '2024-09-09 11:24:27', 'Bình Thường'),
+(6, 1, 22, 'Hay quá', '2024-09-09 11:25:03', 'Bình Thường'),
+(7, 6, 20, 'Alo', '2024-09-20 17:17:49', 'Bình Thường'),
+(8, 3, 22, 'Phim quá hay !!!!!', '2024-09-25 13:34:30', 'Bình Thường'),
+(9, 3, 22, 'Quá đỉnh, nên coi !!', '2024-09-25 13:35:15', 'Ẩn Danh'),
+(10, 4, 22, 'Phim hay', '2024-10-18 14:01:46', 'Ẩn Danh'),
+(11, 4, 22, 'Phim bình thường', '2024-10-18 14:02:24', 'Ẩn Danh'),
+(12, 4, 22, 'Phim Dở', '2024-10-18 14:03:46', 'Bình Thường'),
+(13, 4, 24, 'alo 1 2 3', '2024-10-18 15:02:44', 'Ẩn Danh'),
+(14, 4, 24, 'alo 4 5 6', '2024-10-18 15:02:56', 'Bình Thường');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng 'email_verify'
+--
+
+CREATE TABLE 'email_verify' (
+  'id' int(11) NOT NULL,
+  'email' varchar(255) NOT NULL,
+  'code' varchar(255) NOT NULL,
+  'token' varchar(255) NOT NULL,
+  'expires' int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng 'email_verify'
+--
+
+INSERT INTO 'email_verify' ('id', 'email', 'code', 'token', 'expires') VALUES
+(1, 'pokidofom0f2@10mail.xyz', '720156', '26cfd71603af58a6426abc8637972174de8efd629656dcc94d13bdde81991e9e02383abbffaacf7fa94b28665de4920f9d66', 2024),
+(2, 'pokidofom0f2@10mail.xyz', '309276', 'a4a51b64aa959274c395d48aefd2e3445d7dbda0de7d80f870611c55de679fea18b6ab096c0279abbff088db0914f8e3976e', 2024),
+(3, 'lypobfkfi@emlhub.com', '181878', 'bdb292628ed84a6232d5ba49a180466295709350d4e34c18f26a8b18f625cbb23fc0d60eda338eaf64a6b4d622100aa2efae', 2024);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng 'lichchieu'
+--
+
+CREATE TABLE 'lichchieu' (
+  'MaLichChieu' int(11) NOT NULL,
+  'MaPhongChieu' int(11) NOT NULL,
+  'MaPhim' int(11) NOT NULL,
+  'MaXuatChieu' int(11) NOT NULL,
+  'NgayChieu' date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng 'lichchieu'
+--
+
+INSERT INTO 'lichchieu' ('MaLichChieu', 'MaPhongChieu', 'MaPhim', 'MaXuatChieu', 'NgayChieu') VALUES
+(5, 1, 1, 1, '2024-06-14'),
+(6, 2, 2, 2, '2024-06-19'),
+(7, 3, 4, 3, '2024-06-20'),
+(8, 1, 1, 2, '2024-06-24'),
+(9, 1, 1, 2, '2024-06-14'),
+(10, 1, 1, 1, '2024-06-28'),
+(11, 1, 1, 1, '2024-07-05'),
+(12, 1, 1, 2, '2024-07-05'),
+(13, 1, 1, 3, '2024-07-05'),
+(14, 1, 2, 4, '2024-07-05'),
+(15, 1, 3, 5, '2024-07-05'),
+(16, 1, 1, 1, '2024-07-23'),
+(17, 1, 1, 2, '2024-07-23'),
+(18, 1, 1, 1, '2024-07-30'),
+(19, 1, 7, 1, '2024-07-27'),
+(20, 1, 7, 2, '2024-07-27'),
+(21, 1, 7, 1, '2024-07-28'),
+(22, 1, 7, 2, '2024-07-28'),
+(23, 2, 7, 1, '2024-07-28'),
+(24, 1, 11, 1, '2024-08-03'),
+(25, 1, 11, 2, '2024-08-03'),
+(26, 1, 1, 1, '2024-09-14'),
+(27, 1, 4, 1, '2024-10-19');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng 'loaiphim'
+--
+
+CREATE TABLE 'loaiphim' (
+  'MaLoaiPhim' int(11) NOT NULL,
+  'TenLoaiPhim' varchar(255) DEFAULT NULL,
+  'MoTa' text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng 'loaiphim'
+--
+
+INSERT INTO 'loaiphim' ('MaLoaiPhim', 'TenLoaiPhim', 'MoTa') VALUES
+(1, 'Heist Film', 'Những bộ phim xoay quanh những băng nhóm trộm cướp – có thể là cướp ngân hàng hay lừa đảo một số tài sản khổng lồ.'),
+(2, 'Hành động', 'Thể loại điện ảnh trong đó một hoặc nhiều nhân vật anh hùng bị đẩy vào một loạt những thử thách, thường bao gồm những kì công vật lý, các cảnh hành động kéo dài, yếu tố bạo lực và những cuộc rượt đuổi điên cuồng, kịch tính.'),
+(3, 'Tình cảm', 'Thể loại phim về những câu chuyện tình lãng mạn được ghi lại trên các phương tiện thị giác để phát sóng trên sân khấu và trên TV với nội dung tập trung vào đam mê, cảm xúc, và sự liên hệ tình cảm lãng mạn của các nhân vật chính.'),
+(4, 'Phiêu lưu', 'Phim phiêu lưu thường chủ yếu lấy bối cảnh trong một thời kỳ lịch sử nhất định và thường bao gồm những câu chuyện lịch sử chuyển thể hoặc những anh hùng phiêu lưu giả tưởng trong phạm vi lịch sử.'),
+(5, 'Tâm lý', 'Phim tâm lý là loại phim có cốt truyện gây xúc động mạnh với mục đích lay động cảm xúc mãnh liệt cũng như tạo tiền đề cho sự xây dựng đặc tính nhân vật được cặn kẽ, chi tiết.'),
+(6, 'Hoạt hình', 'Phim hoạt hình hay phim hoạt họa là một hình thức sử dụng ảo ảnh quang học về sự chuyển động do nhiều hình ảnh tĩnh được chiếu tiếp diễn liên tục.'),
+(7, 'Hài', 'Phim hài là thể loại phim nhấn mạnh vào tính hài hước, là một trong những dòng phim lâu đời nhất và cũng chính là một trong số những bộ phim câm đầu tiên trên thế giới. Những bộ phim hài thường là những câu chuyện có mục đích để giải trí.'),
+(8, 'Kinh dị', 'Phim kinh dị là một thể loại điện ảnh đưa đến cho khán giả xem phim những cảm xúc tiêu cực, gợi cho người xem nỗi sợ hãi nguyên thủy nhất thông qua cốt truyện, nội dung phim, những hình ảnh rùng rợn, bí hiểm, ánh sáng mờ ảo, những âm thanh rùng rợn, nhiều cảnh máu me, chết chóc.'),
+(9, 'Crime Comedy', 'sự pha trộn của phim tội phạm và yếu tố hài hước. Thể loại phim này thường không tập trung vào hành vi phạm tội của tội phạm mà thiên về các yếu tố gây cười như sự vụng về, vui tính của ông trùm hay những hành vi ngớ ngẩn, vô lý của nhóm gangster.'),
+(10, 'Mob Film', 'Phim tội phạm liên quan đến tội phạm có tổ chức, thường là đặc biệt với các tổ chức Mafia. Phim thuộc thể loại này thường tập trung vào những tình tiết xoay quanh cuộc đấu đá, tranh giành quyền lực giữa các tổ chức tội phạm, hoặc những mưu đồ nhằm chống lại những người thực thi luật pháp của các tổ chức đó.'),
+(11, 'Western Film', 'Bối cảnh thường là cuộc sống và thiên nhiên ở miền Tây Hoa Kỳ. Các phim miền Tây thường là phim hành động về các cao bồi miền viễn tây.');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng 'loaive'
+--
+
+CREATE TABLE 'loaive' (
+  'MaLoaiVe' int(11) NOT NULL,
+  'TenLoaiVe' varchar(255) NOT NULL,
+  'DonGia' int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng 'loaive'
+--
+
+INSERT INTO 'loaive' ('MaLoaiVe', 'TenLoaiVe', 'DonGia') VALUES
+(1, 'Vé thường', 80000),
+(2, 'Vé hội viên', 70000),
+(3, 'Vé VIP', 120000);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng 'password_resets'
+--
+
+CREATE TABLE 'password_resets' (
+  'id' int(11) NOT NULL,
+  'email' varchar(255) NOT NULL,
+  'token' varchar(255) NOT NULL,
+  'expires' int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng 'password_resets'
+--
+
+INSERT INTO 'password_resets' ('id', 'email', 'token', 'expires') VALUES
+(26, '', '2b75b8b155e61af8b0874e0d41e8386b5c2c02f2e6be55a0624a2b97282671db4ff67860973a535fe320e96e026c1764d15e', 2024),
+(27, 'dvmv2017@gmail.com', '1b07894746ab8feda5e6191178b8c59a689cf4440c16a8e90975e0e710536e653abee96f1917cf14a1f535ac80eeb0486326', 2024),
+(28, 'dvmv2017@gmail.com', 'e4a0f8d08a0962e3efe316f9071b5a7224c0ccdcdd40ce99cd9a32ae5e4386310d69d3aff6e9928b4f07fe5efd4ee198f27a', 2024),
+(29, 'dvmv2017@gmail.com', '50f8de27d46069bbe830a3d810182532b50b2b078e6746418afbb3b608efa2e053fc0a24e3477f44a1af53d23d149ef68044', 2024),
+(30, 'dvmv2017@gmail.com', '177eb4d4238acf8d9f5d2a05493c622a77a9d80a2b461d3411a016e16615d9806dfdd29dc78762118af3ae03ca2a270c0311', 2024),
+(31, 'dvmv2017@gmail.com', 'dda0891d022b6d97c31b247a92e25e6ab00f62c96f7ec5fbf15db4b5650abb915786f01bc4efc3fa7dae5b56c8cce3e7809f', 2024),
+(32, 'dvmv2021@gmail.com', '7ec52bad93abf88981c70a96ee76b002d9a217ffe7413b5e8511fda5eb6aaae1c908294de8d762c15a9ebb8c037ac6783487', 2024),
+(33, 'dvmv2021@gmail.com', 'edbe6a09b824bdfcec290c57d390e29733360cf815b71e32c2f66425d8b47eae2274193348b38fe6c3051b65460950ac54db', 2024),
+(34, 'dvmv2017@gmail.com', '15b74ca82ab9fd1391f015606ffd63a777c877a64e2e482c8e5a8a4b2a203ef7cd309e9e27a0b2d7d7e7aa92d96af622bbfe', 2024),
+(35, 'lypobfkfi@emlhub.com', '924b95603bed0d90cccb8b586dc0f9bfb5e595a4fd07881d4e98f71655f90aa579420c50d2f34f06270bee6b8ad8b3de9e6d', 2024),
+(36, 'lypobfkfi@emlhub.com', '415b286990498d3f7441886ec38cf3fd269990d09845e040ccb2007d911e04450456514da3f79ccfbdc1662255fc198871d2', 2024);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng 'phanquyen'
+--
+
+CREATE TABLE 'phanquyen' (
+  'VaiTro' varchar(255) NOT NULL,
+  'Phim' tinyint(1) DEFAULT 0,
+  'Người Dùng' tinyint(1) DEFAULT 0,
+  'Phân Quyền' tinyint(1) DEFAULT 0,
+  'Lịch Chiếu' tinyint(1) DEFAULT 0,
+  'Phòng Chiếu' tinyint(1) DEFAULT 0,
+  'Doanh Thu' tinyint(1) DEFAULT 0,
+  'Bình Luận' tinyint(1) DEFAULT 0,
+  'Vé' tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng 'phanquyen'
+--
+
+INSERT INTO 'phanquyen' ('VaiTro', 'Phim', 'Người Dùng', 'Phân Quyền', 'Lịch Chiếu', 'Phòng Chiếu', 'Doanh Thu', 'Bình Luận', 'Vé') VALUES
+('Khách Hàng', 0, 0, 0, 0, 0, 0, 0, 0),
+('Nhân Viên', 0, 0, 0, 1, 0, 0, 0, 1),
+('Quản Lý', 1, 1, 0, 1, 1, 1, 1, 1),
+('Quản Trị Viên', 1, 1, 1, 1, 1, 1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng 'phim'
+--
+
+CREATE TABLE 'phim' (
+  'MaPhim' int(11) NOT NULL,
+  'TenPhim' varchar(255) NOT NULL,
+  'AnhPhimNho' varchar(255) NOT NULL,
+  'AnhPhimLon' varchar(255) NOT NULL,
+  'Trailer' varchar(255) NOT NULL,
+  'ThongTin' longtext DEFAULT NULL,
+  'TuoiYeuCau' int(11) NOT NULL,
+  'ThoiLuongPhim' int(11) NOT NULL,
+  'NgayKhoiChieu' date DEFAULT NULL,
+  'XuatXu' varchar(255) NOT NULL,
+  'NhaSanXuat' varchar(255) NOT NULL,
+  'TrangThai' enum('Sắp Chiếu','Đang Chiếu','Ẩn Phim') NOT NULL DEFAULT 'Sắp Chiếu'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng 'phim'
+--
+
+INSERT INTO 'phim' ('MaPhim', 'TenPhim', 'AnhPhimNho', 'AnhPhimLon', 'Trailer', 'ThongTin', 'TuoiYeuCau', 'ThoiLuongPhim', 'NgayKhoiChieu', 'XuatXu', 'NhaSanXuat', 'TrangThai') VALUES
+(1, 'Haikyu!!: Trận Chiến Bãi Phế Liệu', 'haikyuu-the-dumpster-battle-nho.jpg', 'haikyuu-the-dumpster-battle-lon.jpg', 'DKwuwNQaP5w', 'Một trong những series manga và anime thể thao về bóng chuyền nổi tiếng nhất mọi thời đại.', 13, 85, '2024-05-15', 'Nhật Bản', 'TOHO Animation', 'Đang Chiếu'),
+(2, 'Hành Tinh Khỉ: Vương Quốc Mới', 'hanh-tinh-khi-nho.jpg', 'hanh-tinh-khi-lon.jpg', '8rmCpaOQiLQ', 'Kingdom Of The Planet Of The Apes lấy bối cảnh nhiều đời sau Caesar đại đế, hành tinh này là nơi loài khỉ thống trị, còn loài người dần lui về trong bóng tối. Khi một thủ lĩnh khỉ bạo chúa bắt đầu xây dựng đế chế của riêng mình, buộc thủ lĩnh một tộc khỉ khác phải bước vào hành trình tăm tối để tìm kiếm tự do, quyết định tương lai của loài người và khỉ.', 16, 144, '2024-05-14', 'Mỹ', '20th Century Fox', 'Sắp Chiếu'),
+(3, 'Phim Điện Ảnh Doraemon: Nobita Và Bản Giao Hưởng Địa Cầu', 'doraemon-movie-43-nho.jpg', 'doraemon-movie-43-lon.jpg', '6SuyvoJ4tyk', 'Thích thú trước nốt \"No\" lạc quẻ của Nobita, Micca - cô bé bí ẩn đã mời Doraemon, Nobita cùng nhóm bạn đến \"Farre\". Đó là cung điện âm nhạc tọa lạc trên một hành tinh nơi âm nhạc sẽ hóa thành năng lượng. Nhằm cứu cung điện này, Micca đang tìm kiếm \"virtuoso\" - bậc thầy âm nhạc sẽ cùng mình biểu diễn!', 0, 115, '2024-05-24', 'Nhật Bản', 'Shin-Ei Animation', 'Sắp Chiếu'),
+(4, 'Lật mặt 7', 'lm7-nho.jpg', 'lm7-lon.jpg', 'nzLavaLXU_U', 'Qua những lát cắt đan xen, ẩn chứa nhiều nụ cười và cả nước mắt, \"Lật Mặt 7: Một Điều Ước\" là câu chuyện cảm động về đại gia đình bà Hai 73 tuổi - người mẹ đơn thân tự mình nuôi 5 người con khôn lớn. Khi trưởng thành, mỗi người đều có cuộc sống và gia đìn', 16, 120, '2024-05-01', 'Việt Nam', 'LyHaiOffical', 'Sắp Chiếu'),
+(6, 'Deadpool & Wolverine', 'deadpool-wolverine-nho.jpg', 'deadpool-wolverine-lon.jpg', 'lW4-A3ZQnVQ', 'Sau Tim Miller (Deadpool) và David Leitch (Deadpool 2), đạo diễn Shawn Levy của Real Steel và Free Guy là cái tên tiếp theo cầm trịch tác phẩm về gã phản anh hùng nói nhiều. Ryan Reynolds tiếp tục quay lại vai diễn mang tính biểu tượng trong sự nghiệp. Anh tham gia luôn khâu biên kịch cùng Rhett Reese, Paul Wernick, Zeb Wells và Shawn Levy. Hugh Jackman cũng tái xuất vai diễn dường như chẳng ai thay thế nổi – Wolverine.', 18, 127, '2024-07-27', 'Mỹ', 'Marvel Studios, 20th Century Studios', 'Sắp Chiếu'),
+(7, 'Vây Hãm Trên Không', 'vay-ham-tren-khong-nho.jpg', 'vay-ham-tren-khong-lon.jpg', '1Umr4h5dn5I', 'Bộ phim hành động ly kỳ dựa trên sự kiện có thật với sự tham gia của Ha Jung Woo, Yeo Jin Goo và Sung Dong Il được dựa trên một sự kiện có thật năm 1971, khi một thanh niên Hàn Quốc định cướp một chiếc máy bay chở khách khởi hành từ thành phố cảnh phía đông Sokcho bay tới Seoul. Mọi người trên chuyến bay này đều đang đặt cược mạng sống của mình!', 16, 100, '2024-07-18', 'Hàn Quốc', 'Perfect Storm Film', 'Sắp Chiếu'),
+(11, 'Thám Tử Lừng Danh Conan: Ngôi Sao 5 Cánh 1 Triệu Đô', 'detective-conan-the-million-dollar-pentagram-nho.jpg', 'detective-conan-the-million-dollar-pentagram-lon.jpg', 'x_gGMJOppAo', 'Siêu trộm Kaito Kid và thám tử miền Tây Hattori Heiji cùng đối đầu trong cuộc tranh giành thanh kiếm thuộc về Hijikata Toushizou - phó chỉ huy của Shinsengumi! Thù mới hận cũ, Heiji sẽ xử trí Kid thế nào đây?', 13, 111, '2024-08-02', 'Việt Nam', 'TMS Entertainment', 'Sắp Chiếu');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng 'phim_loaiphim'
+--
+
+CREATE TABLE 'phim_loaiphim' (
+  'MaPhim' int(11) NOT NULL,
+  'MaLoaiPhim' int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng 'phim_loaiphim'
+--
+
+INSERT INTO 'phim_loaiphim' ('MaPhim', 'MaLoaiPhim') VALUES
+(1, 1),
+(1, 6),
+(11, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng 'phongchieu'
+--
+
+CREATE TABLE 'phongchieu' (
+  'MaPhongChieu' int(11) NOT NULL,
+  'TenPhongChieu' varchar(255) NOT NULL,
+  'SoLuongGhe' int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng 'phongchieu'
+--
+
+INSERT INTO 'phongchieu' ('MaPhongChieu', 'TenPhongChieu', 'SoLuongGhe') VALUES
+(1, 'Phòng 01', 45),
+(2, 'Phòng 02', 40),
+(3, 'Phòng 03', 40),
+(4, 'Phòng 04', 40),
+(5, 'Phòng 05', 40),
+(6, 'Phòng 06', 40);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng 'taikhoan'
+--
+
+CREATE TABLE 'taikhoan' (
+  'MaTaiKhoan' int(11) UNSIGNED NOT NULL,
+  'AnhDaiDien' varchar(250) DEFAULT NULL,
+  'TenDangNhap' varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  'MatKhau' varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  'TrangThai' enum('Đang Hoạt Động','Đang Khóa') NOT NULL DEFAULT 'Đang Hoạt Động',
+  'NgayTao' datetime NOT NULL DEFAULT current_timestamp(),
+  'VaiTro' varchar(255) DEFAULT 'Khách Hàng',
+  'HoTen' varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  'NgaySinh' date DEFAULT NULL,
+  'SoDienThoai' varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  'Email' varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  'XacNhanEmail' enum('Đã Xác Nhận','Chưa Xác Nhận','','') NOT NULL DEFAULT 'Chưa Xác Nhận'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng 'taikhoan'
+--
+
+INSERT INTO 'taikhoan' ('MaTaiKhoan', 'AnhDaiDien', 'TenDangNhap', 'MatKhau', 'TrangThai', 'NgayTao', 'VaiTro', 'HoTen', 'NgaySinh', 'SoDienThoai', 'Email', 'XacNhanEmail') VALUES
+(18, NULL, 'minhvi', '$2y$10$JKT9NOH4OACF16KTt0Bi6ObPoK8QSLXmPB9B0HixSs4sFi.WExesa', 'Đang Hoạt Động', '2024-05-29 16:29:20', 'Quản Trị Viên', 'Admin Minh Vi', '2004-11-22', '0772912452', 'dvmv2017@gmail.com', 'Chưa Xác Nhận'),
+(19, NULL, 'minhvi1', '$2y$10$DYCOeHsMpmsX6upRhUL7UOCJDYIttkgG.GlvulBl8ZcS5nmXsSwrC', 'Đang Hoạt Động', '2024-05-29 16:29:46', 'Quản Lý', 'Manager Minh Vi', '2004-11-22', '0772912452', 'dvmv2021@gmail.com', 'Chưa Xác Nhận'),
+(20, NULL, 'minhvi2', '$2y$10$YPiX0ABgcm941AnxBaAqG.4WHE8c2QYVwOyUWYPcSKLUVWQwY2wL2', 'Đang Hoạt Động', '2024-05-29 16:33:13', 'Nhân Viên', 'Staff Minh Vi', '2004-11-22', '0772912452', 'minhvi2@gmail.com', 'Chưa Xác Nhận'),
+(22, 'AVT223.jpg', 'minhvi3', '$2y$10$0hRTpY7xW7Rz1vihMblzwO.x/JodVJOuJCLJMyJMb.86PwN6Mbycq', 'Đang Hoạt Động', '2024-06-19 03:30:48', 'Khách Hàng', 'Minh Vi', '2004-11-22', '0772912452', 'vi.duongvanminh@gmail.com', 'Chưa Xác Nhận'),
+(23, NULL, 'quynhnhu', '$2y$10$2t7CB8QFIjwbjjP3mot6LuKbj8na11vT0b6AbNi9CzmoMWXumBijS', 'Đang Hoạt Động', '2024-06-19 23:26:23', 'Khách Hàng', 'Bé Như cute', '2004-11-22', '0772912452', 'nhunhu280904@gmail.com', 'Chưa Xác Nhận'),
+(24, 'AVT2413.jpg', 'minhvi4', '$2y$10$87.mhnPSJnayQwSrR00Pi.ob.dS1.ihmUasRSEb2Ccmsb9s/h20ne', 'Đang Hoạt Động', '2024-10-18 14:11:52', 'Khách Hàng', 'Khách hàng 4', '2003-12-18', '0772912452', 'kakaloz767@gmail.com', 'Chưa Xác Nhận'),
+(32, NULL, 'minhvi5', '$2y$10$q8QUYwYZ2fPqA2AGmTdbTOjGSITVUhuw0WBZe55kiz9Kd9mX3QJLO', 'Đang Hoạt Động', '2024-11-12 17:43:29', 'Khách Hàng', 'minhvi5', '2004-11-22', '0125963874', 'lypobfkfi@emlhub.com', 'Đã Xác Nhận');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng 'thanhtoanmomo'
+--
+
+CREATE TABLE 'thanhtoanmomo' (
+  'partnerCode' varchar(250) NOT NULL,
+  'partnerName' varchar(250) NOT NULL,
+  'storeId' varchar(250) NOT NULL,
+  'requestId' varchar(250) NOT NULL,
+  'amount' varchar(250) NOT NULL,
+  'orderId' varchar(250) NOT NULL,
+  'orderInfo' varchar(250) NOT NULL,
+  'redirectUrl' varchar(250) NOT NULL,
+  'ipnUrl' varchar(250) NOT NULL,
+  'lang' varchar(250) NOT NULL,
+  'extraData' varchar(250) NOT NULL,
+  'requestType' varchar(250) NOT NULL,
+  'signature' varchar(250) NOT NULL,
+  'currentDateTime' datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng 'thanhtoanmomo'
+--
+
+INSERT INTO 'thanhtoanmomo' ('partnerCode', 'partnerName', 'storeId', 'requestId', 'amount', 'orderId', 'orderInfo', 'redirectUrl', 'ipnUrl', 'lang', 'extraData', 'requestType', 'signature', 'currentDateTime') VALUES
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1721293679', '240000', '1721293679', 'Thanh toán 3 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=1&DSGhe=0=1&1=2&2=3&MaLichChieu=16&orderId=1721293679', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', '8160f41da48364c31a4f386f0ead553b5ef0fafa4c8b83d60ecc7be5950cbedf', '2024-07-18 16:07:59'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1721293962', '210000', '1721293962', 'Thanh toán 3 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=2&DSGhe=0=2&1=3&2=4&MaLichChieu=16&orderId=1721293962', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', 'e0632159d5e5022dba2d4b91977eb4c9b14c0dcfa01e793f50ed3eccb44f48a3', '2024-07-18 16:12:42'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1721294267', '160000', '1721294267', 'Thanh toán 2 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=1&DSGhe=0=3&1=4&MaLichChieu=16&orderId=1721294267', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', 'fc0e1ce3cb5ae6fc6d351ece55a235d7361a783cb9b3a193f639ce47235cbad0', '2024-07-18 16:17:47'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1721294443', '210000', '1721294443', 'Thanh toán 3 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=2&DSGhe%5B0%5D=4&DSGhe%5B1%5D=5&DSGhe%5B2%5D=6&MaLichChieu=16&orderId=1721294443', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', 'd3f7d72e3724d1f85269f67ec2c7b8940c39ec35aea02c08cfbf406b15f1e465', '2024-07-18 16:20:43'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1721294936', '160000', '1721294936', 'Thanh toán 2 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=1&DSGhe%5B0%5D=7&DSGhe%5B1%5D=8&MaLichChieu=16&orderId=1721294936', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', 'e7e496ed813b1770e06546f2848078518a089c36084d17c95ef4f72f020a399a', '2024-07-18 16:28:56'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1721295113', '240000', '1721295113', 'Thanh toán 2 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=3&DSGhe%5B0%5D=7&DSGhe%5B1%5D=8&MaLichChieu=16&orderId=1721295113', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', '5336353f574c6a5510666878012ce365c09e6ad25375b4a6ed954470dca296bf', '2024-07-18 16:31:53'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1721295415', '360000', '1721295415', 'Thanh toán 3 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=3&DSGhe%5B0%5D=7&DSGhe%5B1%5D=8&DSGhe%5B2%5D=9&MaLichChieu=16&orderId=1721295415', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', '34cd7ff4b8881bd989e1a0a7ae19f825bd5a651f48cb7ea1cf64db66de689fba', '2024-07-18 16:36:55'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1721301202', '210000', '1721301202', 'Thanh toán 3 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=2&DSGhe%5B0%5D=11&DSGhe%5B1%5D=12&DSGhe%5B2%5D=13&MaLichChieu=16&orderId=1721301202', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', '0810171890e9f2254899a014517296c0815387fe1f85d5926b473730648c6dae', '2024-07-18 18:13:22'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1721301659', '140000', '1721301659', 'Thanh toán 2 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=2&DSGhe%5B0%5D=14&DSGhe%5B1%5D=15&MaLichChieu=16&orderId=1721301659', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', 'af09dbae2c6eba9d5ba346f0f0aaf5da8826c16053021e7ec1a5175483f38314', '2024-07-18 18:20:59'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1721496510', '360000', '1721496510', 'Thanh toán 3 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=3&DSGhe%5B0%5D=1&DSGhe%5B1%5D=2&DSGhe%5B2%5D=3&MaLichChieu=17&orderId=1721496510', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', '3825b4f861eb7170e490c4eeb752190c7e958c9893310b36600e1f4c2b91d2ed', '2024-07-21 00:28:30'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1721693477', '480000', '1721693477', 'Thanh toán 4 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=3&DSGhe%5B0%5D=1&DSGhe%5B1%5D=2&DSGhe%5B2%5D=3&DSGhe%5B3%5D=4&MaLichChieu=18&orderId=1721693477', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', 'b274aba25ae5bc810f149c231a2a91ff04fe42a68782f53a1a1f27ba751bc535', '2024-07-23 07:11:17'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1721805748', '240000', '1721805748', 'Thanh toán 3 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=1&DSGhe%5B0%5D=1&DSGhe%5B1%5D=2&DSGhe%5B2%5D=3&MaLichChieu=19&orderId=1721805748', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', '935057ced59dbb679234c1ae4c83c6fde84171327bc2feea228b89976c1f894c', '2024-07-24 14:22:28'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1721834155', '600000', '1721834155', 'Thanh toán 5 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=3&DSGhe%5B0%5D=1&DSGhe%5B1%5D=2&DSGhe%5B2%5D=3&DSGhe%5B3%5D=4&DSGhe%5B4%5D=5&MaLichChieu=21&orderId=1721834155', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', '84cee9d23eda0d7a530312353f20c6d6128e1e26aeecb6922c13f974d6e5a531', '2024-07-24 22:15:55'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1722531397', '240000', '1722531397', 'Thanh toán 3 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=1&DSGhe%5B0%5D=1&DSGhe%5B1%5D=2&DSGhe%5B2%5D=3&MaLichChieu=24&orderId=1722531397', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', '0c9f441a91813f9d8a64c80a3664100df77c6effceed5f323f3d690c6adbb875', '2024-08-01 23:56:37'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1726049628', '400000', '1726049628', 'Thanh toán 5 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=1&DSGhe%5B0%5D=1&DSGhe%5B1%5D=2&DSGhe%5B2%5D=3&DSGhe%5B3%5D=4&DSGhe%5B4%5D=5&MaLichChieu=26&orderId=1726049628', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', '3a35f35f8325964f39266f3808ecd49af0c4dabe41f9d96483c71e8d09f6faa8', '2024-09-11 17:13:48'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1726067254', '80000', '1726067254', 'Thanh toán 1 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=1&DSGhe%5B0%5D=6&MaLichChieu=26&orderId=1726067254', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', 'a3eb757aaa27421d8af4744a06ff8e84ffc7ddbb4129f9e1026e36090fe61a5e', '2024-09-11 22:07:34'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1729235621', '600000', '1729235621', 'Thanh toán 5 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=3&DSGhe%5B0%5D=1&DSGhe%5B1%5D=2&DSGhe%5B2%5D=3&DSGhe%5B3%5D=4&DSGhe%5B4%5D=5&MaLichChieu=27&orderId=1729235621', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', '54a5f3a506ab5b6aee710cc2c87ab999e4672d65973258fae1280875ffab169f', '2024-10-18 14:13:41'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1729235814', '240000', '1729235814', 'Thanh toán 2 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=3&DSGhe%5B0%5D=1&DSGhe%5B1%5D=2&MaLichChieu=27&orderId=1729235814', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', 'ce99b095dd88dcbf74f37fc94830ed30c51b50666d666dd180212b2a35eac2c9', '2024-10-18 14:16:54'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1729235919', '0', '1729235919', 'Thanh toán 2 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=3&DSGhe%5B0%5D=1&DSGhe%5B1%5D=2&MaLichChieu=27&orderId=1729235919', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', '4f9015fcecbbbeea83b3ca6190ac368833b753aaee8485c92cf11bdf1199e128', '2024-10-18 14:18:39'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1729235922', '0', '1729235922', 'Thanh toán 2 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=3&DSGhe%5B0%5D=1&DSGhe%5B1%5D=2&MaLichChieu=27&orderId=1729235922', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', 'afca8fe56dbee591feec218aede49c209230088290c084b8f9101c6bbca07565', '2024-10-18 14:18:42'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1729235925', '0', '1729235925', 'Thanh toán 2 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=3&DSGhe%5B0%5D=1&DSGhe%5B1%5D=2&MaLichChieu=27&orderId=1729235925', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', '44c72337a4d8dabdc1a0944048b48e1c5dea2e27f05758729c48414490076f18', '2024-10-18 14:18:45'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1729235926', '0', '1729235926', 'Thanh toán 2 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=3&DSGhe%5B0%5D=1&DSGhe%5B1%5D=2&MaLichChieu=27&orderId=1729235926', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', '13cff2291e24a74d1438fce0c3b2dfd9026a95ba7489e4275e8988e299a8e71c', '2024-10-18 14:18:46'),
+('MOMOBKUN20180529', 'Test', 'MomoTestStore', '1729235932', '360000', '1729235932', 'Thanh toán 3 vé xem phim Galaxycine.com', 'http://localhost/Galaxy/index.php?ctrl=bookedTicket&LoaiVe=3&DSGhe%5B0%5D=1&DSGhe%5B1%5D=2&DSGhe%5B2%5D=45&MaLichChieu=27&orderId=1729235932', 'http://localhost/Galaxy/index.php', 'vi', '', 'payWithATM', '30c63a8eda738eefe4b6df4e07efb7102c8ae14d4dba08fb1812a120f464d71f', '2024-10-18 14:18:52');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng 've'
+--
+
+CREATE TABLE 've' (
+  'MaVe' int(11) NOT NULL,
+  'MaLoaiVe' int(11) NOT NULL,
+  'MaNhanVien' int(11) UNSIGNED DEFAULT NULL,
+  'MaKhachHang' int(10) UNSIGNED DEFAULT NULL,
+  'Ghe' int(11) NOT NULL,
+  'NgayBanVe' datetime NOT NULL,
+  'MaLichChieu' int(11) NOT NULL,
+  'orderId' varchar(250) NOT NULL,
+  'TrangThai' enum('Đã Thanh Toán','Đã Sử Dụng','Đã Hủy','Đã Hết Hạn') NOT NULL DEFAULT 'Đã Thanh Toán'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng 've'
+--
+
+INSERT INTO 've' ('MaVe', 'MaLoaiVe', 'MaNhanVien', 'MaKhachHang', 'Ghe', 'NgayBanVe', 'MaLichChieu', 'orderId', 'TrangThai') VALUES
+(103, 1, NULL, 22, 1, '2024-07-18 16:10:09', 16, '1721293679', 'Đã Sử Dụng'),
+(104, 2, NULL, 22, 2, '2024-07-18 16:13:20', 16, '1721293962', 'Đã Thanh Toán'),
+(105, 2, NULL, 22, 2, '2024-07-18 16:17:12', 16, '1721293962', 'Đã Thanh Toán'),
+(106, 1, NULL, 22, 3, '2024-07-18 16:18:21', 16, '1721294267', 'Đã Thanh Toán'),
+(107, 2, NULL, 22, 4, '2024-07-18 16:24:54', 16, '1721294443', 'Đã Thanh Toán'),
+(108, 2, NULL, 22, 5, '2024-07-18 16:24:54', 16, '1721294443', 'Đã Thanh Toán'),
+(109, 2, NULL, 22, 6, '2024-07-18 16:24:54', 16, '1721294443', 'Đã Thanh Toán'),
+(113, 3, NULL, 22, 7, '2024-07-18 16:37:30', 16, '1721295415', 'Đã Thanh Toán'),
+(114, 3, NULL, 22, 8, '2024-07-18 16:37:30', 16, '1721295415', 'Đã Thanh Toán'),
+(115, 3, NULL, 22, 9, '2024-07-18 16:37:30', 16, '1721295415', 'Đã Thanh Toán'),
+(116, 2, NULL, 22, 11, '2024-07-18 18:14:01', 16, '1721301202', 'Đã Thanh Toán'),
+(117, 2, NULL, 22, 12, '2024-07-18 18:14:01', 16, '1721301202', 'Đã Thanh Toán'),
+(118, 2, NULL, 22, 13, '2024-07-18 18:14:01', 16, '1721301202', 'Đã Thanh Toán'),
+(119, 2, NULL, 22, 14, '2024-07-18 18:21:41', 16, '1721301659', 'Đã Sử Dụng'),
+(120, 2, NULL, 22, 15, '2024-07-18 18:21:41', 16, '1721301659', 'Đã Sử Dụng'),
+(121, 3, NULL, 22, 1, '2024-07-21 00:29:07', 17, '1721496510', 'Đã Sử Dụng'),
+(122, 3, NULL, 22, 2, '2024-07-21 00:29:07', 17, '1721496510', 'Đã Sử Dụng'),
+(123, 3, NULL, 22, 3, '2024-07-21 00:29:07', 17, '1721496510', 'Đã Sử Dụng'),
+(124, 3, NULL, 22, 1, '2024-07-23 07:12:21', 18, '1721693477', 'Đã Sử Dụng'),
+(125, 3, NULL, 22, 2, '2024-07-23 07:12:21', 18, '1721693477', 'Đã Sử Dụng'),
+(126, 3, NULL, 22, 3, '2024-07-23 07:12:21', 18, '1721693477', 'Đã Sử Dụng'),
+(127, 3, NULL, 22, 4, '2024-07-23 07:12:21', 18, '1721693477', 'Đã Sử Dụng'),
+(128, 1, NULL, 22, 1, '2024-07-24 14:23:21', 19, '1721805748', 'Đã Thanh Toán'),
+(129, 1, NULL, 22, 2, '2024-07-24 14:23:21', 19, '1721805748', 'Đã Thanh Toán'),
+(130, 1, NULL, 22, 3, '2024-07-24 14:23:21', 19, '1721805748', 'Đã Thanh Toán'),
+(131, 3, NULL, 22, 1, '2024-07-24 22:16:36', 21, '1721834155', 'Đã Thanh Toán'),
+(132, 3, NULL, 22, 2, '2024-07-24 22:16:36', 21, '1721834155', 'Đã Thanh Toán'),
+(133, 3, NULL, 22, 3, '2024-07-24 22:16:36', 21, '1721834155', 'Đã Thanh Toán'),
+(134, 3, NULL, 22, 4, '2024-07-24 22:16:36', 21, '1721834155', 'Đã Thanh Toán'),
+(135, 3, NULL, 22, 5, '2024-07-24 22:16:36', 21, '1721834155', 'Đã Thanh Toán'),
+(136, 1, NULL, 22, 1, '2024-08-01 23:58:00', 24, '1722531397', 'Đã Sử Dụng'),
+(137, 1, NULL, 22, 2, '2024-08-01 23:58:00', 24, '1722531397', 'Đã Sử Dụng'),
+(138, 1, NULL, 22, 3, '2024-08-01 23:58:00', 24, '1722531397', 'Đã Sử Dụng'),
+(139, 1, 18, NULL, 1, '2024-09-11 17:14:47', 26, '1726049628', 'Đã Thanh Toán'),
+(140, 1, 18, NULL, 2, '2024-09-11 17:14:47', 26, '1726049628', 'Đã Thanh Toán'),
+(141, 1, 18, NULL, 3, '2024-09-11 17:14:47', 26, '1726049628', 'Đã Thanh Toán'),
+(142, 1, 18, NULL, 4, '2024-09-11 17:14:47', 26, '1726049628', 'Đã Thanh Toán'),
+(143, 1, 18, NULL, 5, '2024-09-11 17:14:47', 26, '1726049628', 'Đã Thanh Toán'),
+(144, 1, NULL, 22, 6, '2024-09-11 22:08:31', 26, '1726067254', 'Đã Sử Dụng'),
+(145, 3, NULL, 24, 1, '2024-10-18 14:24:58', 27, '1729235932', 'Đã Thanh Toán'),
+(146, 3, NULL, 24, 2, '2024-10-18 14:24:58', 27, '1729235932', 'Đã Thanh Toán'),
+(147, 3, NULL, 24, 45, '2024-10-18 14:24:58', 27, '1729235932', 'Đã Thanh Toán');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng 'xuatchieu'
+--
+
+CREATE TABLE 'xuatchieu' (
+  'MaXuatChieu' int(11) NOT NULL,
+  'TenXuatChieu' varchar(30) NOT NULL,
+  'ThoiGianBatDau' time NOT NULL,
+  'ThoiGianKetThuc' time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng 'xuatchieu'
+--
+
+INSERT INTO 'xuatchieu' ('MaXuatChieu', 'TenXuatChieu', 'ThoiGianBatDau', 'ThoiGianKetThuc') VALUES
+(1, 'Xuất Chiếu 1', '09:00:00', '12:00:00'),
+(2, 'Xuất Chiếu 2', '12:00:00', '15:00:00'),
+(3, 'Xuất Chiếu 3', '15:00:00', '18:00:00'),
+(4, 'Xuất Chiếu 4', '18:00:00', '21:00:00'),
+(5, 'Xuất Chiếu 5', '21:00:00', '24:00:00');
+
+--
+-- Chỉ mục cho các bảng đã đổ
+--
+
+--
+-- Chỉ mục cho bảng 'binhluan'
+--
+ALTER TABLE 'binhluan'
+  ADD PRIMARY KEY ('MaBinhLuan'),
+  ADD KEY 'MaPhim' ('MaPhim'),
+  ADD KEY 'MaTaiKhoan' ('MaTaiKhoan'),
+  ADD KEY 'MaTaiKhoan_2' ('MaTaiKhoan');
+
+--
+-- Chỉ mục cho bảng 'email_verify'
+--
+ALTER TABLE 'email_verify'
+  ADD PRIMARY KEY ('id');
+
+--
+-- Chỉ mục cho bảng 'lichchieu'
+--
+ALTER TABLE 'lichchieu'
+  ADD PRIMARY KEY ('MaLichChieu'),
+  ADD KEY 'MaPhongChieu' ('MaPhongChieu','MaPhim'),
+  ADD KEY 'FK_chitietchieuphim_Phim' ('MaPhim'),
+  ADD KEY 'XuatChieu' ('MaXuatChieu');
+
+--
+-- Chỉ mục cho bảng 'loaiphim'
+--
+ALTER TABLE 'loaiphim'
+  ADD PRIMARY KEY ('MaLoaiPhim');
+
+--
+-- Chỉ mục cho bảng 'loaive'
+--
+ALTER TABLE 'loaive'
+  ADD PRIMARY KEY ('MaLoaiVe');
+
+--
+-- Chỉ mục cho bảng 'password_resets'
+--
+ALTER TABLE 'password_resets'
+  ADD PRIMARY KEY ('id');
+
+--
+-- Chỉ mục cho bảng 'phanquyen'
+--
+ALTER TABLE 'phanquyen'
+  ADD PRIMARY KEY ('VaiTro');
+
+--
+-- Chỉ mục cho bảng 'phim'
+--
+ALTER TABLE 'phim'
+  ADD PRIMARY KEY ('MaPhim');
+
+--
+-- Chỉ mục cho bảng 'phim_loaiphim'
+--
+ALTER TABLE 'phim_loaiphim'
+  ADD PRIMARY KEY ('MaPhim','MaLoaiPhim'),
+  ADD KEY 'MaLoaiPhim' ('MaLoaiPhim'),
+  ADD KEY 'MaPhim' ('MaPhim');
+
+--
+-- Chỉ mục cho bảng 'phongchieu'
+--
+ALTER TABLE 'phongchieu'
+  ADD PRIMARY KEY ('MaPhongChieu');
+
+--
+-- Chỉ mục cho bảng 'taikhoan'
+--
+ALTER TABLE 'taikhoan'
+  ADD PRIMARY KEY ('MaTaiKhoan'),
+  ADD UNIQUE KEY 'TenDangNhap' ('TenDangNhap'),
+  ADD KEY 'Email' ('Email'),
+  ADD KEY 'FK_taikhoan_VaiTro' ('VaiTro');
+
+--
+-- Chỉ mục cho bảng 'thanhtoanmomo'
+--
+ALTER TABLE 'thanhtoanmomo'
+  ADD PRIMARY KEY ('orderId');
+
+--
+-- Chỉ mục cho bảng 've'
+--
+ALTER TABLE 've'
+  ADD PRIMARY KEY ('MaVe'),
+  ADD KEY 'MaLoaiVe' ('MaLoaiVe'),
+  ADD KEY 'MaNhanVien' ('MaNhanVien'),
+  ADD KEY 'MaLichChieu' ('MaLichChieu'),
+  ADD KEY 'MaKhachHang' ('MaKhachHang'),
+  ADD KEY 'orderId' ('orderId');
+
+--
+-- Chỉ mục cho bảng 'xuatchieu'
+--
+ALTER TABLE 'xuatchieu'
+  ADD PRIMARY KEY ('MaXuatChieu');
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
+--
+
+--
+-- AUTO_INCREMENT cho bảng 'binhluan'
+--
+ALTER TABLE 'binhluan'
+  MODIFY 'MaBinhLuan' int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT cho bảng 'email_verify'
+--
+ALTER TABLE 'email_verify'
+  MODIFY 'id' int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng 'lichchieu'
+--
+ALTER TABLE 'lichchieu'
+  MODIFY 'MaLichChieu' int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT cho bảng 'loaiphim'
+--
+ALTER TABLE 'loaiphim'
+  MODIFY 'MaLoaiPhim' int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT cho bảng 'loaive'
+--
+ALTER TABLE 'loaive'
+  MODIFY 'MaLoaiVe' int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng 'password_resets'
+--
+ALTER TABLE 'password_resets'
+  MODIFY 'id' int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT cho bảng 'phim'
+--
+ALTER TABLE 'phim'
+  MODIFY 'MaPhim' int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT cho bảng 'phongchieu'
+--
+ALTER TABLE 'phongchieu'
+  MODIFY 'MaPhongChieu' int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT cho bảng 'taikhoan'
+--
+ALTER TABLE 'taikhoan'
+  MODIFY 'MaTaiKhoan' int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT cho bảng 've'
+--
+ALTER TABLE 've'
+  MODIFY 'MaVe' int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+
+--
+-- AUTO_INCREMENT cho bảng 'xuatchieu'
+--
+ALTER TABLE 'xuatchieu'
+  MODIFY 'MaXuatChieu' int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
+
+--
+-- Các ràng buộc cho bảng 'binhluan'
+--
+ALTER TABLE 'binhluan'
+  ADD CONSTRAINT 'FK_BinhLuan_MaPhim' FOREIGN KEY ('MaPhim') REFERENCES 'phim' ('MaPhim'),
+  ADD CONSTRAINT 'binhluan_ibfk_1' FOREIGN KEY ('MaTaiKhoan') REFERENCES 'taikhoan' ('MaTaiKhoan') ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng 'lichchieu'
+--
+ALTER TABLE 'lichchieu'
+  ADD CONSTRAINT 'FK_chitietchieuphim_Phim' FOREIGN KEY ('MaPhim') REFERENCES 'phim' ('MaPhim'),
+  ADD CONSTRAINT 'FK_chitietchieuphim_PhongChieu' FOREIGN KEY ('MaPhongChieu') REFERENCES 'phongchieu' ('MaPhongChieu'),
+  ADD CONSTRAINT 'fk_xuatchieu' FOREIGN KEY ('MaXuatChieu') REFERENCES 'xuatchieu' ('MaXuatChieu');
+
+--
+-- Các ràng buộc cho bảng 'phim_loaiphim'
+--
+ALTER TABLE 'phim_loaiphim'
+  ADD CONSTRAINT 'phim_loaiphim_ibfk_1' FOREIGN KEY ('MaPhim') REFERENCES 'phim' ('MaPhim'),
+  ADD CONSTRAINT 'phim_loaiphim_ibfk_2' FOREIGN KEY ('MaLoaiPhim') REFERENCES 'loaiphim' ('MaLoaiPhim');
+
+--
+-- Các ràng buộc cho bảng 'taikhoan'
+--
+ALTER TABLE 'taikhoan'
+  ADD CONSTRAINT 'FK_taikhoan_VaiTro' FOREIGN KEY ('VaiTro') REFERENCES 'phanquyen' ('VaiTro');
+
+--
+-- Các ràng buộc cho bảng 've'
+--
+ALTER TABLE 've'
+  ADD CONSTRAINT 'FK_ve_MaLoaiVe' FOREIGN KEY ('MaLoaiVe') REFERENCES 'loaive' ('MaLoaiVe'),
+  ADD CONSTRAINT 'FK_ve_MaNhanVien' FOREIGN KEY ('MaNhanVien') REFERENCES 'taikhoan' ('MaTaiKhoan'),
+  ADD CONSTRAINT 'FK_ve_lichchieu' FOREIGN KEY ('MaLichChieu') REFERENCES 'lichchieu' ('MaLichChieu'),
+  ADD CONSTRAINT 'fk_MaKhachHang' FOREIGN KEY ('MaKhachHang') REFERENCES 'taikhoan' ('MaTaiKhoan'),
+  ADD CONSTRAINT 'fk_orderId' FOREIGN KEY ('orderId') REFERENCES 'thanhtoanmomo' ('orderId');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,0 +1,430 @@
+#DonHang-wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+}
+#danhSachDonHang-container {
+      width: 70%;
+}
+#thongTinDonHang-container {
+      margin-top: 30px;
+      width: 22%;
+      padding: 20px;
+      border: 1px solid #000;
+      border-radius: 5px;
+}
+#DonHang-table {
+      width: 90%;
+}
+
+#DonHang-table thead tr{
+      background-color: #183f5c;
+      color: rgb(255, 255, 255);
+}
+#DonHang-table thead th {
+      outline: 1px solid #183f5c ;
+      margin: 0;
+      justify-content: center;
+      padding: 10px 5px 10px 5px;
+}
+#DonHang-table tbody td{
+      padding: 10px 5px 10px 5px;
+}
+#DonHang-table .DonHang-ten{
+      text-align: left;
+}
+#DonHang-table .DonHang-mota{
+      max-width: 300px;
+      text-align: left;
+}
+#DonHang-table .DonHang-thaotac{
+      display: flex;
+      justify-content: space-evenly;
+}
+#DonHang-table .DonHang-thaotac button{
+      cursor: pointer;
+      border-radius: 2px;
+      padding: 5px;
+      border: 1px solid #000;
+      animation: 0.3s;
+}
+#DonHang-table .DonHang-chitiet {
+      background-color: aquamarine;
+      color: #000;
+}
+#DonHang-table .DonHang-chitiet:hover {
+      background-color: rgb(181, 241, 221);
+      color: #000;
+}
+#DonHang-table .DonHang-sua {
+      background-color: rgb(0, 255, 89);
+      color: #000;
+}
+#DonHang-table .DonHang-sua:hover {
+      background-color: rgb(128, 243, 168);
+      color: #000;
+}
+#DonHang-table .DonHang-xoa {
+      background-color: rgb(255, 72, 72);
+      color: #000;
+}
+#DonHang-table .DonHang-xoa:hover {
+      background-color: rgb(240, 135, 135);
+      color: #000;
+}
+  
+#DonHang-table tr:nth-child(even) td{
+      outline: 1px solid #F8F8F8;
+      background: #F8F8F8;
+}
+
+#thongTinDonHang-container .addKM-input {
+      padding: 5px;
+      width: 98%;
+      border: none;
+      border-bottom: 1px solid #000;
+}
+#addKM-mota {
+      height: 50px;
+}
+#addKM-thaotac {
+      display: flex;
+      justify-content: space-around;
+}
+#addKM-thaotac button {
+      cursor: pointer;
+      border-radius: 2px;
+      padding: 5px;
+      border: 1px solid #000;
+      animation: 0.3s;
+      width: 70px;
+      height: 33px;
+}
+.addKM-them {
+      background-color: rgb(0, 255, 38);
+      color: black;
+}
+.addKM-them:hover {
+      background-color: rgb(143, 255, 160);
+      color: black;
+}
+.addKM-sua {
+      background-color: rgb(254, 136, 0);
+      color: black;
+}
+.addKM-sua:hover {
+      background-color: rgb(250, 196, 135);
+      color: black;
+}
+.addKM-xoa {
+      background-color: rgb(255, 0, 0);
+      color: black;
+}
+.addKM-xoa:hover {
+      background-color: rgb(252, 129, 129);
+      color: black;
+}
+.addKM-refesh {
+      background-color: rgb(94, 124, 255);
+      color: black;
+}
+.addKM-refesh:hover {
+      background-color: rgb(165, 180, 248);
+      color: black;
+}
+
+
+
+  
+#modal-chiTietDonHang {
+      display: none;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      top: 0;
+      left: 0px;
+      width: 100vw;
+      height: 100vh;
+      z-index: 10;
+      animation: topout 0.4s;
+  }
+  
+#adminOrderDetail-container {
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+      position: absolute;
+      top: 3%;
+      left: 50%;
+      transform: translate(-50%, 0%);
+      width: 80vw;
+      background-color: #ffffff;
+      z-index: 20;
+  }
+#closeAdminOrderDetail {
+      border: none;
+      background-color: white;
+      font-size: 30px;
+      position: absolute;
+      left: 96%;
+      top: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+}
+#closeAdminOrderDetail:hover {
+      color: rgb(0, 195, 255);
+      transform: scale(1.1);
+}
+#adminOrderDetail-container {
+      width: 75%;
+}
+.adminOrderDetail-item {
+    display: flex;
+    justify-content: left;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+
+}
+.adminOrderDetail-item-img {
+      text-align: center;
+      padding-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      width: 10%;
+}
+.adminOrderDetail-item img {
+    width: 10%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+
+.adminOrderDetail-item-name {
+    padding-top: 10px;
+    width: 25%;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.adminOrderDetail-item-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;   
+    font-size: 17px;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.adminOrderDetail-item-quantity-change {
+      text-align: center;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-right: 15px;
+}
+
+.adminOrderDetail-item-quantity-change input {
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.adminOrderDetail-item-total-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;   
+    font-size: 17px;
+    color: #e74c3c;
+    font-weight: bold;
+}
+.adminOrderDetail-item-remove {
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+}
+.adminOrderDetail-item-remove button{
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100px;
+    height: 35px;
+}
+
+.adminOrderDetail-item-remove button:hover {
+    background: #c0392b;
+}
+.adminOrderDetail-item-quantity-change {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.adminOrderDetail-item-quantity-change button {
+    width: 30px;
+    height: 30px;
+    background: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.adminOrderDetail-item-quantity-change button:hover {
+    background: #ddd;
+}
+#adminOrderDetail-thaotac {
+    width: 95%;
+    padding: 20px 0px 20px 20px;
+    display: flex;
+    align-items: end;
+    justify-content: right;
+
+}
+#adminOrderDetail-thaotac span{
+      width: 100%;
+      font-size: 22px;
+      color: #e74c3c;
+      font-weight: bold;
+}
+#adminOrderDetail-thaotac .money-amount{
+      margin-left: 15px;
+      white-space: nowrap;
+        text-align: right;
+}
+#adminOrderDetail-diachi {
+      padding: 15px;
+}
+#adminOrderDetail-diachi-title {
+      padding-top: 10px;
+      width: 25%;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 5px;
+}
+.adminOrderDetail-diachi-item {
+      width: 100%;
+      display: flex;
+      justify-content: left;
+      margin-bottom: 10px;
+}
+.adminOrderDetail-diachi-item-info {
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      padding: 0px 20px 0px 40px;
+      border-right: 1px solid #c1c1c1;
+}
+.adminOrderDetail-diachi-item-name {
+      font-size: 22px;
+      font-weight: bold;
+}
+.adminOrderDetail-diachi-item-sodienthoai {
+      font-size: 22px;
+      font-weight: bold;
+}
+.adminOrderDetail-diachi-item-chitietdiachi {
+      padding: 10px;
+      width: 65%;
+      font-size: 19px;
+}
+.adminOrderDetail-diachi-item-thaydoi {
+      margin-top: 15px;
+      width: 10%;
+      background: #0055ff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 100px;
+      height: 35px;
+      transition: 0.3s;
+}
+.adminOrderDetail-diachi-item-thaydoi:hover {
+      transform: scale(1.1);
+      background: #427df3;
+}
+
+#adminOrderDetail-khuyenmai {
+      padding: 15px;
+}
+#adminOrderDetail-khuyenmai-title {
+      padding-top: 10px;
+      width: 25%;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 5px;
+}
+.adminOrderDetail-khuyenmai-item-info p {
+    font-size: 19px;
+}
+
+#updateTrangThai {
+      width: 200px;
+      padding: 8px;
+      border-radius: 4px;
+}
+#capNhatTrangThai {
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #0055ff;
+      color: white;
+      transition: 0.3s;
+}
+#capNhatTrangThai:hover {
+      transform: scale(1.1);
+      background-color: #699afe;
+}
+/* Style cho combobox */
+#filter-status {
+      padding: 8px 12px;
+      font-size: 16px;
+      border: 2px solid #007bff; /* Màu viền xanh */
+      border-radius: 6px;
+      background-color: #fff;
+      color: #333;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.3s ease-in-out;
+  }
+  
+  /* Khi hover vào combobox */
+  #filter-status:hover {
+      border-color: #0056b3; /* Màu viền đậm hơn */
+  }
+  
+  /* Khi focus vào combobox */
+  #filter-status:focus {
+      box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Style cho các option */
+  #filter-status option {
+      background-color: white;
+      color: black;
+      font-size: 16px;
+      padding: 5px;
+  }
+  
+  /* Khi chọn một option */
+  #filter-status option:checked {
+      background-color: #007bff;
+      color: white;
+  }
+  

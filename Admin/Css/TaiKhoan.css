@@ -1,0 +1,156 @@
+#TaiKhoan-wrapper {
+      width: 80%;
+      height: 100%;
+}
+#TaiKhoan-table {
+
+      width: 100%;
+}
+
+#TaiKhoan-table thead tr{
+      background-color: #183f5c;
+      color: rgb(255, 255, 255);
+}
+#TaiKhoan-table thead th {
+      outline: 1px solid #183f5c ;
+      margin: 0;
+      justify-content: center;
+      padding: 10px 5px 10px 5px;
+}
+#TaiKhoan-table tbody td{
+      padding: 10px 5px 10px 5px;
+}
+#TaiKhoan-table .TaiKhoan-thaotac{
+      display: flex;
+      justify-content: space-evenly;
+}
+#TaiKhoan-table .TaiKhoan-thaotac button{
+      cursor: pointer;
+      border-radius: 2px;
+      padding: 5px;
+      border: 1px solid #000;
+      animation: 0.3s;
+}
+#TaiKhoan-table .TaiKhoan-chitiet {
+      background-color: aquamarine;
+      color: #000;
+}
+#TaiKhoan-table .TaiKhoan-chitiet:hover {
+      background-color: rgb(181, 241, 221);
+      color: #000;
+}
+#TaiKhoan-table .TaiKhoan-sua {
+      background-color: rgb(0, 255, 89);
+      color: #000;
+}
+#TaiKhoan-table .TaiKhoan-sua:hover {
+      background-color: rgb(128, 243, 168);
+      color: #000;
+}
+#TaiKhoan-table .TaiKhoan-xoa {
+      background-color: rgb(255, 72, 72);
+      color: #000;
+}
+#TaiKhoan-table .TaiKhoan-xoa:hover {
+      background-color: rgb(240, 135, 135);
+      color: #000;
+}
+#TaiKhoan-table tr:nth-child(even) td {
+    outline: 1px solid #F8F8F8;
+    background: #F8F8F8;
+    }
+  
+#modal-chiTietTaiKhoan {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    animation: topout 0.4s;
+}
+#chiTietTaiKhoan {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 350px;
+    padding: 20px;
+    background-color: #ffffff;
+    z-index: 20;
+}
+#chiTietTaiKhoan h4 {
+    vertical-align: middle;
+    text-align: left; /* Căn giữa theo chiều ngang */
+}
+#chiTietTaiKhoan p {
+    font-size: 16px;
+}
+#chiTietTaiKhoan select{
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    width: 300px;
+    border: 1px solid #d3d3d3;
+    margin-bottom: 5px;
+}
+#chiTietTaiKhoan select:focus{
+    border: none;
+    outline:2px solid #a0bdfa;
+    background-color: #e8f0fe;
+    & + label {
+          color: #3b82f6;
+    }
+}
+#chiTietTaiKhoan #chiTietTaiKhoan-thaotac button {
+    cursor: pointer;
+    border-radius: 2px;
+    padding: 5px 20px 5px 20px;
+    border: 1px solid #000;
+    animation: 0.3s;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+#chiTietTaiKhoan #chiTietTaiKhoan-sua {
+    background-color: rgb(0, 255, 89);
+      color: #000;
+}
+#chiTietTaiKhoan #chiTietTaiKhoan-sua:hover {
+      background-color: rgb(128, 243, 168);
+      color: #000;
+}
+#chiTietTaiKhoan #chiTietTaiKhoan-khoiPhucMatKhau {
+    background-color: rgb(255, 72, 72);
+    color: #000;
+}
+#chiTietTaiKhoan #chiTietTaiKhoan-khoiPhucMatKhau:hover {
+    background-color: rgb(240, 135, 135);
+    color: #000;
+}
+#chiTietTaiKhoan #closeChiTietTaiKhoan {
+    border: none;
+    background-color: white;
+    font-size: 30px;
+    position: absolute;
+    left: 90%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#chiTietTaiKhoan #closeChiTietTaiKhoan:hover {
+    color: rgb(0, 195, 255);
+    transform: scale(1.1);
+}
+@keyframes topout {
+    0% {
+        transform: scale(0);
+        transform-origin: 50% 40%;
+    }
+    100% {
+        transform: scale(1);
+        transform-origin: 50% 50%;
+    }
+}
